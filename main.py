@@ -1,3 +1,4 @@
+import os
 import llm
 from prompts import *
 import asyncio
@@ -387,8 +388,10 @@ async def run_pipeline(transcript, stop_event):
     output['set_level_violations'] = set_level_violations
     log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
     
+    output_dir = "/tmp/output"
+    os.makedirs(output_dir, exist_ok=True)
     #dump output to a json file in the folder output
-    with open("output/output.json", "w", encoding="utf-8") as f:
+    with open(f"{output_dir}/output.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=4)
 
 class LogHandler(logging.Handler):
