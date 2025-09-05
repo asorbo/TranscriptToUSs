@@ -42,6 +42,7 @@ class LLM:
     def __init__(self, api_key, runs_per_minute):
         self.rate_limiter = RateLimiter(runs_per_minute)
         self.client = genai.Client(api_key=api_key)
+        
 
     def getJson(self, response):
         try:
