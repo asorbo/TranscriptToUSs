@@ -279,7 +279,7 @@ async def check_set_level_violations(requirements_set):
 def convert_requirements_set_to_map(requirements_set):
     requirements_map = {}
     for req in requirements_set:
-        requirements_map[req.requirement_id] = req
+        requirements_map[req.requirement_id] = req.to_dict()
     return requirements_map
 
 # Main pipeline logic as async function
@@ -384,7 +384,10 @@ async def run_pipeline(transcript, stop_event):
     set_level_violations = await check_set_level_violations(requirements_set)
     output['set_level_violations'] = set_level_violations
     log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
-    return output
+    
+    #dump output to a json file in the folder output
+    with open("output/output.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=4)
 
 class LogHandler(logging.Handler):
     def __init__(self, log_queue):
@@ -431,3 +434,5 @@ def start_execution(transcript, stop_event, log_queue):
     log_handler = LogHandler(log_queue)
     log_handler.logger.info("Starting execution")
     asyncio.run(run_pipeline(transcript, stop_event))
+    log_handler.logger.info("Pipeline status: Execution completed")
+

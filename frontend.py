@@ -1,8 +1,11 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_file
 from main import start_execution
 import time
 import threading
 import queue
+import shutil
+import os
+
 
 app = Flask(__name__)
 
@@ -47,6 +50,14 @@ def stream_logs():
                 #stop the stream
                 yield f"event: error\ndata: {str(e)}\n\n" 
     return Response(generate(), mimetype='text/event-stream')  
+
+@app.route('/download_outputs')
+def download_outputs():
+    #zip the output folder and send it as a download
+    zip_path = os.path.abspath("output.zip")
+    output_dir = "output"
+    shutil.make_archive(zip_path.replace(".zip", ""), 'zip', output_dir)
+    return send_file(zip_path, as_attachment=True)
 
 @app.route('/')
 def index():
