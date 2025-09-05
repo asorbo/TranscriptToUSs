@@ -3,7 +3,6 @@ from prompts import *
 import asyncio
 import json
 import logging
-import threading
 import statistics
 import uuid
 
@@ -228,7 +227,6 @@ class Requirement:
             'topic_id': self.topic_id
         }
 
-
 def build_requirements_set(topic_texts_with_inferred_rationales):
     requirements_set = []
     for topic in topic_texts_with_inferred_rationales.values():
@@ -284,8 +282,8 @@ def convert_requirements_set_to_map(requirements_set):
     return requirements_map
 
 # Main pipeline logic as async function
-async def main(transcript):
-    logging.basicConfig(level=logging.INFO)
+async def run_pipeline(transcript):
+    output = {}
 
     # Segment transcript
     logging.info("Part 1/10 started: segment transcript")
@@ -305,6 +303,7 @@ async def main(transcript):
 
     # Use the first run with the mode number of topics for further processing
     selected_topic_list = runs_with_same_amount_topics[0]
+    output['topic_list'] = selected_topic_list
 
     # Get topic texts and speaker turns
     logging.info("Part 3/10 started: Get topic texts and speaker turns")
@@ -312,18 +311,14 @@ async def main(transcript):
     if not topic_texts:
         logging.error("Failed to get topic texts.")
         return
-    with open("topic_texts.json", "w") as f:
-        json.dump(topic_texts, f, indent=4)
-    logging.info("Part 3/10 completed: Get topic texts and speaker turns")
+    output['topic_texts'] = topic_texts
     
     # Identify roles
     logging.info("Part 4/10 started: Identify roles")
     roles = await identify_roles(transcript)
     #convert roles to a map with role as key
     roles_map = {role_entry['role'].lower(): role_entry for role_entry in roles}
-    #Save roles map to a json file
-    with open("identified_roles.json", "w") as f:
-        json.dump(roles_map, f, indent=4)
+    output['roles'] = roles_map
     logging.info("Part 4/10 completed: Identify roles")
 
     # Extract requirements
@@ -331,9 +326,6 @@ async def main(transcript):
     topic_texts_with_requirements = await extract_requirements(topic_texts, roles)
     logging.info("Part 5/10 completed: extract requirements")
 
-    #dump topic_texts_with_requirements to a json file
-    with open("topic_texts_with_requirements.json", "w") as f:
-        json.dump(topic_texts_with_requirements, f, indent=4)
     # Infer missing roles
     logging.info("Part 6/10 started: Infer missing roles")
     topic_texts_with_inferred_roles = await infer_missing_roles(topic_texts_with_requirements, roles)
@@ -356,23 +348,16 @@ async def main(transcript):
 
     requirements_map = convert_requirements_set_to_map(requirements_set)
 
-    # Dump to JSON file
-    output_data = {
-        "requirements": {k: v.to_dict() for k, v in requirements_map.items()}
-    }
-    with open("user_stories_output.json", "w") as f:
-        json.dump(output_data, f, indent=4)
+    output['requirements'] = requirements_map
 
     # Check set level violations
     logging.info("Part 10/10 started: Check set level violations")
     set_level_violations = await check_set_level_violations(requirements_set)
-    #These need to be saved in a json or something
-    with open("set_level_violations.json", "w") as f:
-        json.dump(set_level_violations, f, indent=4)
+    output['set_level_violations'] = set_level_violations
     logging.info("Part 10/10 completed: Check set level violations")
-    return [r.to_dict() for r in requirements_set]
+    return output
 
-if __name__ == '__main__':
+def start_execution():
     global gemini
     global transcript
     gemini = llm.LLM()
@@ -381,10 +366,7 @@ if __name__ == '__main__':
         transcript = f.read()
     # Remove non-printable characters except newlines
     transcript = ''.join(c for c in transcript if c.isprintable() or c == '\n')
-    
+
     logging.basicConfig(level=logging.INFO)
     logging.info("Starting execution")
-    transcript = ""
-    with open("transcript.txt", "r", encoding="utf-8") as f:
-        transcript = f.read()
-    asyncio.run(main(transcript))
+    asyncio.run(run_pipeline(transcript))
