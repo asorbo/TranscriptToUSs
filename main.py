@@ -187,18 +187,6 @@ async def infer_missing_rationales(topic_texts, roles):
 
     return topic_texts
 
-async def check_criteria_violations(requirements_set):
-    instructions = CHECK_CRITERIA_VIOLATIONS_PROMPT
-    # requirements_set is a list of Requirement objects
-    for req in requirements_set:
-        user_story = getattr(req, 'user_story', None)
-        if user_story:
-            try:
-                req.criteria_violations = await gemini.generate(instructions + " Input: " + str(user_story), jsonOnly=True)
-            except Exception as e:
-                log_handler.logger.error(f"Error in the generation for {req.requirement_id}: {e}")
-    return requirements_set
-
 class Requirement:
     def __init__(self, requirement_id, topic_id, requirement, role, rationale,
                  is_role_inferred=False, is_rationale_inferred=False,
@@ -213,6 +201,7 @@ class Requirement:
         self.inferred_rationale_reason = inferred_rationale_reason
         self.inferred_role_reason = inferred_role_reason
         self.user_story = f"As a {role}, {requirement}, {rationale}."
+        self.criteria_violations = [] 
 
     def to_dict(self):
         return {
@@ -228,7 +217,20 @@ class Requirement:
             'topic_id': self.topic_id
         }
 
-def build_requirements_set(topic_texts_with_inferred_rationales):
+async def check_criteria_violations(requirements_set: list[Requirement]):
+
+    instructions = CHECK_CRITERIA_VIOLATIONS_PROMPT
+    # requirements_set is a list of Requirement objects
+    for req in requirements_set:
+        user_story = req.user_story
+        if user_story:
+            try:
+                req.criteria_violations = await gemini.generate(instructions + " Input: " + str(user_story), jsonOnly=True)
+            except Exception as e:
+                log_handler.logger.error(f"Error in the generation for {req.requirement_id}: {e}")
+    return requirements_set
+
+def build_requirements_set(topic_texts_with_inferred_rationales) -> list[Requirement]:
     requirements_set = []
     for topic in topic_texts_with_inferred_rationales.values():
         if 'requirements' in topic:
@@ -310,7 +312,7 @@ async def run_pipeline(transcript, stop_event):
     
     # Use the first run with the mode number of topics for further processing
     selected_topic_list = runs_with_same_amount_topics[0]
-    output['topic_list'] = selected_topic_list
+    output['topic_list'] = selected_topic_list.copy()
 
     # Get topic texts and speaker turns
     log_handler.logger.info("Pipeline status - Part 3/10 started: Get topic texts and speaker turns")
@@ -318,7 +320,7 @@ async def run_pipeline(transcript, stop_event):
     if not topic_texts:
         log_handler.logger.error("Failed to get topic texts.")
         return
-    output['topic_texts'] = topic_texts
+    output['topic_texts'] = topic_texts.copy()
     log_handler.logger.info("Pipeline status - Part 3/10 completed: Get topic texts and speaker turns")
 
     if log_handler.is_stop_requested(stop_event):
@@ -329,7 +331,7 @@ async def run_pipeline(transcript, stop_event):
     roles = await identify_roles(transcript)
     #convert roles to a map with role as key
     roles_map = {role_entry['role'].lower(): role_entry for role_entry in roles}
-    output['roles'] = roles_map
+    output['roles'] = roles_map.copy()
     log_handler.logger.info("Pipeline status - Part 4/10 completed: Identify roles")
 
     if log_handler.is_stop_requested(stop_event):

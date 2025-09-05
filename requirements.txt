@@ -1,3 +1,4 @@
 google-genai
 fix_busted_json
 flask
+gunicorn

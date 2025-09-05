@@ -21,7 +21,6 @@ def process_text():
     log_queue = queue.Queue()
 
     print("Received transcript:")
-    print(transcript)
     current_thread = threading.Thread(target=start_execution, args=(transcript,stop_flag, log_queue))
     current_thread.start()
     return jsonify({"message": "Transcript received successfully! Starting processing."}), 200
@@ -63,4 +62,4 @@ def download_outputs():
 def index():
     return open("index.html", encoding="utf-8").read()
 
-app.run(host="0.0.0.0", port=8080, debug=True)
+#app.run(host="0.0.0.0", port=8080, debug=True)
