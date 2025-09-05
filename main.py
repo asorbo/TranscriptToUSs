@@ -426,9 +426,9 @@ class LogHandler(logging.Handler):
             return True
         return False  
 
-def start_execution(transcript, stop_event, log_queue):
+def start_execution(transcript, stop_event, log_queue, api_key, runs_per_minute):
     global gemini
-    gemini = llm.LLM()
+    gemini = llm.LLM(api_key, runs_per_minute)
 
     # Remove non-printable characters except newlines
     transcript = ''.join(c for c in transcript if c.isprintable() or c == '\n')

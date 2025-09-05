@@ -19,9 +19,11 @@ def process_text():
     stop_flag = threading.Event()
     global log_queue
     log_queue = queue.Queue()
+    api_key = os.environ.get("API_KEY")
+    runs_per_minute = int(os.environ.get("RUNS_PER_MINUTE", 15))
 
     print("Received transcript:")
-    current_thread = threading.Thread(target=start_execution, args=(transcript,stop_flag, log_queue))
+    current_thread = threading.Thread(target=start_execution, args=(transcript,stop_flag, log_queue, api_key, runs_per_minute))
     current_thread.start()
     return jsonify({"message": "Transcript received successfully! Starting processing."}), 200
 

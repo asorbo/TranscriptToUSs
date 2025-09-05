@@ -39,11 +39,7 @@ def save_binary_file(file_name, data):
 
 
 class LLM:
-    def __init__(self, config_path="config.json"):
-        with open(config_path) as f:
-            config = json.load(f)
-        api_key = config["gemini_api_key"]
-        runs_per_minute = config["runs_per_minute"]
+    def __init__(self, api_key, runs_per_minute):
         self.rate_limiter = RateLimiter(runs_per_minute)
         self.client = genai.Client(api_key=api_key)
 
