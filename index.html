@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>From Elicitation Interviews to User Stories</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            width: 80%;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        /* Title styling */
+        h1 {
+            grid-column: 1;
+            text-align: left;
+            width: 100%;
+            font-size: 1.8rem;
+            margin-top: 12vh;
+
+        }
+
+        .container span {
+            margin-bottom: 2vh;
+        }
+
+        #uploadForm {
+            width: 100%;
+            margin-top: 0;
+        }
+        textarea {
+            width: 100% !important;
+            min-height: 30vh;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            color: #333;
+            text-align: left;
+        }
+
+        textarea::placeholder {
+            line-height: 25vh;
+            vertical-align: text-bottom;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #888;
+        }
+
+        /* Button styling */
+        button {
+            display: block;
+            margin: 0 auto 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: #1648d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #001ba0;
+        }
+
+        #stopButton {
+            background-color: red; 
+            color: white;
+            display: none;
+        }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background: #f0f0f0;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer span {
+            display: block;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>From Elicitation Interviews to User Stories: A Prompt Chaining LLM Approach for Automated Candidate Requirements Extraction</h1>
+        <span>
+            This prototype formulates candidate requirements in the form of User Stories. This is done based on a transcript of an elicitation session. Through a series of prompts, the system progressively extracts requirement-relevant content. 
+            Finally, User Stories are formulated while preserving trace-links to the transcript to promote interpretability.<br>
+            The process involves several steps and may last several minutes depending on the transcript length and its complexity.
+        </span>
+        <span>
+            Note: The processing is done using google gemini API. 
+            Transcripts uploaded to the prototype and all the intermediate and final outputs are deleted within 15 minutes from the process completion.
+        </span>
+        <form id="uploadForm">
+            <textarea id="transcript" placeholder="Paste your elicitation transcript here..."></textarea>
+            <button id="submitButton"type="submit">Launch the extraction</button>
+            <button id="stopButton">Stop Execution</button>
+        </form>
+    </div>
+
+    <footer>
+        <span>
+            Tool developed as part of the master thesis: 
+            “From Elicitation Interviews to User Stories: A Prompt Chaining LLM Approach for Automated Candidate Requirements Extraction”
+            <br>
+            written by <a href="https://www.linkedin.com/in/agostino-sorbo-55135716a/">Agostino Sorbo</a> 
+            with the supervision of <a href="https://www.uu.nl/staff/FDalpiaz">Fabiano Dalpiaz</a> 
+            and <a href="https://www.uu.nl/staff/TSpijkman">Tjerk Spijkman</a>.
+        <br>
+            2025 - <a href="https://www.uu.nl/en">Utrecht University</a>, The Netherlands.
+        </span>
+        <span>
+            Paper and codebase available on <a href="https://github.com/asorbo/TranscriptToUSs" target="_blank">GitHub</a>.
+        </span>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const text = document.getElementById("transcript").value;
+            
+            fetch("/process_text", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ transcript: text })
+            })
+            .then(response => response.json())
+            .then(data => alert("Server response: " + data.message))
+            .catch(err => console.error(err));
+
+            document.getElementById("uploadForm").removeEventListener("submit", handleSubmit);
+            document.getElementById("submitButton").style.display = "none";
+            document.getElementById("stopButton").style.display = "inline-block";
+            document.getElementById("stopButton").addEventListener("click", function() {
+                if (confirm("Are you sure you want to stop execution?")) {
+                    fetch("/stop_execution", { method: "POST" })
+                        .then(resp => resp.json())
+                        .then(data => alert(data.message))
+                        .catch(err => console.error(err));
+                    }
+                });
+            follow_updates();
+
+        }
+
+        function follow_updates() {
+            const textarea = document.getElementById("transcript");
+            textarea.readOnly = true;
+            textarea.value = "Transcript uploaded. Connecting to log stream...\n";
+            const eventSource = new EventSource("/stream_logs");
+            eventSource.addEventListener("done", () => {
+                eventSource.close();
+            });
+            eventSource.onmessage = function(event) {
+                textarea.value += event.data + "\n";
+                textarea.scrollTop = textarea.scrollHeight; // auto-scroll
+            };
+        }
+
+        document.getElementById("uploadForm").addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>
