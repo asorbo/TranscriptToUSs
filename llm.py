@@ -8,6 +8,7 @@ import asyncio
 import time
 import logging
 from collections import deque
+from fix_busted_json import repair_json
 
 class RateLimiter:
     def __init__(self, calls_per_minute):
@@ -15,20 +16,22 @@ class RateLimiter:
         self.timestamps = deque()
         self.semaphore = asyncio.Semaphore(10)
         self.last_call = 0
+        self.lock = asyncio.Lock()
 
     async def wait(self):
         async with self.semaphore:
-            now = time.time()
-            # Remove timestamps older than 60 seconds
-            while self.timestamps and now - self.timestamps[0] > 60:
-                self.timestamps.popleft()
-            if len(self.timestamps) >= self.calls_per_minute:
-                # Time to wait until the oldest call is outside the 60s window
-                wait_time = 60 - (now - self.timestamps[0])
-                if wait_time > 0:
-                    logging.warning("Throttling LLM API calls wait: " + str(wait_time) + "s...")
-                    await asyncio.sleep(wait_time)
-            self.timestamps.append(time.time())
+            async with self.lock:
+                now = time.time()
+                # Remove timestamps older than 60 seconds
+                while self.timestamps and now - self.timestamps[0] > 60:
+                    self.timestamps.popleft()
+                if len(self.timestamps) >= self.calls_per_minute:
+                    # Time to wait until the oldest call is outside the 60s window
+                    wait_time = 60 - (now - self.timestamps[0])
+                    if wait_time > 0:
+                        logging.warning("Throttling LLM API calls wait: " + str(wait_time) + "s...")
+                        await asyncio.sleep(wait_time)
+                self.timestamps.append(time.time())
 
 def save_binary_file(file_name, data):
     with open(file_name, "wb") as f:
@@ -44,7 +47,13 @@ class LLM:
         self.rate_limiter = RateLimiter(runs_per_minute)
         self.client = genai.Client(api_key=api_key)
 
-    async def generate(self, prompt, verbose=False, jsonOnly=True):
+    def getJson(self, response):
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError as e:
+            return json.loads(repair_json(response))
+
+    async def _generate(self, prompt, verbose=False, jsonOnly=True):
         await self.rate_limiter.wait()
         model = "gemini-2.0-flash"
         contents = [
@@ -87,4 +96,19 @@ class LLM:
                 if verbose:
                     print(chunk.text)
                 response += chunk.text
-        return json.loads(response) if jsonOnly else response
+        return self.getJson(response) if jsonOnly else response
+    
+    async def generate(self, prompt, verbose=False, jsonOnly=True, max_retries=5):
+        import logging
+        for attempt in range(max_retries):
+            try:
+                if attempt > 0:
+                    prompt = "**You MUST answer in valid JSON format.**\n" + prompt
+                return await self._generate(prompt, verbose=verbose, jsonOnly=jsonOnly)
+            except Exception as e:
+                logging.error(f"Error during generate (attempt {attempt+1}): {e}")
+                if attempt < max_retries - 1:
+                    logging.info(f"Retrying generate (attempt {attempt+2})...")
+                else:
+                    logging.error("Max retries reached. Input prompt:\n " + prompt)
+                    raise

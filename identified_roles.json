@@ -1,0 +1,17 @@
+{
+    "website user": {
+        "role": "Website User",
+        "description": "An individual seeking to compare driving schools based on various criteria such as location, license type, success rates, and costs.",
+        "general_goal": "I want to easily find a driving school that fits my needs and budget by comparing schools based on location, success rates, and the services they offer. I need to quickly identify the most convenient and cost-effective options available to me without having to log in or provide personal information."
+    },
+    "driving school": {
+        "role": "Driving School",
+        "description": "An entity that provides driving lessons and related services, aiming to attract students through the comparator platform.",
+        "general_goal": "I want to effectively showcase my school's offerings, including packages, prices, and exam locations, to potential students. It's important that I can easily update my school's information and understand how the sorting algorithm works so I can optimize my listing and attract more students."
+    },
+    "cbr administrator": {
+        "role": "CBR Administrator",
+        "description": "An employee of CBR responsible for maintaining the data on the comparator, including exam statistics and the list of available services.",
+        "general_goal": "I need to efficiently manage and update the data on the comparator, ensuring accuracy and completeness. It's important that I can easily input exam results, modify the list of available services, and maintain the overall quality of the information presented to users."
+    }
+}

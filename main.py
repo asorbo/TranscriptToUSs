@@ -8,21 +8,14 @@ import statistics
 import uuid
 
 
-logging.basicConfig(level=logging.INFO)
-gemini = llm.LLM()
-transcript = ""
-with open("transcript.txt", "r", encoding="utf-8") as f:
-    transcript = f.read()
-
-async def segment_transcript(transcript):
+async def segment_transcript(transcript, n_runs=10):
     instructions = SEGMENT_TRANSCRIPT_PROMPT
     #Prompt the llm to segment the transcript multiple times (run n_runs full segmentations)
-    n_runs = 3
 
     async def safe_generate():
         try:
             logging.info("Started a segmentation prompt")
-            return await gemini.generate(instructions + transcript)
+            return await gemini.generate(instructions + transcript, jsonOnly=True)
         except json.JSONDecodeError as e:
             logging.error(f"JSONDecodeError: {e}")
             return None
@@ -55,14 +48,14 @@ async def get_topic_texts(topic_list, transcript):
     batches = [topic_list[i:i + batch_size] for i in range(0, len(topic_list), batch_size)]
     # Run all batches in parallel
     tasks = [getAllTopicTexts_batch(batch) for batch in batches]
-    results = await asyncio.gather(*tasks)
+    topic_list_with_texts = await asyncio.gather(*tasks)
     # Flatten the results
-    topic_texts = []
-    for r in results:
-        if isinstance(r, list):
-            topic_texts.extend(r)
-        else:
-            topic_texts.append(r)
+    topic_texts = {}
+    for batch in topic_list_with_texts:
+        if isinstance(batch, list):
+            for topic in batch:
+                if isinstance(topic, dict) and "topic_id" in topic:
+                    topic_texts[topic["topic_id"]] = topic
     return topic_texts
     
 async def identify_roles(transcript):
@@ -74,10 +67,9 @@ async def extract_requirements(topic_texts, roles):
     Given text:
     '''
     async def process_batches():
-        for topic in topic_texts:
+        for topic in topic_texts.values():
             try:
-                llm_output = await gemini.generate(instructions + topic['text'])
-                llm_output['topic_id'] = topic['topic_id']
+                llm_output = await gemini.generate(instructions + topic['text'], jsonOnly=True)
                 topic['requirements'] = (llm_output)
             except json.JSONDecodeError as e:
                 logging.error(f"JSONDecodeError: {e}\n" + str(llm_output))
@@ -91,12 +83,13 @@ async def extract_requirements(topic_texts, roles):
         codes.add(code)
         return code
 
-    for topic in topic_texts:
+    for topic in topic_texts.values():
         requirements = topic.get('requirements')
         if not requirements or requirements == [{}]:
             continue
         for req in requirements:
             req['requirement_id'] = generate_uuid()
+            req['topic_id'] = topic['topic_id']
 
     return topic_texts
 
@@ -104,34 +97,49 @@ async def infer_missing_roles(topic_texts, roles):
     instructions = INFER_MISSING_ROLES_PROMPT + str(roles) + '''
     Given text:
     '''
-    topics_with_missing_roles = [topic for topic in topic_texts if 'requirements' in topic for req in topic['requirements'] if req.get('role') == 'unidentified-role']
+    # Collect all requirements with 'unidentified-role'
+    reqs_to_infer = []
+    for topic in topic_texts.values():
+        if 'requirements' in topic:
+            for req in topic['requirements']:
+                if req.get('role') == 'unidentified-role':
+                    reqs_to_infer.append({
+                        'topic_id': topic['topic_id'],
+                        'requirement_id': req.get('requirement_id'),
+                        'requirement': req.get('requirement'),
+                        'role': req.get('role'),
+                        'rationale': req.get('rationale')
+                    })
+
     inferred_roles = []
 
-    async def safe_generate_inferred_role(topic):
+    async def safe_generate_inferred_role(req_info):
         try:
-            inferred = await gemini.generate(instructions + str(topic))
-            inferred_roles.extend(inferred)
+            result = await gemini.generate(instructions + str(req_info), jsonOnly=True)
+            # LLM may return a dict or a list
+            if isinstance(result, list):
+                inferred_roles.extend(result)
+            elif isinstance(result, dict):
+                inferred_roles.append(result)
+            else:
+                logging.error(f"Unexpected LLM output: {result}")
         except json.JSONDecodeError as e:
             logging.error(f"JSONDecodeError: {e}")
         except Exception as e:
             logging.error(e)
 
-    async def process_batches():
-        await asyncio.gather(*[safe_generate_inferred_role(topic) for topic in topics_with_missing_roles])
-
-    await process_batches()
-
+    await asyncio.gather(*[safe_generate_inferred_role(req) for req in reqs_to_infer])
+    # Map topic_id to topic in topic_texts (topic_id is a string key)
     for change in inferred_roles:
-        topic_id = int(change['topic_id']) - 1
-        topic = topic_texts[topic_id]
-        requirement = next((r for r in topic.get('requirements', []) if r.get('requirement_id') == change['requirement_id']), None)
         try:
-            if requirement and requirement.get('role') == "unidentified-role":
-                requirement['role'] = change['inferred_role']
-                requirement['inferred_role_reason'] = change['inferred_role_reason']
-                requirement['is_role_inferred'] = True
-        except TypeError:
-            logging.error("Error: the requirement_id included in a change generated by the LLM is incorrect and does not match any requirement. The following change could not be applied:\n" + str(change))
+            topic = topic_texts[int(change['topic_id'])]
+            for requirement in topic.get('requirements', []):
+                if requirement and requirement['requirement_id'] == change['requirement_id'] and requirement.get('role') == "unidentified-role":
+                    requirement['role'] = change.get('inferred_role', requirement['role'])
+                    requirement['inferred_role_reason'] = change.get('inferred_role_reason', '')
+                    requirement['is_role_inferred'] = True
+        except Exception as e:
+            logging.error(f"The requirement_id included in a change generated by the LLM is incorrect and does not match any requirement. The following change could not be applied:\n{str(change)}\nException: {e}")
             continue
 
     return topic_texts
@@ -139,7 +147,7 @@ async def infer_missing_roles(topic_texts, roles):
 async def infer_missing_rationales(topic_texts, roles):
     role_map = {role_entry['role'].lower(): role_entry for role_entry in roles}
     prompts = []
-    for topic in topic_texts:
+    for topic in topic_texts.values():
         if 'requirements' not in topic:
             continue
         for requirement in topic['requirements']:
@@ -152,7 +160,7 @@ async def infer_missing_rationales(topic_texts, roles):
 
     async def safe_generate_inferred_rationale(instructions):
         try:
-            inferred = await gemini.generate(instructions)
+            inferred = await gemini.generate(instructions, jsonOnly=True)
             inferred_rationales.append(inferred)
         except json.JSONDecodeError as e:
             logging.error(f"JSONDecodeError: {e}")
@@ -165,7 +173,7 @@ async def infer_missing_rationales(topic_texts, roles):
     await process_batches()
 
     for change in inferred_rationales:
-        topic_id = int(change['topic_id']) - 1
+        topic_id = int(change['topic_id'])
         topic = topic_texts[topic_id]
         requirement = next((r for r in topic.get('requirements', []) if r.get('requirement_id') == change['requirement_id']), None)
         try:
@@ -186,16 +194,17 @@ async def check_criteria_violations(requirements_set):
         user_story = getattr(req, 'user_story', None)
         if user_story:
             try:
-                req.criteria_violations = await gemini.generate(instructions + " Input: " + str(user_story))
+                req.criteria_violations = await gemini.generate(instructions + " Input: " + str(user_story), jsonOnly=True)
             except Exception as e:
                 logging.error(f"Error in the generation for {req.requirement_id}: {e}")
     return requirements_set
 
 class Requirement:
-    def __init__(self, requirement_id, requirement, role, rationale,
+    def __init__(self, requirement_id, topic_id, requirement, role, rationale,
                  is_role_inferred=False, is_rationale_inferred=False,
                  inferred_rationale_reason='', inferred_role_reason=''):
         self.requirement_id = requirement_id
+        self.topic_id = topic_id
         self.requirement = requirement
         self.role = role
         self.rationale = rationale
@@ -203,6 +212,7 @@ class Requirement:
         self.is_rationale_inferred = is_rationale_inferred
         self.inferred_rationale_reason = inferred_rationale_reason
         self.inferred_role_reason = inferred_role_reason
+        self.user_story = f"As a {role}, {requirement}, {rationale}."
 
     def to_dict(self):
         return {
@@ -213,21 +223,21 @@ class Requirement:
             'is_role_inferred': self.is_role_inferred,
             'is_rationale_inferred': self.is_rationale_inferred,
             'inferred_rationale_reason': self.inferred_rationale_reason,
-            'inferred_role_reason': self.inferred_role_reason
+            'inferred_role_reason': self.inferred_role_reason,
+            'user_story': self.user_story,
+            'topic_id': self.topic_id
         }
 
 
 def build_requirements_set(topic_texts_with_inferred_rationales):
-    """
-    Build a list of Requirement objects from the topic_texts_with_inferred_rationales structure.
-    """
     requirements_set = []
-    for topic in topic_texts_with_inferred_rationales:
+    for topic in topic_texts_with_inferred_rationales.values():
         if 'requirements' in topic:
             for req in topic['requirements']:
                 if 'role' in req and 'rationale' in req:
                     requirement_obj = Requirement(
                         requirement_id=req.get('requirement_id'),
+                        topic_id=req.get('topic_id'),
                         requirement=req.get('requirement'),
                         role=req.get('role'),
                         rationale=req.get('rationale'),
@@ -247,8 +257,10 @@ async def check_set_level_violations(requirements_set):
 
     async def check_violations_async(criteria, prompt):
         try:
-            result = await gemini.generate(prompt)
+            result = await gemini.generate(prompt, jsonOnly=True)
             set_level_violations.extend(result)
+            #TO-DO: convert the set in a map. generate an id for each violation and use it as key
+            #TO-DO: for each us in the map, access the user story and include the id of the violation in a list of set-level violations
         except Exception as e:
             logging.error(f"Error checking {criteria}: {e}")
 
@@ -265,16 +277,24 @@ async def check_set_level_violations(requirements_set):
         logging.info("No set level violations found.")
     return set_level_violations
 
+def convert_requirements_set_to_map(requirements_set):
+    requirements_map = {}
+    for req in requirements_set:
+        requirements_map[req.requirement_id] = req
+    return requirements_map
+
 # Main pipeline logic as async function
 async def main(transcript):
+    logging.basicConfig(level=logging.INFO)
+
     # Segment transcript
     logging.info("Part 1/10 started: segment transcript")
-    runs = await segment_transcript(transcript)
+    runs = await segment_transcript(transcript, n_runs=5)
     if not runs:
         logging.error("Failed to segment transcript.")
         return
     logging.info("Part 1/10 completed: segment transcript")
-
+    
     # Select runs with the most frequent number of topics
     logging.info("Part 2/10 started: select runs with number of topics = mode")
     runs_with_same_amount_topics = get_runs_with_same_amount_topics(runs)
@@ -292,11 +312,18 @@ async def main(transcript):
     if not topic_texts:
         logging.error("Failed to get topic texts.")
         return
+    with open("topic_texts.json", "w") as f:
+        json.dump(topic_texts, f, indent=4)
     logging.info("Part 3/10 completed: Get topic texts and speaker turns")
-
+    
     # Identify roles
     logging.info("Part 4/10 started: Identify roles")
     roles = await identify_roles(transcript)
+    #convert roles to a map with role as key
+    roles_map = {role_entry['role'].lower(): role_entry for role_entry in roles}
+    #Save roles map to a json file
+    with open("identified_roles.json", "w") as f:
+        json.dump(roles_map, f, indent=4)
     logging.info("Part 4/10 completed: Identify roles")
 
     # Extract requirements
@@ -304,6 +331,9 @@ async def main(transcript):
     topic_texts_with_requirements = await extract_requirements(topic_texts, roles)
     logging.info("Part 5/10 completed: extract requirements")
 
+    #dump topic_texts_with_requirements to a json file
+    with open("topic_texts_with_requirements.json", "w") as f:
+        json.dump(topic_texts_with_requirements, f, indent=4)
     # Infer missing roles
     logging.info("Part 6/10 started: Infer missing roles")
     topic_texts_with_inferred_roles = await infer_missing_roles(topic_texts_with_requirements, roles)
@@ -319,18 +349,19 @@ async def main(transcript):
     requirements_set = build_requirements_set(topic_texts_with_inferred_rationales)
     logging.info("Part 8/10 completed: Generate set of Requirement objects")
 
-    # Dump to JSON file
-    output_data = {
-        "set_of_requirements": [r.to_dict() for r in requirements_set],
-        #"set_level_violations": set_level_violations
-    }
-    with open("user_stories_output.json", "w") as f:
-        json.dump(output_data, f, indent=4)
-
     # Check criteria violations for each requirement (optional, call if needed)
     logging.info("Part 9/10 started: Check criteria violations for each requirement")
     requirements_set = await check_criteria_violations(requirements_set)
     logging.info("Part 9/10 completed: Check criteria violations for each requirement")
+
+    requirements_map = convert_requirements_set_to_map(requirements_set)
+
+    # Dump to JSON file
+    output_data = {
+        "requirements": {k: v.to_dict() for k, v in requirements_map.items()}
+    }
+    with open("user_stories_output.json", "w") as f:
+        json.dump(output_data, f, indent=4)
 
     # Check set level violations
     logging.info("Part 10/10 started: Check set level violations")
@@ -339,12 +370,18 @@ async def main(transcript):
     with open("set_level_violations.json", "w") as f:
         json.dump(set_level_violations, f, indent=4)
     logging.info("Part 10/10 completed: Check set level violations")
-
-    
-    logging.info("Part 10/10 completed: Check set level violations")
     return [r.to_dict() for r in requirements_set]
 
 if __name__ == '__main__':
+    global gemini
+    global transcript
+    gemini = llm.LLM()
+    transcript = ""
+    with open("transcript.txt", "r", encoding="utf-8") as f:
+        transcript = f.read()
+    # Remove non-printable characters except newlines
+    transcript = ''.join(c for c in transcript if c.isprintable() or c == '\n')
+    
     logging.basicConfig(level=logging.INFO)
     logging.info("Starting execution")
     transcript = ""

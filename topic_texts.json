@@ -1,0 +1,865 @@
+{
+    "1": {
+        "topic_id": 1,
+        "start_time": "0:03",
+        "end_time": "1:12",
+        "label": "Introductions and Roles",
+        "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR.\\nYou can go first.\\nOh, okay, I didn't really think about this.\\nSo, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\\nSo yeah, that's mostly mine.\\nOkay, and could you say your name for the recording?\\nAlso.\\nOkay, so I'm mostly focusing on the databases of CBR. My name is Daniel.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "You can go first."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Oh, okay, I didn't really think about this."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "So, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\\nSo yeah, that's mostly mine."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay, and could you say your name for the recording?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Also."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Okay, so I'm mostly focusing on the databases of CBR. My name is Daniel."
+            }
+        ]
+    },
+    "2": {
+        "topic_id": 2,
+        "start_time": "1:12",
+        "end_time": "3:26",
+        "label": "System Functionality Overview",
+        "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?"
+            }
+        ]
+    },
+    "3": {
+        "topic_id": 3,
+        "start_time": "3:27",
+        "end_time": "4:18",
+        "label": "Search Functionality Details",
+        "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\\nSo yeah.\\nSo yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\\nThere's no default currently.",
+        "speaker_turns": [
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\\nSo yeah."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "So yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\\nThere's no default currently."
+            }
+        ]
+    },
+    "4": {
+        "topic_id": 4,
+        "start_time": "4:20",
+        "end_time": "5:26",
+        "label": "Sorting Options Discussion",
+        "text": "Is that something that you wish to keep? So as a mandatory interaction, you need to specify the sorting or would you like to have it?\\nNot per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away.\\nThat is something that you mentioned in your document as well. So you mentioned that it's harder to filter to only get the schools that are close by.\\nYeah. Because you can also not sort in that way. Yeah.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Is that something that you wish to keep? So as a mandatory interaction, you need to specify the sorting or would you like to have it?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Not per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "That is something that you mentioned in your document as well. So you mentioned that it's harder to filter to only get the schools that are close by."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah. Because you can also not sort in that way. Yeah."
+            }
+        ]
+    },
+    "5": {
+        "topic_id": 5,
+        "start_time": "5:26",
+        "end_time": "6:56",
+        "label": "Distance Filter Granularity",
+        "text": "We notice in the, I can show you in the system, we have this filter. Yeah. And we noticed that it only has steps of five kilometers and it starts from five kilometers.\\nSo is the issue maybe that this is too largely too coarsely grained? So would you like maybe to have filters on single kilometers or why does this solution?\\nI think one is, I mean, one kilometer doesn't do a whole lot, but I think currently like no one is going to look for a driving school 50 kilometers away from the city that they're searching. Like then you will search a different city. So I think everyone is in like the left 10 to 15 kilometers.\\nSo it's a really weird scale in that sense. So I think that you can fix that by, yeah. Or increments of one or two.\\nOkay. And well, like you can change the search range, but you can't sort them on closest. So say you would have a search range of 50%.\\nYou can still not say like, I want the ones that are closer to me on top. You can only sort it by like the percentage and their name, et cetera.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "We notice in the, I can show you in the system, we have this filter. Yeah. And we noticed that it only has steps of five kilometers and it starts from five kilometers.\\nSo is the issue maybe that this is too largely too coarsely grained? So would you like maybe to have filters on single kilometers or why does this solution?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I think one is, I mean, one kilometer doesn't do a whole lot, but I think currently like no one is going to look for a driving school 50 kilometers away from the city that they're searching. Like then you will search a different city. So I think everyone is in like the left 10 to 15 kilometers.\\nSo it's a really weird scale in that sense. So I think that you can fix that by, yeah. Or increments of one or two.\\nOkay. And well, like you can change the search range, but you can't sort them on closest. So say you would have a search range of 50%.\\nYou can still not say like, I want the ones that are closer to me on top. You can only sort it by like the percentage and their name, et cetera."
+            }
+        ]
+    },
+    "6": {
+        "topic_id": 6,
+        "start_time": "6:56",
+        "end_time": "9:36",
+        "label": "Summarizing Customer Search Process",
+        "text": "Okay. So basically the missing functionality, it's not really on the filtering side. What we have is ready.\nMaybe also with a smaller, like finer grain. Yeah. But what you actually need is the ability to sort.\nOkay. Great. So just to summarize, so that we're sure that we got the process right, what the customer does when he enters your comparator, the first thing they do is they enter the place, then they select the type of license they're looking for, then the sorting, but we can skip this step and just have the sorting by default being something like percentage or range.\nYeah. So we can maybe sort by distance. Yeah.\nHaving the closest first and the furthest away later. And they can, but it's optional, select some filters as well. Yeah.\nAfter that, the customer gets a list of schools and in this list, they see the name of the school, the place where it's located and the amount of exams that are registered for that school and their percentage of success. Yeah. Correct.\nThen the customer can also extend this, like expand this items in the list and there they have more details. So the details we noticed are the address of the school, the drive-in school number. Yeah.\nThen your chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones? So for auto, scooters or lorries, all of those. And then if they offer theoretical classes and again, same list.\nSo if they offer them for auto, scooters and so on. And then we see also there is an interactive map on top of the search results. So this one, this is a necessary functionality to maintain.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So basically the missing functionality, it's not really on the filtering side. What we have is ready.\nMaybe also with a smaller, like finer grain. Yeah. But what you actually need is the ability to sort.\nOkay. Great. So just to summarize, so that we're sure that we got the process right, what the customer does when he enters your comparator, the first thing they do is they enter the place, then they select the type of license they're looking for, then the sorting, but we can skip this step and just have the sorting by default being something like percentage or range.\nYeah. So we can maybe sort by distance. Yeah.\nHaving the closest first and the furthest away later. And they can, but it's optional, select some filters as well. Yeah.\nAfter that, the customer gets a list of schools and in this list, they see the name of the school, the place where it's located and the amount of exams that are registered for that school and their percentage of success. Yeah. Correct.\nThen the customer can also extend this, like expand this items in the list and there they have more details. So the details we noticed are the address of the school, the drive-in school number. Yeah.\nThen your chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones? So for auto, scooters or lorries, all of those. And then if they offer theoretical classes and again, same list.\nSo if they offer them for auto, scooters and so on. And then we see also there is an interactive map on top of the search results. So this one, this is a necessary functionality to maintain."
+            }
+        ]
+    },
+    "7": {
+        "topic_id": 7,
+        "start_time": "9:40",
+        "end_time": "10:13",
+        "label": "Map Functionality Discussion",
+        "text": "Well, kind of, because like you can only search on city and like if you live in a big city, then there will be a lot of schools close or in that city, but it doesn't mean that they're close to your house. So if you value that, then you can use the map to see if they're close to your house or not.\nOkay. So we should keep the map. Yeah.\nOkay.",
+        "speaker_turns": [
+            {
+                "speaker": "Gosse",
+                "text": "Well, kind of, because like you can only search on city and like if you live in a big city, then there will be a lot of schools close or in that city, but it doesn't mean that they're close to your house. So if you value that, then you can use the map to see if they're close to your house or not."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So we should keep the map. Yeah.\nOkay."
+            }
+        ]
+    },
+    "8": {
+        "topic_id": 8,
+        "start_time": "10:18",
+        "end_time": "11:00",
+        "label": "Default Sorting Preference",
+        "text": "So can I ask a follow-up question? So you said that the users are obliged to sort and for them to see results, right? And we said that we might have something that would be a default.\nAnd we said, either it's going to be the distance or the percentage of passing. So do you want us to decide which one is more important or do you prefer something to be the default?\nI would say the percentage is more important because that shows how well the school is doing. So that should be the default, I think.\nYeah. Okay.",
+        "speaker_turns": [
+            {
+                "speaker": "Kostas",
+                "text": "So can I ask a follow-up question? So you said that the users are obliged to sort and for them to see results, right? And we said that we might have something that would be a default.\nAnd we said, either it's going to be the distance or the percentage of passing. So do you want us to decide which one is more important or do you prefer something to be the default?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "I would say the percentage is more important because that shows how well the school is doing. So that should be the default, I think."
+            },
+            {
+                "speaker": "Kostas",
+                "text": "Yeah. Okay."
+            }
+        ]
+    },
+    "9": {
+        "topic_id": 9,
+        "start_time": "11:03",
+        "end_time": "12:45",
+        "label": "Identifying System Problems",
+        "text": "So I think we have a basic understanding of how the process in the system goes. We wanted to ask, what are the main problems that arise from the usage of this system? So do you get complaints from your customers or are there just issues that you noticed?\nNo, it's mostly from the side of the customers itself. As being CBR, it doesn't really matter for us personally if we provide the amount that schools are asking. But for people who are looking for schools and trying to compare to which one to go to, then it would be nice, of course, if they have a high or a low failure rate.\nBut if that one is also twice as expensive as the one below it, then that doesn't really work for them. And because most people who are going for a license aren't old, they're quite young, the fares are quite important. So we also want to include that functionality so that they can also see that.\nAnd if you also have the packages and maybe some bonuses that they provide, you can also maybe see which school- Most convenient. Yeah, most convenient or fits you the most. Yes.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "So I think we have a basic understanding of how the process in the system goes. We wanted to ask, what are the main problems that arise from the usage of this system? So do you get complaints from your customers or are there just issues that you noticed?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "No, it's mostly from the side of the customers itself. As being CBR, it doesn't really matter for us personally if we provide the amount that schools are asking. But for people who are looking for schools and trying to compare to which one to go to, then it would be nice, of course, if they have a high or a low failure rate.\nBut if that one is also twice as expensive as the one below it, then that doesn't really work for them. And because most people who are going for a license aren't old, they're quite young, the fares are quite important. So we also want to include that functionality so that they can also see that.\nAnd if you also have the packages and maybe some bonuses that they provide, you can also maybe see which school- Most convenient. Yeah, most convenient or fits you the most. Yes."
+            }
+        ]
+    },
+    "10": {
+        "topic_id": 10,
+        "start_time": "12:45",
+        "end_time": "13:59",
+        "label": "Additional System Issues",
+        "text": "We're going to discuss those new functionalities in detail in a moment. But are there any other issues that arise from the system? So besides the missing information, so besides the missing cost information?\nBut also in the side of the driving schools, not only just the users who wants to find a driving school. On our side.\nSo for driving schools, to be on top of the list is better for them. So maybe they want to know what makes them stay on top. Because for now, you have, for example here, there are four schools with 100% and one exam.\nBut why is this school, for example, the lowest one? Maybe that's something to look into for the perspective of driving schools.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "We're going to discuss those new functionalities in detail in a moment. But are there any other issues that arise from the system? So besides the missing information, so besides the missing cost information?"
+            },
+            {
+                "speaker": "Kostas",
+                "text": "But also in the side of the driving schools, not only just the users who wants to find a driving school. On our side."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "So for driving schools, to be on top of the list is better for them. So maybe they want to know what makes them stay on top. Because for now, you have, for example here, there are four schools with 100% and one exam.\nBut why is this school, for example, the lowest one? Maybe that's something to look into for the perspective of driving schools."
+            }
+        ]
+    },
+    "11": {
+        "topic_id": 11,
+        "start_time": "13:59",
+        "end_time": "15:43",
+        "label": "Transparency of Sorting",
+        "text": "Okay. So we need to have some more transparency about the sorting from the perspective of the schools. I believe that's something that we can achieve with the implementation of the features you requested.\nSo yeah, we can move to that part if you wish. You mentioned you would like to have the costs and the packages included in the application. So yeah, while we were, yeah, we were thinking of allowing the schools to input this information.\nSo to, yeah, give data about all the possible packages they have and what is offered with the package. So for example, using your comparator, we found this is what is shown most of the time. So the names of the packages and then a list of things that may or may not be included.\nAnd then, yeah, the price per package. So is this the sort of information that you would like to display in the application? Yeah, yes.\nOkay. So yeah, we can do that. And also we noticed that we read in your document, you would like the users to be able to search also based on these.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So we need to have some more transparency about the sorting from the perspective of the schools. I believe that's something that we can achieve with the implementation of the features you requested.\nSo yeah, we can move to that part if you wish. You mentioned you would like to have the costs and the packages included in the application. So yeah, while we were, yeah, we were thinking of allowing the schools to input this information.\nSo to, yeah, give data about all the possible packages they have and what is offered with the package. So for example, using your comparator, we found this is what is shown most of the time. So the names of the packages and then a list of things that may or may not be included.\nAnd then, yeah, the price per package. So is this the sort of information that you would like to display in the application?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah, yes."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So yeah, we can do that. And also we noticed that we read in your document, you would like the users to be able to search also based on these."
+            }
+        ]
+    },
+    "12": {
+        "topic_id": 12,
+        "start_time": "15:43",
+        "end_time": "16:31",
+        "label": "Package Comparison Challenges",
+        "text": "Yeah. So like probably most schools, the most basic package will be kind of the same. But I think like when you go higher in price, it will also differ.\nLike someone will have like so many hours, but you also have two lessons for 3000 euros and the other one will have 40 hours instead of 35, but no lessons for 3000 euros. So you should really look at like, how do you compare that to, is it possible maybe for users to put in an amount or put in hours that they want or something like that? That's really what we're not sure about how to compare those.\nSo we thought right about that actually.",
+        "speaker_turns": [
+            {
+                "speaker": "Gosse",
+                "text": "Yeah. So like probably most schools, the most basic package will be kind of the same. But I think like when you go higher in price, it will also differ.\nLike someone will have like so many hours, but you also have two lessons for 3000 euros and the other one will have 40 hours instead of 35, but no lessons for 3000 euros. So you should really look at like, how do you compare that to, is it possible maybe for users to put in an amount or put in hours that they want or something like that? That's really what we're not sure about how to compare those."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "So we thought right about that actually."
+            }
+        ]
+    },
+    "13": {
+        "topic_id": 13,
+        "start_time": "16:31",
+        "end_time": "17:32",
+        "label": "Filtering Based on User Requirements",
+        "text": "It is complex for the users to just compare based on package prices. So we could allow the users to filter based on the things that they need. So they could provide us with all of this.\nSo just like look up, I want an amount of driving lesson hours at least, or like I want it to be also available as a fast, like intensive course and just give us a list of all the requirements. And then we can filter based on these. So we can allow the schools to give us this data in a structured way so that it can also be used by the users to filter.\nWould that be a good solution for you?",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "It is complex for the users to just compare based on package prices. So we could allow the users to filter based on the things that they need. So they could provide us with all of this.\nSo just like look up, I want an amount of driving lesson hours at least, or like I want it to be also available as a fast, like intensive course and just give us a list of all the requirements. And then we can filter based on these. So we can allow the schools to give us this data in a structured way so that it can also be used by the users to filter.\nWould that be a good solution for you?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yes."
+            }
+        ]
+    },
+    "14": {
+        "topic_id": 14,
+        "start_time": "17:33",
+        "end_time": "19:13",
+        "label": "Price Display and Filtering",
+        "text": "Yep. Perfect. Having this data, we were thinking, we read your requirements, we would like to be able to give the ability to consider also prices when choosing a school.\nSo we would like to have an additional column in your application. So here, right next to these, also have a price. To do that, we thought of selecting the packages that satisfy these requirements that we just got from the users.\nSo they say all the hours that they want to have and like having the first lesson, lesson for lecture for free, all of these. We just look at all the schools that satisfy these requirements and just propose a minimum price that gives you this, all the things that you want.\nWould that be a solution for you? I think that can work. What you might also, what you could consider also is maybe having a price per hour or something.\nThat's also possible. Sorry? A price per hour.\nSo I think lessons can be one hour or one and a half hours, but like a price per lesson or price per hour. So how much one hour of lessons cost with them. So like if it's a package with 20 hours and it costs 2000 euros and you can save so many hours, so many euros per hour, that could also be a possibility.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Yep. Perfect. Having this data, we were thinking, we read your requirements, we would like to be able to give the ability to consider also prices when choosing a school.\nSo we would like to have an additional column in your application. So here, right next to these, also have a price. To do that, we thought of selecting the packages that satisfy these requirements that we just got from the users.\nSo they say all the hours that they want to have and like having the first lesson, lesson for lecture for free, all of these. We just look at all the schools that satisfy these requirements and just propose a minimum price that gives you this, all the things that you want."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Would that be a solution for you? I think that can work. What you might also, what you could consider also is maybe having a price per hour or something.\nThat's also possible. Sorry? A price per hour.\nSo I think lessons can be one hour or one and a half hours, but like a price per lesson or price per hour. So how much one hour of lessons cost with them. So like if it's a package with 20 hours and it costs 2000 euros and you can save so many hours, so many euros per hour, that could also be a possibility."
+            }
+        ]
+    },
+    "15": {
+        "topic_id": 15,
+        "start_time": "19:14",
+        "end_time": "20:06",
+        "label": "Cost per Hour Discussion",
+        "text": "Yeah. We thought of also doing that and we noticed that most schools just provide packages and don't really specify a cost per hour. But if you wish to do that, we can also make it mandatory in your application for the schools to provide this information.\nSo do you wish to do that or do we just stick to the information that the schools already provide? So mainly just the packages and the amount of hours they come with? Things like this, yeah.\nNo, I think that what you said was better. Also maybe because like, maybe if you get bigger packages, then that price per hour changes. So maybe your idea is still better.\nYeah.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. We thought of also doing that and we noticed that most schools just provide packages and don't really specify a cost per hour. But if you wish to do that, we can also make it mandatory in your application for the schools to provide this information.\nSo do you wish to do that or do we just stick to the information that the schools already provide? So mainly just the packages and the amount of hours they come with? Things like this, yeah."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "No, I think that what you said was better. Also maybe because like, maybe if you get bigger packages, then that price per hour changes. So maybe your idea is still better.\nYeah."
+            }
+        ]
+    },
+    "16": {
+        "topic_id": 16,
+        "start_time": "20:06",
+        "end_time": "20:42",
+        "label": "Price Visibility and Sorting",
+        "text": "So we just display this information and filter on this information? Yes. Okay.\n\nYeah, perfect. So we can use this information for the sorting and to also have an additional column to give a quick visibility of the prices. Yeah.\n\nAnd then if the user expands the row, they can also see this information on top of all of what we discussed before. Okay, good. So are we missing something about this?",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "So we just display this information and filter on this information? Yes. Okay.\n\nYeah, perfect. So we can use this information for the sorting and to also have an additional column to give a quick visibility of the prices. Yeah.\n\nAnd then if the user expands the row, they can also see this information on top of all of what we discussed before. Okay, good. So are we missing something about this?"
+            },
+            {
+                "speaker": "Kostas",
+                "text": "Only if other schools that are going to provide those data?"
+            }
+        ]
+    },
+    "17": {
+        "topic_id": 17,
+        "start_time": "20:42",
+        "end_time": "22:07",
+        "label": "Data Provision by Schools",
+        "text": "Only if other schools that are going to provide those data?\n\nYeah. So in the document you shared, it seems that it's going to be the schools that are providing all this information. So the application should allow the schools to log in the application and, yeah, sorry, the application should allow the schools to just log in and give us this information, correct?\n\nWell, login, like if you say login, then it implies that they have an account. Yeah. So currently, I think it could be in the same way that they provide the current information, like their address, et cetera.\n\nI think that is when they apply for being a school, then they also provide this information. So I think then they can also provide the prices and the package, et cetera. And when they change addresses, I mean, that's the only thing about that can change or the names or something.\n\nI think they basically just message CBR like, yo, we're changing something. So I think for the prices, that should be the same and that they're not per se connected to this website.",
+        "speaker_turns": [
+            {
+                "speaker": "Kostas",
+                "text": "Only if other schools that are going to provide those data?"
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. So in the document you shared, it seems that it's going to be the schools that are providing all this information. So the application should allow the schools to log in the application and, yeah, sorry, the application should allow the schools to just log in and give us this information, correct?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Well, login, like if you say login, then it implies that they have an account. Yeah. So currently, I think it could be in the same way that they provide the current information, like their address, et cetera.\n\nI think that is when they apply for being a school, then they also provide this information. So I think then they can also provide the prices and the package, et cetera. And when they change addresses, I mean, that's the only thing about that can change or the names or something.\n\nI think they basically just message CBR like, yo, we're changing something. So I think for the prices, that should be the same and that they're not per se connected to this website."
+            }
+        ]
+    },
+    "18": {
+        "topic_id": 18,
+        "start_time": "22:08",
+        "end_time": "22:58",
+        "label": "Information Handling and Storage",
+        "text": "Okay. So how do you handle the information about the locations and phone numbers and all the prices? The prices may change.\n\nThey probably will change often. So how do you store all of this information right now?\n\nYou were head of databases.\n\nSo yeah, that's all placed in a database, but this database is not updated constantly. So the amount of actions and that kind of things are not up to date. So also the prices will maybe then also not be up to date.\n\nSo we should maybe find another solution for that. Okay.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So how do you handle the information about the locations and phone numbers and all the prices? The prices may change.\n\nThey probably will change often. So how do you store all of this information right now?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "You were head of databases."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "So yeah, that's all placed in a database, but this database is not updated constantly. So the amount of actions and that kind of things are not up to date. So also the prices will maybe then also not be up to date.\n\nSo we should maybe find another solution for that. Okay."
+            }
+        ]
+    },
+    "19": {
+        "topic_id": 19,
+        "start_time": "22:59",
+        "end_time": "23:31",
+        "label": "Database Management Preferences",
+        "text": "Do you prefer to handle this database manually? So when you receive messages, you just are going to update the records in a database or do you prefer to have the application managing this?\n\nYeah, I would say that it's automated because then it could be quicker and more up to date because now it should be done manually and that doesn't work.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Do you prefer to handle this database manually? So when you receive messages, you just are going to update the records in a database or do you prefer to have the application managing this?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah, I would say that it's automated because then it could be quicker and more up to date because now it should be done manually and that doesn't work."
+            }
+        ]
+    },
+    "20": {
+        "topic_id": 20,
+        "start_time": "23:32",
+        "end_time": "24:14",
+        "label": "Responsibility for Data Updates",
+        "text": "Okay. In that case, the automation is on the side of the school or on your side? Like, do you...\n\nWho is actually updating the information?\n\nYeah. So for now, that's the CBR.\n\nOkay.\n\nBut maybe that should be the schools because they have all that data.\n\nOkay. So they should have an account and be able to log in?\n\nThat's maybe a better solution. Okay. And then they, of course, only have access to their own information.\n\nYeah.\n\nYeah.\n\nOf course. It's a centralized database. Okay.\n\nThey only have access to their own.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. In that case, the automation is on the side of the school or on your side? Like, do you...\n\nWho is actually updating the information?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah. So for now, that's the CBR."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "But maybe that should be the schools because they have all that data."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So they should have an account and be able to log in?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "That's maybe a better solution. Okay. And then they, of course, only have access to their own information.\n\nYeah."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Of course. It's a centralized database. Okay.\n\nThey only have access to their own."
+            }
+        ]
+    },
+    "21": {
+        "topic_id": 21,
+        "start_time": "24:14",
+        "end_time": "25:02",
+        "label": "Exam and Success Rate Updates",
+        "text": "Yeah. Well, for the exams and the success rates, that is something that only you are able to update. Correct.\nOkay. So your website shows how many exams were taken in each school and their success rate. That is something that you provide as information?\nYeah. So CBR is the only one who can take the exam. But like, take it from the student takes the exam at CBR.\nSo CBR themselves have the data on if a student passes or not and how many students pass from a certain school. Okay. So CBR generates that data themselves.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. Well, for the exams and the success rates, that is something that only you are able to update. Correct.\nOkay. So your website shows how many exams were taken in each school and their success rate. That is something that you provide as information?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah. So CBR is the only one who can take the exam. But like, take it from the student takes the exam at CBR.\nSo CBR themselves have the data on if a student passes or not and how many students pass from a certain school. Okay. So CBR generates that data themselves."
+            }
+        ]
+    },
+    "22": {
+        "topic_id": 22,
+        "start_time": "25:02",
+        "end_time": "25:58",
+        "label": "Inputting Exam Information",
+        "text": "So that information is inputted by you. So we just let you like. Okay.\nWe just enable you to change all information. And of course, you will just change the information about the number of exams and their success rate. Is that sufficient?\nSo you just increment these numbers. Okay. So you will recalculate manually the percentage of success.\nYou just change the number of the percentage and the number of exams. Is that correct?\nI mean, I think what would be better is that like you just increment the number of exams and then if they passed or not. And then the website itself calculates the percentage.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "So that information is inputted by you. So we just let you like. Okay.\nWe just enable you to change all information. And of course, you will just change the information about the number of exams and their success rate. Is that sufficient?\nSo you just increment these numbers. Okay. So you will recalculate manually the percentage of success.\nYou just change the number of the percentage and the number of exams. Is that correct?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I mean, I think what would be better is that like you just increment the number of exams and then if they passed or not. And then the website itself calculates the percentage."
+            }
+        ]
+    },
+    "23": {
+        "topic_id": 23,
+        "start_time": "25:59",
+        "end_time": "26:25",
+        "label": "Exam Data Input Process",
+        "text": "Okay. So what you would do is, okay, you can go to a new school, select it and input the number of new exams that were taken and the number of successful exams and the number of failed exams.\nYes. Yeah.\nOkay. And then we just store them and calculate these numbers.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So what you would do is, okay, you can go to a new school, select it and input the number of new exams that were taken and the number of successful exams and the number of failed exams."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yes. Yeah."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. And then we just store them and calculate these numbers."
+            }
+        ]
+    },
+    "24": {
+        "topic_id": 24,
+        "start_time": "26:25",
+        "end_time": "28:45",
+        "label": "Standardizing School Services",
+        "text": "Okay. Yeah. Well, for all the other information that's up to the school to update.\nSo the location, their programs. Yeah. We were thinking of this actually, of the different programs and different things, different services that each school may provide.\nAnd we thought that actually they may name these services differently. And that can actually make it very hard both for the system and for the users to compare the offers. So we thought of standardizing this.\nSo we're going to handle the figuring out of what services are offered and just make a list of them. And then the schools will be able to specify their their plans based on these. So for example, they will say, yeah, we have the exam pocket.\nAnd then they will have a, they can just include all of this. They just search auto relish. And then if it's a possibility, they just select it.\nOkay. This will always be a possibility, of course. Nevermind.\nI mean, yeah. Relish this one as a possibility. And if it comes up, they just can select it and edit.\nSo we just build a list of all of these. That means that we will provide you, of course, with an initial list. It will be as comprehensive as possible.\nIt may be that in the future, new things will pop up. So let's say a school will offer free rides with a scooter to get to the school, like with a something like that. Of course, they need to be able to put it in a system, but to keep it standardized, it would be then you needing to include this.\nSo they may message you and tell you, this is not an option. So is it okay for you to manage this to ensure that it's...",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. Yeah. Well, for all the other information that's up to the school to update.\nSo the location, their programs. Yeah. We were thinking of this actually, of the different programs and different things, different services that each school may provide.\nAnd we thought that actually they may name these services differently. And that can actually make it very hard both for the system and for the users to compare the offers. So we thought of standardizing this.\nSo we're going to handle the figuring out of what services are offered and just make a list of them. And then the schools will be able to specify their their plans based on these. So for example, they will say, yeah, we have the exam pocket.\nAnd then they will have a, they can just include all of this. They just search auto relish. And then if it's a possibility, they just select it.\nOkay. This will always be a possibility, of course. Nevermind.\nI mean, yeah. Relish this one as a possibility. And if it comes up, they just can select it and edit.\nSo we just build a list of all of these. That means that we will provide you, of course, with an initial list. It will be as comprehensive as possible.\nIt may be that in the future, new things will pop up. So let's say a school will offer free rides with a scooter to get to the school, like with a something like that. Of course, they need to be able to put it in a system, but to keep it standardized, it would be then you needing to include this.\nSo they may message you and tell you, this is not an option. So is it okay for you to manage this to ensure that it's..."
+            }
+        ]
+    },
+    "25": {
+        "topic_id": 25,
+        "start_time": "28:45",
+        "end_time": "29:06",
+        "label": "Managing Service Options",
+        "text": "Yeah. I think this will not happen often. So I think that if that's just outside of the system, that would be fine.\nYeah.\nSo we make a static list of options.\nYeah. So there should be a way to add one, but CBR itself can add one. The schools don't have to do anything.",
+        "speaker_turns": [
+            {
+                "speaker": "Gosse",
+                "text": "Yeah. I think this will not happen often. So I think that if that's just outside of the system, that would be fine.\nYeah."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "So we make a static list of options."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah. So there should be a way to add one, but CBR itself can add one. The schools don't have to do anything."
+            }
+        ]
+    },
+    "26": {
+        "topic_id": 26,
+        "start_time": "29:06",
+        "end_time": "30:22",
+        "label": "Additional Features Discussion",
+        "text": "Okay. So shall we make it in a way that you can add one whenever you want to, or... I think we have it covered.\nOkay. Just a moment. Okay.\nSo are there any other features, some functionalities that we did not discuss that you would like to have in a new system?\nSo, now, at the moment, it's not shown when it's last updated. So this could be data from a year ago or from yesterday. But if it has a percentage of 100%, then it seems like a very good school.\nBut it could now be much less. So it may be something like the data, when it's updated, should be added. Something like that.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So shall we make it in a way that you can add one whenever you want to, or... I think we have it covered.\nOkay. Just a moment. Okay.\nSo are there any other features, some functionalities that we did not discuss that you would like to have in a new system?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "So, now, at the moment, it's not shown when it's last updated. So this could be data from a year ago or from yesterday. But if it has a percentage of 100%, then it seems like a very good school.\nBut it could now be much less. So it may be something like the data, when it's updated, should be added. Something like that."
+            }
+        ]
+    },
+    "27": {
+        "topic_id": 27,
+        "start_time": "30:23",
+        "end_time": "31:28",
+        "label": "Displaying Last Updated Date",
+        "text": "Okay, so you would like to display the day on which the exam information was last updated.\nYes.\nSo the last time you inserted a new value for... Yeah. Okay, so we should also display that.\nOnly when we expand the school, right? Yeah, yeah, that's okay. Just not to overcrowd the...\nYeah, yeah, yeah, true.\nOkay. Anything else?\nI can't think of something.\nOkay, so just... I believe the system is clear. But...",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so you would like to display the day on which the exam information was last updated."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yes."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "So the last time you inserted a new value for... Yeah. Okay, so we should also display that.\nOnly when we expand the school, right? Yeah, yeah, that's okay. Just not to overcrowd the..."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah, yeah, yeah, true."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. Anything else?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I can't think of something."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so just... I believe the system is clear. But..."
+            }
+        ]
+    },
+    "28": {
+        "topic_id": 28,
+        "start_time": "31:28",
+        "end_time": "33:34",
+        "label": "Filtering by Exam Location",
+        "text": "I thought of something. Like, in some cities where I live, it's not an exam city. So you can't do exam in the place where I live, but in the closest bigger town.\nBut there's two close big towns. So you are allowed at CBR to make your exam in both places. But not all schools provide the teaching in both places.\nSo currently I live in Kampen. And you can do your exam in Emmeloord or in Zwolle. But some driving schools only teach you to drive in Zwolle.\nSo that might be also one of the filter things. Things that you want to filter the schools on. That, like, maybe you know that you want to per se do it in Emmeloord.\nOkay, so each school will give you...\nLike, this information is already accessible. If you expand it, it says here that it's Zwolle and Emmeloord. And it also says here, like, the percentages for each of those two cities.\nBut some, I believe mostly the smaller ones, only do it in Zwolle and not in Emmeloord.\nOkay, so there needs to be a filter on the exam location as well. So currently what the search does is only looking for where the schools are located. And not where the exams are taken.\nOkay, that's pretty important actually.\nSo maybe, like, you first fill in this. And then, like, I don't know, the same thing as when you're searching for a new TV. Like, you have options at the site.\nMaybe they're in the filter.\nYeah, so then you can hear indeed, like, it only displays, like, the possibilities. So, like, you have already said that I want to find a school that is in Kampen. Then only Zwolle and Emmeloord will be optional here.\nLike, it won't say Amsterdam because that's not even a possibility.",
+        "speaker_turns": [
+            {
+                "speaker": "Gosse",
+                "text": "I thought of something. Like, in some cities where I live, it's not an exam city. So you can't do exam in the place where I live, but in the closest bigger town.\nBut there's two close big towns. So you are allowed at CBR to make your exam in both places. But not all schools provide the teaching in both places.\nSo currently I live in Kampen. And you can do your exam in Emmeloord or in Zwolle. But some driving schools only teach you to drive in Zwolle.\nSo that might be also one of the filter things. Things that you want to filter the schools on. That, like, maybe you know that you want to per se do it in Emmeloord."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so each school will give you..."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Like, this information is already accessible. If you expand it, it says here that it's Zwolle and Emmeloord. And it also says here, like, the percentages for each of those two cities.\nBut some, I believe mostly the smaller ones, only do it in Zwolle and not in Emmeloord."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so there needs to be a filter on the exam location as well. So currently what the search does is only looking for where the schools are located. And not where the exams are taken.\nOkay, that's pretty important actually."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "So maybe, like, you first fill in this. And then, like, I don't know, the same thing as when you're searching for a new TV. Like, you have options at the site."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Maybe they're in the filter."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah, so then you can hear indeed, like, it only displays, like, the possibilities. So, like, you have already said that I want to find a school that is in Kampen. Then only Zwolle and Emmeloord will be optional here.\nLike, it won't say Amsterdam because that's not even a possibility."
+            }
+        ]
+    },
+    "29": {
+        "topic_id": 29,
+        "start_time": "33:35",
+        "end_time": "35:51",
+        "label": "Information Displayed in Expanded Results",
+        "text": "Yeah. Okay. Yeah, we'll think of an implementation for that.\nOkay. So, since you mentioned the exam location as a very important attribute, and I believe we overdid that, it may be a good idea to look at what information should be there when we expand a result. Yeah.\nSo... In the expanded result, we have the address, the number of the school, the chamber of commerce number, the phone number, website, the practical and theoretical classes are offered, and the exam locations that we should be able to filter on. Are there any important attributes of, like, information about a school that we did not list?\nSo, you mean things that are missing right now?\nYeah, some things that we didn't mention or are just not in the assist system.\nI think apart from also all the things that we already mentioned, so the update date and the prices, packages, bonuses. Don't think there's an extra thing missing. Because it already says a lot.\nLike, also, all the licenses that you might be able to get there. Yeah. Like, some say that you can also get your license for a car, behind your car, etc.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. Okay. Yeah, we'll think of an implementation for that.\nOkay. So, since you mentioned the exam location as a very important attribute, and I believe we overdid that, it may be a good idea to look at what information should be there when we expand a result. Yeah.\nSo... In the expanded result, we have the address, the number of the school, the chamber of commerce number, the phone number, website, the practical and theoretical classes are offered, and the exam locations that we should be able to filter on. Are there any important attributes of, like, information about a school that we did not list?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "So, you mean things that are missing right now?"
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah, some things that we didn't mention or are just not in the assist system."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I think apart from also all the things that we already mentioned, so the update date and the prices, packages, bonuses. Don't think there's an extra thing missing. Because it already says a lot.\nLike, also, all the licenses that you might be able to get there. Yeah. Like, some say that you can also get your license for a car, behind your car, etc."
+            }
+        ]
+    },
+    "30": {
+        "topic_id": 30,
+        "start_time": "35:52",
+        "end_time": "36:41",
+        "label": "License Information Display",
+        "text": "Okay. And all of those are parts of the packages or just of the school?\nNo, that's also here, that you can... They also provide classes for that, but it's a different license. Okay.\nBut, like, maybe if you know that you already want to do that, then you can see, ah, this school also provides that, so that after I'm done, I can just continue with the same school. Maybe you think that's nice or something. But that's also already provided.\nOkay.\nI don't think that currently there is something. I just saw something annoying right now. So, some places are in caps, and then the same places are not in caps.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. And all of those are parts of the packages or just of the school?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "No, that's also here, that you can... They also provide classes for that, but it's a different license. Okay.\nBut, like, maybe if you know that you already want to do that, then you can see, ah, this school also provides that, so that after I'm done, I can just continue with the same school. Maybe you think that's nice or something. But that's also already provided."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I don't think that currently there is something. I just saw something annoying right now. So, some places are in caps, and then the same places are not in caps."
+            }
+        ]
+    },
+    "31": {
+        "topic_id": 31,
+        "start_time": "36:41",
+        "end_time": "37:06",
+        "label": "Normalizing Place Names",
+        "text": "Okay, so you want to normalize it.\nI want a normalization of the place name not to be in caps. But a place is not in caps, normally. But even the same place is sometimes in caps and not in caps.\nOkay. Okay, so you would like it to be always with the first capitalized, and all the rest you have to accept.\nThat's a minor issue, but...",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so you want to normalize it."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I want a normalization of the place name not to be in caps. But a place is not in caps, normally. But even the same place is sometimes in caps and not in caps."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. Okay, so you would like it to be always with the first capitalized, and all the rest you have to accept."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "That's a minor issue, but..."
+            }
+        ]
+    },
+    "32": {
+        "topic_id": 32,
+        "start_time": "37:06",
+        "end_time": "38:10",
+        "label": "Summarizing New Features",
+        "text": "Yeah, of course, the looks are also important. That's just our CD. Okay.\nSo, just to summarize the new features that we're going to bring, so we're sure that we maintain what is already there and just expand it with the new things, all the new things you want. We have an additional filtering based on the offered service. So, a filtering on what the packages offer.\nAnd a filtering on the starting from price. So, the price of the cheapest available package that offers the things that we require, that the user requests. A more fine-grained distance on the filter.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Yeah, of course, the looks are also important. That's just our CD. Okay.\nSo, just to summarize the new features that we're going to bring, so we're sure that we maintain what is already there and just expand it with the new things, all the new things you want. We have an additional filtering based on the offered service. So, a filtering on what the packages offer.\nAnd a filtering on the starting from price. So, the price of the cheapest available package that offers the things that we require, that the user requests. A more fine-grained distance on the filter."
+            }
+        ]
+    },
+    "33": {
+        "topic_id": 33,
+        "start_time": "38:19",
+        "end_time": "40:45",
+        "label": "Distance Filter Range and Granularity",
+        "text": "I think, like, now it goes up to 50 kilometers. Let me... Like, for bigger cities and smaller cities, like, it's useful or less useful to have a smaller or bigger size.\nBut, like, even for the biggest, yeah, even for the biggest city, so I've put Amsterdam as an example now, and it's at 10 kilometers, which is the second choice out of, like, the eight choices that there are. And you already have ones that it is in different provinces. Like, I can already, like...\nI don't know why there's one in Friesland that's not 10 kilometers. Like, I already have them here. And I don't think if you live in Amsterdam, you're going to choose one that's in, say, Walden.\nThat's just not realistic. So, I think 10 or maybe 15 will be the maximum. And then you can go with increments of, yeah, 1 or 2.\nI would say 2.\nOkay. So, in a range from 0 to 15 kilometers with a start of...\nYeah, and it would indeed also start in 0 instead of 5.\nYeah, okay.\nOr start at 2.\nYeah. So... Yeah.\nStarting at 0. You can start at 2 because... You can start at the first tenacity level, so like 2, yeah.\nYeah, because starting at 0 there is not...\nYeah, it would not return any result. So, from 2 to 15. Yeah, great.",
+        "speaker_turns": [
+            {
+                "speaker": "Gosse",
+                "text": "I think, like, now it goes up to 50 kilometers. Let me... Like, for bigger cities and smaller cities, like, it's useful or less useful to have a smaller or bigger size.\nBut, like, even for the biggest, yeah, even for the biggest city, so I've put Amsterdam as an example now, and it's at 10 kilometers, which is the second choice out of, like, the eight choices that there are. And you already have ones that it is in different provinces. Like, I can already, like...\nI don't know why there's one in Friesland that's not 10 kilometers. Like, I already have them here. And I don't think if you live in Amsterdam, you're going to choose one that's in, say, Walden.\nThat's just not realistic. So, I think 10 or maybe 15 will be the maximum. And then you can go with increments of, yeah, 1 or 2.\nI would say 2."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So, in a range from 0 to 15 kilometers with a start of..."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah, and it would indeed also start in 0 instead of 5."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah, okay."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Or start at 2."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. So... Yeah.\nStarting at 0. You can start at 2 because... You can start at the first tenacity level, so like 2, yeah."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Yeah, because starting at 0 there is not..."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah, it would not return any result. So, from 2 to 15. Yeah, great."
+            }
+        ]
+    },
+    "34": {
+        "topic_id": 34,
+        "start_time": "40:49",
+        "end_time": "41:10",
+        "label": "Sorting by Starting Price",
+        "text": "Okay. So, we talked about filtering of the services offered. And it's filtering on the price.\nChanging the grain of the distance filter. And then we're going to also include the showing of all these packages in the expanded view. Yeah.\nShall the platform allow to also sort by the starting price? Or is that not a necessary thing?\nYou can, but that is like... I'm looking for like who would use that. And that would be someone who has a really big ego and thinks that he can do it in the least amount of hours.\nSo, I don't think it will be the most useful one. Okay. If you also agree with that.\nYeah, I agree with that.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Okay. So, we talked about filtering of the services offered. And it's filtering on the price.\nChanging the grain of the distance filter. And then we're going to also include the showing of all these packages in the expanded view. Yeah.\nShall the platform allow to also sort by the starting price? Or is that not a necessary thing?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "You can, but that is like... I'm looking for like who would use that. And that would be someone who has a really big ego and thinks that he can do it in the least amount of hours.\nSo, I don't think it will be the most useful one. Okay. If you also agree with that."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah, I agree with that."
+            }
+        ]
+    },
+    "35": {
+        "topic_id": 35,
+        "start_time": "41:11",
+        "end_time": "42:27",
+        "label": "Sorting Functionality Priorities",
+        "text": "So, sorting on the price is not necessary? Really?\nWell, yeah. Like what price were you going to display in the list? Like you said, in between the percentage and the amount of exams you were going to show.\nSo, the user will give us a list of services they require. So, minimum amount of hours, first last year for free. And we take the first cheapest package that school offers and we give that price.\nI think you can sort on that price, but not per se on the cheapest price that they offer in that. Yeah, of course.\nBecause that doesn't really offer a comparison. A school may offer just two driving lessons and 50 euro. Of course, that is not fair.\nBut it's not prioritary. This is a functionality that can be useful, but I guess not main priority. Or is it prioritary?\nFiltering on the package prices maybe is a priority. I would say so.",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "So, sorting on the price is not necessary? Really?"
+            },
+            {
+                "speaker": "Gosse",
+                "text": "Well, yeah. Like what price were you going to display in the list? Like you said, in between the percentage and the amount of exams you were going to show."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "So, the user will give us a list of services they require. So, minimum amount of hours, first last year for free. And we take the first cheapest package that school offers and we give that price."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "I think you can sort on that price, but not per se on the cheapest price that they offer in that. Yeah, of course."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Because that doesn't really offer a comparison. A school may offer just two driving lessons and 50 euro. Of course, that is not fair.\nBut it's not prioritary. This is a functionality that can be useful, but I guess not main priority. Or is it prioritary?"
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Filtering on the package prices maybe is a priority. I would say so."
+            }
+        ]
+    },
+    "36": {
+        "topic_id": 36,
+        "start_time": "42:31",
+        "end_time": "44:18",
+        "label": "Prioritizing New Features",
+        "text": "Then you mentioned you would like to show the last update time of the exams and the success rates. So, we'll implement that. And to normalize the capitalization.\nSo, just the names, first letter capital, the rest lowercase. Perfect. So, we have the filtering based on the offered services, the changing of the distance filter.\nSo, with different range and granularity. The packages should be displayed in the expenditive. We should be able to also sort by price.\nWhat are the priorities of all these features? What is the most important addition for you?",
+        "speaker_turns": [
+            {
+                "speaker": "Agostino",
+                "text": "Then you mentioned you would like to show the last update time of the exams and the success rates. So, we'll implement that. And to normalize the capitalization.\nSo, just the names, first letter capital, the rest lowercase. Perfect. So, we have the filtering based on the offered services, the changing of the distance filter.\nSo, with different range and granularity. The packages should be displayed in the expenditive. We should be able to also sort by price.\nWhat are the priorities of all these features? What is the most important addition for you?"
+            }
+        ]
+    },
+    "37": {
+        "topic_id": 37,
+        "start_time": "44:20",
+        "end_time": "45:09",
+        "label": "Maintaining No-Login Requirement",
+        "text": "I have some follow-up questions. So, in the system description it was written that it's important to maintain the no-login requirement, right? Like the user can't search and find driving schools without logging in.\nYeah, well.\nOkay. So, we also looked at other comparators and for most of them you had to log in. But for our comparator that's not needed and we want to keep it that way.\nAnd the as-is situation, do you think there's anything extra or do you think we should keep everything that it is there and just add what we talked today?",
+        "speaker_turns": [
+            {
+                "speaker": "Kostas",
+                "text": "I have some follow-up questions. So, in the system description it was written that it's important to maintain the no-login requirement, right? Like the user can't search and find driving schools without logging in."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Yeah, well."
+            },
+            {
+                "speaker": "Dani\u00ebl",
+                "text": "Okay. So, we also looked at other comparators and for most of them you had to log in. But for our comparator that's not needed and we want to keep it that way."
+            },
+            {
+                "speaker": "Kostas",
+                "text": "And the as-is situation, do you think there's anything extra or do you think we should keep everything that it is there and just add what we talked today?"
+            }
+        ]
+    },
+    "38": {
+        "topic_id": 38,
+        "start_time": "45:13",
+        "end_time": "50:45",
+        "label": "System Process Overview",
+        "text": "Okay, that's for my follow-up questions. Maybe we can do a short summary. Thank you.\nSo, we're just going to give a, I think it's sort of clear right now, so we're going to give a very brief overview of the process. So, we start from the user perspective. I'll use the as-is system to support this.\nSo, the user will put in the name of their city. Then they select the type of license they want, so car license. With the new system they will not have to select sorting because we have a default now.\nAnd the default you said will be the distance, so from the closest to the most.\nWe said this one, the percentage high-low.\nOkay, so in the new system you want the percentage as the sorting.\nAs the default.\nOkay. And that should be enough for you to have results. Yeah.\nIt is also possible to use filters. So, we will maintain all the existing filters. So, the percentage of success, the number of exams, and the distance.\nBut we will change the distance filter, so yeah, we'll just change the range because right now it's too, it allows to go to 50 kilometers. Which is too much. And allow for smaller steps, so steps of 2 kilometers.\nWe will maintain these existing filters, so yeah. All of these just stay. And we just add the possibility to textually describe the things that they want, the services they want in their packages.\nAnd then choose from a list. So, yeah, that's going to be also an option to just insert a list of minimum requirements. Yeah.\nYeah. And this will be used to display the results. The results, all the compressed results, all the columns will stay the same, but we'll add a new column for the starting from, right?\nYeah. In the expanded view, we maintain all of what it is, there is right now. But we add the packages displayed with a similar graphic to this one.\nOkay. And, yeah, that should be it for the user perspective. Then from the perspective of the schools, the schools should be able to log in, so they have a profile.\nAnd they're able to provide us with all this information. So, yeah, all of what we listed before were the location of their school, the phone number, and the prices of what they offer. And, yeah, that should be it from their side.\nAnd from your side, it should be possible to insert new exams. So, select a school and specify for that school how many exams were passed or failed. And this information will then be shown to the users.\nAnd, yeah. Yeah. It's, yeah, also there's another functionality which will be for you to be able to modify the list of possible services.\nYeah, of course. That's to maintain your application. And, yeah, we'll then make a small report of how we handle the sorting, so that you can be more transparent to the schools on how they're sorted.\nBut there should not be any functionality there. No. For the transparency side.\nAnd, yeah, that should be it about the process. And shall we also summarize the information that we keep, or is that clear? Hmm.\nSo... Where is it? List, so...\nAll the information that we have in the expanded document. No, I think it's the ones...",
+        "speaker_turns": [
+            {
+                "speaker": "Kostas",
+                "text": "Okay, that's for my follow-up questions. Maybe we can do a short summary. Thank you."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "So, we're just going to give a, I think it's sort of clear right now, so we're going to give a very brief overview of the process. So, we start from the user perspective. I'll use the as-is system to support this.\nSo, the user will put in the name of their city. Then they select the type of license they want, so car license. With the new system they will not have to select sorting because we have a default now.\nAnd the default you said will be the distance, so from the closest to the most."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "We said this one, the percentage high-low."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay, so in the new system you want the percentage as the sorting."
+            },
+            {
+                "speaker": "Gosse",
+                "text": "As the default."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Okay. And that should be enough for you to have results. Yeah.\nIt is also possible to use filters. So, we will maintain all the existing filters. So, the percentage of success, the number of exams, and the distance.\nBut we will change the distance filter, so yeah, we'll just change the range because right now it's too, it allows to go to 50 kilometers. Which is too much. And allow for smaller steps, so steps of 2 kilometers.\nWe will maintain these existing filters, so yeah. All of these just stay. And we just add the possibility to textually describe the things that they want, the services they want in their packages.\nAnd then choose from a list. So, yeah, that's going to be also an option to just insert a list of minimum requirements. Yeah.\nYeah. And this will be used to display the results. The results, all the compressed results, all the columns will stay the same, but we'll add a new column for the starting from, right?\nYeah. In the expanded view, we maintain all of what it is, there is right now. But we add the packages displayed with a similar graphic to this one.\nOkay. And, yeah, that should be it for the user perspective. Then from the perspective of the schools, the schools should be able to log in, so they have a profile.\nAnd they're able to provide us with all this information. So, yeah, all of what we listed before were the location of their school, the phone number, and the prices of what they offer. And, yeah, that should be it from their side.\nAnd from your side, it should be possible to insert new exams. So, select a school and specify for that school how many exams were passed or failed. And this information will then be shown to the users.\nAnd, yeah. Yeah. It's, yeah, also there's another functionality which will be for you to be able to modify the list of possible services.\nYeah, of course. That's to maintain your application. And, yeah, we'll then make a small report of how we handle the sorting, so that you can be more transparent to the schools on how they're sorted.\nBut there should not be any functionality there. No. For the transparency side.\nAnd, yeah, that should be it about the process. And shall we also summarize the information that we keep, or is that clear? Hmm.\nSo... Where is it? List, so...\nAll the information that we have in the expanded document. No, I think it's the ones..."
+            }
+        ]
+    },
+    "39": {
+        "topic_id": 39,
+        "start_time": "50:45",
+        "end_time": "50:51",
+        "label": "Concluding Remarks",
+        "text": "The things that we have, yeah. Yeah, I think we can see it from the schools.\nYeah. Okay. So, yeah, we'll make a model of all the data that we're going to need to develop this application for you.\nAnd in case if we have questions, we'll just maybe ask for this in the next interview. Yes. But for now, I think we have it clear, I think.\nOkay. So, yeah, thank you for your time.\nThank you for your time.\nYes. This was productive. Very.",
+        "speaker_turns": [
+            {
+                "speaker": "Kostas",
+                "text": "The things that we have, yeah. Yeah, I think we can see it from the schools."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yeah. Okay. So, yeah, we'll make a model of all the data that we're going to need to develop this application for you.\nAnd in case if we have questions, we'll just maybe ask for this in the next interview. Yes. But for now, I think we have it clear, I think.\nOkay. So, yeah, thank you for your time."
+            },
+            {
+                "speaker": "Kostas",
+                "text": "Thank you for your time."
+            },
+            {
+                "speaker": "Agostino",
+                "text": "Yes. This was productive. Very."
+            }
+        ]
+    }
+}

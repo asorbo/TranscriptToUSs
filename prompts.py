@@ -19,16 +19,59 @@ The last topic must end at the end of the transcript.
 return a list of the segments in json format. Do not include the text in the output.
 A segment **must** include all and only this: (start_time, end_time, summary, label) **exactly in the following valid json format**
 {
-    "topic_id": "an incremental integer id"
+    "topic_id": "an incremental integer id(start at 1)"
     "start_time": "xx:xx",
     "end_time": "xx:xx"
     "label": "The topic label",
 }
 '''
 
-GET_TOPIC_TEXTS_PROMPT = """
-Extract the text of the given topics without modifying it: {batch}\n and return the same dictionary with the additional 'text' data (ensure all backslashes are removed so that the returned json is valid) Transcript: \n{transcript}
-"""
+GET_TOPIC_TEXTS_PROMPT = '''
+Extract the text of the given topics without modifying it: {batch}
+and return the same dictionary with the additional "text" data containing the full text of the topic (ensure all backslashes are removed so that the returned json is valid).
+Additionally, for each topic, split on the basis of speaker-turn (meaning every time a different speaker talks, it is a new speaker turn).
+Provide the topics in the following format, performing escapes if necessary, ensuring it is *valid JSON*:
+[
+    {
+        "topic_id": 1,
+        "start_time": "xx:xx",
+        "end_time": "xx:xx",
+        "label": "The topic label",
+        "text": "The text of the topic",
+        "speaker_turns": [
+            {
+                "speaker": "speaker name",
+                "text": "speaker text"
+            }
+        ]
+    }
+]
+'''
+
+# NOTE: If you need to use str.format() on a prompt containing curly braces for JSON, escape them by doubling: {{ and }}
+GET_TOPIC_TEXTS_PROMPT = '''
+Extract the text of the given topics without modifying it: {batch}
+and return the same dictionary with the additional "text" data containing the full text of the topic (ensure all backslashes are removed so that the returned json is valid).
+Additionally, for each topic, split on the basis of speaker-turn (meaning every time a different speaker talks, it is a new speaker turn).
+Provide the topics in the following format, performing escapes if necessary, ensuring it is *valid JSON*:
+[
+    {{
+        "topic_id": 1,
+        "start_time": "xx:xx",
+        "end_time": "xx:xx",
+        "label": "The topic label",
+        "text": "The text of the whole topic (all the speaker turns combined for a given topic)",
+        "speaker_turns": [
+            {{
+                "speaker": "speaker name",
+                "text": "text spoken by the speaker"
+            }}
+        ]
+    }}
+]
+transcript: {transcript}
+'''
+
 
 IDENTIFY_ROLES_PROMPT = '''
 This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is your goal is to identify all distinct roles mentioned or implied with respect to the described system.
@@ -59,14 +102,14 @@ Given text:
 '''
 
 EXTRACT_REQUIREMENTS_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify all the information concearning requirements, *not manual user operations* from the text.
+This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify all the information concerning requirements, *not manual user operations* from the text.
 You must not omit any requirement-relevant information that is mentioned in the text. You must only refer to information mentioned in the given text.
 If the information is given in the text clearly state who wants a given functionality (or for whom it is made for) assign a role from the set of provided roles. Otherwise, do not guess who wants it and simply write 'unidentified-role'.
 If the information is given in the text clearly state why the user wants a given functionality (what the purpose of the functionality is) otherwise do not guess the reason it and simply write 'unidentified-rationale'.
 You may return an empty list [] if there are no requirements mentioned in the text.
 If requirements are present format them in the format given in the examples.
 Example: "There must be an overview functionality to allow chefs to see all active orders so they can plan ahead..."
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
+*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes and that curly braces are handled correctly*
 Output: {
     "requirement_id": none,
     "requirement": "I want an overview functionality that shows all active orders",
@@ -90,7 +133,7 @@ If the functionality matches one of the specified roles, assign the role and exp
 A role is considered a match if the given functionality logically supports, benefits, or aligns with the responsibilities or goals described for the role, even if the role is not explicitly mentioned in the text.
 When explaining why you are inferring try to relate to the role description or other similar functionalities with the same role.
 Do not include already defined roles or roles that are stil undefined.
-*Ensure the topic_id and requirement_id are correct.*
+You must return the topic_id and the requirement_id exactly as provided in the input without changing it.*
 *Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
 Examples of correct outputs:
 [
@@ -192,59 +235,6 @@ Output:
 ]
 Given text:
 '''
-
-EXTRACT_REQUIREMENTS_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify all the information concearning requirements, *not manual user operations* from the text.
-You must not omit any requirement-relevant information that is mentioned in the text. You must only refer to information mentioned in the given text.
-If the information is given in the text clearly state who wants a given functionality (or for whom it is made for) assign a role from the set of provided roles. Otherwise, do not guess who wants it and simply write 'unidentified-role'.
-If the information is given in the text clearly state why the user wants a given functionality (what the purpose of the functionality is) otherwise do not guess the reason it and simply write 'unidentified-rationale'.
-You may return an empty list [] if there are no requirements mentioned in the text.
-If requirements are present format them in the format given in the examples.
-Example: "There must be an overview functionality to allow chefs to see all active orders so they can plan ahead..."
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-Output: {
-    "requirement_id": none,
-    "requirement": "I want an overview functionality that shows all active orders",
-    "role": "chef",
-    "rationale": "so that I can plan ahead"
-}
-Example": To make sure we don't miss an incoming order there should be a a notification sound every time a new order is placed.
-Output: {
-    "requirement_id": none,
-    "requirement": "I want a notification sound to be produced every time a new order is placed",
-    "role": "unidentified-role",
-    "rationale": "so that I don't miss any incoming orders"
-}
-Roles: '''
-
-INFER_MISSING_ROLES_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify The missing roles for the given requirements.
-
-It is not clear for what role some of the given requirements should be implemented (role = 'unidentified-role'). Namely, who wants a given functionality (or for whom it is made for).
-If the functionality matches one of the specified roles, assign the role and explain why that is the correct role. If the role cannot be deduced simply leave it as 'unidentified-role'.
-A role is considered a match if the given functionality logically supports, benefits, or aligns with the responsibilities or goals described for the role, even if the role is not explicitly mentioned in the text.
-When explaining why you are inferring try to relate to the role description or other similar functionalities with the same role.
-Do not include already defined roles or roles that are stil undefined.
-*Ensure the topic_id and requirement_id are correct.*
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-Examples of correct outputs:
-[
-{
-"topic_id": "56",
-"requirement_id": "56345ad6",
-"inferred_role": "chef",
-"inferred_role_reason": "The chef role was inferred because the description of the chef role mentiones that information regarding new orders is directly relevant for the chef"
-},
-{
-"topic_id": "43",
-"requirement_id": "56345ad5",
-"inferred_role": "chef",
-"inferred_role_reason": "The chef role was inferred because a similar requirement, namely #req{requirement_id} has the role chef"
-},
-...
-]
-
-Roles: '''
 
 INFER_MISSING_RATIONALES_PROMPT = '''
 A rationale (the part of a user story that begins with 'so that') may express one of three things:
@@ -448,59 +438,6 @@ Output schema:
 
 Context:
 '''
-# Prompt for inferring missing roles
-INFER_MISSING_ROLES_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify The missing roles for the given requirements.
-
-It is not clear for what role some of the given requirements should be implemented (role = 'unidentified-role'). Namely, who wants a given functionality (or for whom it is made for).
-If the functionality matches one of the specified roles, assign the role and explain why that is the correct role. If the role cannot be deduced simply leave it as 'unidentified-role'.
-A role is considered a match if the given functionality logically supports, benefits, or aligns with the responsibilities or goals described for the role, even if the role is not explicitly mentioned in the text.
-When explaining why you are inferring try to relate to the role description or other similar functionalities with the same role.
-Do not include already defined roles or roles that are stil undefined.
-*Ensure the topic_id and requirement_id are correct.*
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-Examples of correct outputs:
-[{
-"topic_id": "56",
-"requirement_id": "56345ad6",
-"inferred_role": "chef",
-"inferred_role_reason": "The chef role was inferred because the description of the chef role mentiones that information regarding new orders is directly relevant for the chef"
-},
-{
-"topic_id": "43",
-"requirement_id": "56345ad5",
-"inferred_role": "chef",
-"inferred_role_reason": "The chef role was inferred because a similar requirement, namely #req{requirement_id} has the role chef"
-},
-...
-]
-
-Roles: '''
-
-# Prompt for extracting requirements
-EXTRACT_REQUIREMENTS_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is to identify all the information concearning requirements, *not manual user operations* from the text.
-You must not omit any requirement-relevant information that is mentioned in the text. You must only refer to information mentioned in the given text.
-If the information is given in the text clearly state who wants a given functionality (or for whom it is made for) assign a role from the set of provided roles. Otherwise, do not guess who wants it and simply write 'unidentified-role'.
-If the information is given in the text clearly state why the user wants a given functionality (what the purpose of the functionality is) otherwise do not guess the reason it and simply write 'unidentified-rationale'.
-You may return an empty list [] if there are no requirements mentioned in the text.
-If requirements are present format them in the format given in the examples.
-Example: "There must be an overview functionality to allow chefs to see all active orders so they can plan ahead..."
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-Output: {
-    "requirement_id": none,
-    "requirement": "I want an overview functionality that shows all active orders",
-    "role": "chef",
-    "rationale": "so that I can plan ahead"
-}
-Example": To make sure we don't miss an incoming order there should be a a notification sound every time a new order is placed.
-Output: {
-    "requirement_id": none,
-    "requirement": "I want a notification sound to be produced every time a new order is placed",
-    "role": "unidentified-role",
-    "rationale": "so that I don't miss any incoming orders"
-}
-Roles: '''
 
 SEGMENT_TRANSCRIPT_PROMPT = '''
 three experts segment the following interview transcript into distinct topics.
