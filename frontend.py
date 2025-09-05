@@ -31,6 +31,7 @@ def stop_execution():
 
 @app.route('/stream_logs')
 def stream_logs():
+    #catch any exception by rerouting to /
     global log_queue
     def generate():
         yield f"Log stream started\n\n"
@@ -41,7 +42,11 @@ def stream_logs():
                 yield f"data: {msg}\n\n"
             except queue.Empty:
                 continue
-    return Response(generate(), mimetype='text/event-stream')    
+            #catch NameError: name 'log_queue' is not defined
+            except Exception as e:
+                #stop the stream
+                yield f"event: error\ndata: {str(e)}\n\n" 
+    return Response(generate(), mimetype='text/event-stream')  
 
 @app.route('/')
 def index():

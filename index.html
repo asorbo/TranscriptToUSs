@@ -4,54 +4,62 @@
     <meta charset="UTF-8">
     <title>From Elicitation Interviews to User Stories</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
+            height: 100vh; /* use full viewport height */
+            }
 
-        /* Main content layout */
         .container {
             display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
+            grid-template-rows: auto auto 1fr; /* title + spans + form/textarea grows */
             width: 80%;
             margin: 0 auto;
             flex: 1;
+            overflow: hidden;
         }
 
-        /* Title styling */
         h1 {
-            grid-column: 1;
-            text-align: left;
-            width: 100%;
-            font-size: 1.8rem;
-            margin-top: 12vh;
-
+            grid-row: 1;
+            margin-top: 5vh;
         }
 
-        .container span {
-            margin-bottom: 2vh;
+        .spanContainer {
+            grid-row: 2;
+        }
+
+        .spanContainer span {
+            margin-bottom: 1em;
+            display: block;
         }
 
         #uploadForm {
-            width: 100%;
-            margin-top: 0;
+            grid-row: 3;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         textarea {
             width: 100% !important;
-            min-height: 30vh;
+            min-height: 5vh;
+            overflow-y: auto;
             padding: 10px;
             margin-bottom: 20px;
             box-sizing: border-box;
             color: #333;
             text-align: left;
+            flex: 1 1 auto;
+            resize: none;
         }
 
         textarea::placeholder {
-            line-height: 25vh;
+            line-height: 5vh;
             vertical-align: text-bottom;
             text-align: center;
             font-size: 1.1rem;
@@ -82,6 +90,13 @@
             display: none;
         }
 
+        #stopButton:disabled {
+            background-color: #ff9999;
+            color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
         /* Footer styling */
         footer {
             width: 100%;
@@ -110,15 +125,17 @@
 <body>
     <div class="container">
         <h1>From Elicitation Interviews to User Stories: A Prompt Chaining LLM Approach for Automated Candidate Requirements Extraction</h1>
-        <span>
-            This prototype formulates candidate requirements in the form of User Stories. This is done based on a transcript of an elicitation session. Through a series of prompts, the system progressively extracts requirement-relevant content. 
-            Finally, User Stories are formulated while preserving trace-links to the transcript to promote interpretability.<br>
-            The process involves several steps and may last several minutes depending on the transcript length and its complexity.
-        </span>
-        <span>
-            Note: The processing is done using google gemini API. 
-            Transcripts uploaded to the prototype and all the intermediate and final outputs are deleted within 15 minutes from the process completion.
-        </span>
+        <div class="spanContainer">
+            <span>
+                This prototype formulates candidate requirements in the form of User Stories. This is done based on a transcript of an elicitation session. Through a series of prompts, the system progressively extracts requirement-relevant content. 
+                Finally, User Stories are formulated while preserving trace-links to the transcript to promote interpretability.<br>
+                The process involves several steps and may last several minutes depending on the transcript length and its complexity.
+            </span>
+            <span>
+                Note: The processing is done using google gemini API. 
+                Transcripts uploaded to the prototype and all the intermediate and final outputs are deleted within 15 minutes from the process completion.
+            </span>
+        </div>
         <form id="uploadForm">
             <textarea id="transcript" placeholder="Paste your elicitation transcript here..."></textarea>
             <button id="submitButton"type="submit">Launch the extraction</button>
@@ -151,26 +168,27 @@
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ transcript: text })
-            })
-            .then(response => response.json())
-            .then(data => alert("Server response: " + data.message))
-            .catch(err => console.error(err));
+            }).catch(err => console.error(err));
 
             document.getElementById("uploadForm").removeEventListener("submit", handleSubmit);
             document.getElementById("submitButton").style.display = "none";
             document.getElementById("stopButton").style.display = "inline-block";
-            document.getElementById("stopButton").addEventListener("click", function() {
-                if (confirm("Are you sure you want to stop execution?")) {
-                    fetch("/stop_execution", { method: "POST" })
-                        .then(resp => resp.json())
-                        .then(data => alert(data.message))
-                        .catch(err => console.error(err));
-                    }
-                });
+            document.getElementById("stopButton").addEventListener("click", stopExecution);
             follow_updates();
 
         }
-
+        function stopExecution(e){
+            e.preventDefault();
+            if (confirm("Are you sure you want to stop execution?")) {
+                fetch("/stop_execution", { method: "POST" })
+                    .then(resp => resp.json())
+                    .then(data => alert(data.message))
+                    .catch(err => console.error(err));
+                }
+            document.getElementById("stopButton").removeEventListener("click", stopExecution);
+            document.getElementById("stopButton").disabled = true;
+            document.getElementById("stopButton").innerText = "Execution stop requested";
+        }
         function follow_updates() {
             const textarea = document.getElementById("transcript");
             textarea.readOnly = true;
