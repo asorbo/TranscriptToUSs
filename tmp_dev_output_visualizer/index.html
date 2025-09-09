@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Requirements Viewer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="column" id="topicsColumn">
+    <div class="topic" data-id="1">
+      <h4>Topic 1: Introductions and Roles at CBR</h4><span>0:03 - 1:12</span>
+      <div class="speaker_turn">
+        <span>Agostino: </span>
+        <span>
+          Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="column" id="requirementsColumn">
+    <div class="requirement_wrapper" data-id="2">
+      <div class="top_row"><h4>Requirement #ad29d3b2</h4> <span>Topic 2</span></div>
+      <div class="requirement_content">
+        <span>As a </span>
+        <span class="role" is_role_inferred="false">Website User</span>
+        <span class="requirement">, I want to compare the costs and packages</span>
+        <span class="rationale" is_rationale_inferred="true">, so that I can choose the best option for my needs.</span>
+      </div>
+      <div class="additional_information">
+        <div class="role_information">
+          <h5>Role:</h5>
+          <div><span>{req.role: }</span>{data.roles[lower(req.role)][description]}</div>
+          <span class="requirement_label">Inference reasoning: </span><span>"This role was mentioned in the topic segment" if "req.is_role_inferred" == false else {req.inferred_role_reason}</span>
+        </div>
+        <div class="rationale_information">
+          <h5>Rationale:</h5>
+          <span class="requirement_label">Inference reasoning: </span><span>"This rationale was mentioned in the topic segment" if "req.is_rationale_inferred" == false else {req.inferred_rationale_reason}</span>
+        </div>
+      </div>
+    </div>
+      
+
+      <div class="requirement_footer"><button class="openHistory">HS</button><button>↕</button></div>
+    </div>
+  </div>
+
+  <script src="scripts/loadTopics.js"></script>
+  <script src="scripts/loadRequirements.js"></script>
+  <script src="scripts/columnsAutoscroll.js"></script>
+  <script src="scripts/expandRequirements.js"></script>
+</body>
+</html>

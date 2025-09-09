@@ -1,0 +1,205 @@
+body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .column {
+        height: 98vh;
+        overflow-y: auto;
+        padding: 10px;
+        border-right: 1px solid #ddd;
+    }
+
+    .column:last-child {
+      border-right: none;
+    }
+
+    .topic, .requirement_wrapper {
+      background: #fafafa;
+      margin-bottom: 10px;
+      padding: 10px;
+      transition: background 0.2s;
+    }
+
+    .topic:hover, .requirement_wrapper:hover {
+      background: #e0e0e0;
+    }
+
+    .topic h4 {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.topic > span {
+  display: inline-block;
+  margin-left: 10px;
+  color: #777;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.speaker_turn {
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.speaker_turn span:first-child {
+  font-weight: bold;
+  color: #1648d2;
+  margin-right: 5px;
+}
+
+.speaker_turn span:last-child {
+  color: #333;
+}
+
+.active {
+  background: #edeeff !important;
+}
+
+.requirement_wrapper {
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;  /* stack children vertically */
+    height: auto;   
+    box-sizing: border-box;
+    position: relative;  
+    transition: height 0.4s ease;
+}
+
+/* Top row: Requirement title on left, Topic+Button on right */
+.requirement_wrapper h4 {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.requirement_wrapper > div:first-of-type {
+    float: right;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.requirement_wrapper > div:first-of-type span {
+    margin-right: 10px;
+}
+
+.requirement_wrapper .openHistory {
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    border: none;
+    background: #1648d2;
+    color: white;
+    cursor: pointer;
+}
+
+.requirement_wrapper .openHistory:hover {
+    background: #0d2a85;
+}
+
+/* Requirement content styling */
+.requirement_content {
+    margin-top: 8px;
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Shared inferred style for role & rationale */
+.role[is_role_inferred="true"],
+.rationale[is_rationale_inferred="true"] {
+  color: #552000;
+  position: relative;
+}
+
+.role,
+.rationale[is_rationale_inferred="true"] {
+  font-weight: 500;
+}
+
+.role:hover,
+.rationale[is_rationale_inferred="true"]:hover {
+  text-decoration: underline;
+  cursor: pointer
+}
+
+.requirement_footer {
+    display: flex;
+    margin-top: auto;   /* pushes footer to bottom */
+    justify-content: flex-end;
+    gap: 0.1vh;
+    height: 2.5vh
+}
+
+.requirement_footer button {
+    cursor: pointer;
+}
+
+.expanded{
+  height: 96vh;
+  overflow: auto;
+}
+
+.top_row {
+  display: flex;
+  justify-content: space-between; 
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+
+
+
+/* Container for additional info */
+.additional_information {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #e6e9ee;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Role and Rationale blocks */
+.role_information,
+.rationale_information {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Headers (<h5>) with less margin */
+.role_information h5,
+.rationale_information h5 {
+    margin: 0 0 4px 0; /* less space below */
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Role description div (inline role name + description) */
+.role_information > div {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Labels for inference reasoning */
+.requirement_label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #555;
+    margin-right: 4px;
+}
+
+/* Reasoning text */
+.role_information span:last-child,
+.rationale_information span:last-child {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #333;
+}
