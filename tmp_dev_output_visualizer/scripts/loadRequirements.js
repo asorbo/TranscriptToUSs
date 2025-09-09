@@ -1,7 +1,17 @@
 function loadAdditionalInformation(data, req) {
     const additional = document.createElement("div");
     additional.className = "additional_information";
+    
+    roleInfo = loadAdditionalRoleInformation(data, req)
+    rationaleInfo = loadAdditionalRationaleInformation(data, req)
+    
+    additional.appendChild(roleInfo);
+    additional.appendChild(rationaleInfo);
 
+    return additional;
+}
+
+function loadAdditionalRoleInformation(data, req){
     // --- Role information block ---
     const roleInfo = document.createElement("div");
     roleInfo.className = "role_information";
@@ -41,7 +51,10 @@ function loadAdditionalInformation(data, req) {
     roleInfo.appendChild(roleReasonLabel);
     roleInfo.appendChild(roleReason);
 
-    
+    return roleInfo;
+}
+
+function loadAdditionalRationaleInformation(data, req){
     // --- Rationale information block ---
     const rationaleInfo = document.createElement("div");
     rationaleInfo.className = "rationale_information";
@@ -65,10 +78,7 @@ function loadAdditionalInformation(data, req) {
     rationaleInfo.appendChild(rationaleLabel);
     rationaleInfo.appendChild(rationaleReason);
 
-    additional.appendChild(roleInfo);
-    additional.appendChild(rationaleInfo);
-
-    return additional;
+    return rationaleInfo;
 }
 
 function createTopRow(req){
@@ -121,7 +131,18 @@ function loadContent(req){
     return content
 }
 
-function loadFooter(req){
+function countIndividualCriteriaViolations(req) {
+    const violations = req.criteria_violations;
+    if (!violations || typeof violations !== "object") {
+        return 0;
+    }
+
+    return Object.values(violations)
+                 .filter(criterion => criterion && criterion.isViolated)
+                 .length;
+}
+
+function loadFooter(criteriaViolationCounter){
     const footer = document.createElement("div");
     footer.className = "requirement_footer";
 
@@ -133,10 +154,109 @@ function loadFooter(req){
     expandButton.className = "expandButton";
     expandButton.textContent = "↕";
 
+    if (criteriaViolationCounter != null){
+        footer.append(criteriaViolationCounter);
+    }
     footer.appendChild(hsButton);
     footer.appendChild(expandButton);
     
     return footer
+}
+
+function makeIndividualCriteriaViolationCounter(req){
+    const individualCriteriaViolationsCount = countIndividualCriteriaViolations(req);
+    if (individualCriteriaViolationsCount == 0){
+        return null;
+    }
+    const criteriaViolationCounter = document.createElement("span");
+    criteriaViolationCounter.classList.add("console-error");
+    const violationIcon = document.createElement("img");
+    violationIcon.src = "cross.svg";
+
+    criteriaViolationCounter.append(violationIcon);
+    criteriaViolationCounter.append(individualCriteriaViolationsCount);
+
+    return criteriaViolationCounter;
+}
+
+function loadCriteriaViolations(req, criteriaViolationCounter) {
+    const criteriaViolations = req.criteria_violations;
+
+    if (criteriaViolationCounter == null || !criteriaViolations || Object.keys(criteriaViolations).length === 0) {
+        return;
+    }
+
+    const outer = document.createElement("div");
+    outer.className = "individual_criteria_violations";
+
+    outer.appendChild(criteriaViolationCounter.cloneNode(true));
+
+    // Heading
+    const heading = document.createElement("h5");
+    heading.textContent = "individual user story QUS criteria violations:";
+    outer.appendChild(heading);
+
+    // Wrapper and inner container (matches your template structure)
+    const wrapper = document.createElement("div");
+    const inner = document.createElement("div");
+    wrapper.appendChild(inner);
+
+    // Safety: ensure criteriaViolations is an object
+    if (criteriaViolations && typeof criteriaViolations === "object") {
+        Object.entries(criteriaViolations).forEach(([name, crit]) => {
+            // only create blocks for violated criteria
+            if (!crit || crit.isViolated !== true) return;
+
+            const violationDiv = document.createElement("div");
+            violationDiv.className = "violation";
+
+            // Criterion name
+            const nameHeader = document.createElement("h6");
+            nameHeader.textContent = name;
+            violationDiv.appendChild(nameHeader);
+
+            // Violation reason label + text
+            const reasonLabel = document.createElement("span");
+            reasonLabel.className = "requirement_label";
+            reasonLabel.textContent = "Violation reason: ";
+            violationDiv.appendChild(reasonLabel);
+
+            const reasonText = document.createElement("span");
+            reasonText.textContent = crit.reason || "No reason provided.";
+            violationDiv.appendChild(reasonText);
+
+            // Suggested improvement only if present (not null/undefined)
+            if (crit.improvement != null) {
+                const improvementLabel = document.createElement("span");
+                improvementLabel.className = "requirement_label";
+                improvementLabel.textContent = " Suggested improvement: ";
+                violationDiv.appendChild(improvementLabel);
+
+                const improvementText = document.createElement("span");
+
+                if (Array.isArray(crit.improvement)) {
+                    // Append each suggestion with line breaks between them
+                    crit.improvement.forEach((item, idx) => {
+                        const part = document.createElement("span");
+                        part.textContent = item;
+                        improvementText.appendChild(part);
+                        if (idx < crit.improvement.length - 1) {
+                            improvementText.appendChild(document.createElement("br"));
+                        }
+                    });
+                } else {
+                    improvementText.textContent = crit.improvement;
+                }
+
+                violationDiv.appendChild(improvementText);
+            }
+
+            inner.appendChild(violationDiv);
+        });
+    }
+
+    outer.appendChild(wrapper);
+    return outer;
 }
 
 async function loadRequirements() {
@@ -165,8 +285,13 @@ async function loadRequirements() {
             //Additional information
             additional = loadAdditionalInformation(data, req)
 
+            criteriaViolationCounter = makeIndividualCriteriaViolationCounter(req)
+            individualCriteriaViolations = loadCriteriaViolations(req, criteriaViolationCounter)
+            if (individualCriteriaViolations != null) {
+                additional.append(individualCriteriaViolations)
+            }
             // Requirement footer
-            footer = loadFooter(req)
+            footer = loadFooter(criteriaViolationCounter)
 
             // Add to wrapper
             wrapper.appendChild(topRow);

@@ -135,7 +135,7 @@ body {
     display: flex;
     margin-top: auto;   /* pushes footer to bottom */
     justify-content: flex-end;
-    gap: 0.1vh;
+    gap: 0.3em;
     height: 2.5vh
 }
 
@@ -145,7 +145,7 @@ body {
 
 .expanded{
   height: 96vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .top_row {
@@ -213,4 +213,33 @@ body {
 /* When wrapper has "expanded", show it */
 .requirement_wrapper.expanded .additional_information {
     display: flex;
+}
+
+.console-error {
+  font-weight: 700;
+  font-size: 1em;
+  line-height: 1em;
+  vertical-align: middle;
+  box-sizing: border-box;
+  gap: 2px;
+  display: inline-flex;
+}
+
+.console-error img {
+  width: 1em;              /* size of the SVG */
+  height: 1em;
+}
+
+.individual_criteria_violations h5{
+  display: inline-block;
+  margin: 0 0.5em;
+}
+
+.individual_criteria_violations h6 {
+  margin: 0.3em;
+}
+
+.individual_criteria_violations > div {
+  overflow-y: auto;
+  max-height: 20vh;
 }
