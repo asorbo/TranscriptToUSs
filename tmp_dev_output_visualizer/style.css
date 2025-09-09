@@ -60,7 +60,7 @@ body {
 }
 
 .active {
-  background: #edeeff !important;
+  background: #edeeff99 !important;
 }
 
 .requirement_wrapper {
@@ -77,14 +77,30 @@ body {
 /* Top row: Requirement title on left, Topic+Button on right */
 .requirement_wrapper h4 {
     display: inline-block;
-    margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 6px 0;
+}
+
+.role_information h5,
+.rationale_information h5,
+.individual_criteria_violations h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.requirement_content,
+.role_information > div,
+.rationale_information span:last-child {
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
 
 .requirement_wrapper > div:first-of-type {
     float: right;
     font-size: 0.9rem;
-    color: #555;
 }
 
 .requirement_wrapper > div:first-of-type span {
@@ -159,12 +175,13 @@ body {
 
 /* Container for additional info */
 .additional_information {
-    margin-top: 10px;
-    padding: 10px;
-    border-top: 1px solid #e6e9ee;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid #e6e9ee;
+  padding-top: 10px;
+  max-height: 100%; /* prevent overshooting parent */
+  flex: 1 1 auto;   /* allow it to grow in the parent if needed */
 }
 
 /* Role and Rationale blocks */
@@ -178,7 +195,7 @@ body {
 /* Headers (<h5>) with less margin */
 .role_information h5,
 .rationale_information h5 {
-    margin: 0 0 4px 0; /* less space below */
+    margin: 0;
     font-size: 1rem;
     font-weight: 600;
 }
@@ -186,14 +203,12 @@ body {
 /* Role description div (inline role name + description) */
 .role_information > div {
     font-size: 0.9rem;
-    color: #333;
 }
 
 /* Labels for inference reasoning */
 .requirement_label {
     font-weight: 600;
     font-size: 0.85rem;
-    color: #555;
     margin-right: 4px;
 }
 
@@ -202,7 +217,6 @@ body {
 .rationale_information span:last-child {
     font-weight: 400;
     font-size: 0.9rem;
-    color: #333;
 }
 
 .requirement_wrapper .additional_information {
@@ -242,4 +256,98 @@ body {
 .individual_criteria_violations > div {
   overflow-y: auto;
   max-height: 20vh;
+}
+
+/* apply a gentle card look without heavy shadow */
+.role_information,
+.rationale_information,
+.individual_criteria_violations {
+  background: rgba(255,255,255,0.6); /* subtle lift */
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 0.8em;
+  border-radius: 8px;
+  margin: 0.2em;
+}
+
+/* keep the existing top border on the whole additional_information but keep cards inside */
+.additional_information {
+  border-top: 1px solid #e6e9ee;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+/* --------------------------
+   3) Improve measure & spacing
+   -------------------------- */
+/* comfortable line length inside the additional information section */
+.additional_information {
+  max-width: 70ch;      /* keeps paragraphs readable */
+}
+
+/* small vertical rhythm tweaks */
+.rationale_information > div,
+.individual_criteria_violations > div > div {
+  margin-top: 6px;
+}
+
+/* keep the existing top border on the whole additional_information but keep cards inside */
+.additional_information {
+  border-top: 1px solid #e6e9ee;
+  gap: 0.1vh;
+}
+
+.violation {
+  padding: 10px 12px;
+  margin: 10px 0;
+  border-left: 4px solid #ffa500; /* orange accent */
+  background: rgba(230,126,34,0.04);
+  border-radius: 6px;
+}
+
+/* violation heading and text */
+.violation h6 {
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.violation .requirement_label {
+  display: inline-block;
+  margin-right: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* suggested improvement styling (slightly smaller, italic) */
+.violation .improvement,
+.violation .suggested_improvement {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+/* make the scroll area a little cleaner */
+.individual_criteria_violations > div {
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* small accessibility / focus nicety for interactivity (optional) */
+.violation:focus-within {
+  outline: 2px solid rgba(230,126,34,0.12);
+  outline-offset: 2px;
+}
+
+.individual_criteria_violations {
+  flex: 1 1 auto;      /* take all remaining space */
+  min-height: 100px;   /* optional: ensure it doesn't shrink too small */
+  overflow-y: auto;    /* scroll internally if too tall */
+  display: flex;
+  flex-direction: column;
+}
+
+.requirement_wrapper.expanded .additional_information {
+  margin-bottom: 1vh;
 }

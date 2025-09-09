@@ -189,12 +189,14 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
     const outer = document.createElement("div");
     outer.className = "individual_criteria_violations";
 
-    outer.appendChild(criteriaViolationCounter.cloneNode(true));
+    const header_wrapper = document.createElement("div");
+    header_wrapper.appendChild(criteriaViolationCounter.cloneNode(true));
 
     // Heading
     const heading = document.createElement("h5");
     heading.textContent = "individual user story QUS criteria violations:";
-    outer.appendChild(heading);
+    header_wrapper.appendChild(heading);
+    outer.append(header_wrapper);
 
     // Wrapper and inner container (matches your template structure)
     const wrapper = document.createElement("div");
@@ -216,14 +218,16 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
             violationDiv.appendChild(nameHeader);
 
             // Violation reason label + text
+            const reasonDiv = document.createElement("div");
             const reasonLabel = document.createElement("span");
             reasonLabel.className = "requirement_label";
             reasonLabel.textContent = "Violation reason: ";
-            violationDiv.appendChild(reasonLabel);
+            reasonDiv.append(reasonLabel);
 
             const reasonText = document.createElement("span");
             reasonText.textContent = crit.reason || "No reason provided.";
-            violationDiv.appendChild(reasonText);
+            reasonDiv.appendChild(reasonText);
+            violationDiv.append(reasonDiv);
 
             // Suggested improvement only if present (not null/undefined)
             if (crit.improvement != null) {
