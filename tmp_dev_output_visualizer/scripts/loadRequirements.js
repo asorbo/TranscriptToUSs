@@ -71,6 +71,74 @@ function loadAdditionalInformation(data, req) {
     return additional;
 }
 
+function createTopRow(req){
+    const topRow = document.createElement("div");
+    topRow.classList.toggle("top_row")
+    const title = document.createElement("h4");
+    title.textContent = `Requirement #${req.requirement_id}`;
+
+    const topicSpan = document.createElement("span");
+    topicSpan.textContent = `Topic ${req.topic_id}`;
+
+    topRow.appendChild(title);
+    topRow.appendChild(topicSpan);
+    return topRow
+}
+
+function loadContent(req){
+    const content = document.createElement("div");
+    content.className = "requirement_content";
+
+    const asSpan = document.createElement("span");
+    asSpan.textContent = "As a ";
+
+    const roleSpan = document.createElement("span");
+    roleSpan.className = "role";
+    roleSpan.textContent = req.role;
+    roleSpan.setAttribute("is_role_inferred", req.is_role_inferred);
+    if (req.is_role_inferred == true) {
+        roleSpan.setAttribute("title", "Inferred by LLM - click to see reasoning");
+    }
+
+    const reqSpan = document.createElement("span");
+    reqSpan.className = "requirement";
+    reqSpan.textContent = `, ${req.requirement}, `;
+
+    const rationaleSpan = document.createElement("span");
+    rationaleSpan.className = "rationale";
+    rationaleSpan.textContent = `${req.rationale}`;
+    rationaleSpan.setAttribute("is_rationale_inferred", req.is_rationale_inferred);
+    if (req.is_rationale_inferred == true) {
+        rationaleSpan.setAttribute("title", "Inferred by LLM - click to see reasoning");
+    }
+
+    // Assemble content row
+    content.appendChild(asSpan);
+    content.appendChild(roleSpan);
+    content.appendChild(reqSpan);
+    content.appendChild(rationaleSpan);
+
+    return content
+}
+
+function loadFooter(req){
+    const footer = document.createElement("div");
+    footer.className = "requirement_footer";
+
+    const hsButton = document.createElement("button");
+    hsButton.className = "openHistory";
+    hsButton.textContent = "HS";
+
+    const expandButton = document.createElement("button");
+    expandButton.className = "expandButton";
+    expandButton.textContent = "↕";
+
+    footer.appendChild(hsButton);
+    footer.appendChild(expandButton);
+    
+    return footer
+}
+
 async function loadRequirements() {
     fetch("output.json")
     .then(response => response.json())
@@ -89,67 +157,16 @@ async function loadRequirements() {
             wrapper.setAttribute("data-id", req.topic_id);
 
             // Top row: Requirement title on left, topic+button on right
-            const topRow = document.createElement("div");
-            topRow.classList.toggle("top_row")
-            const title = document.createElement("h4");
-            title.textContent = `Requirement #${req.requirement_id}`;
-
-            const topicSpan = document.createElement("span");
-            topicSpan.textContent = `Topic ${req.topic_id}`;
-
-            topRow.appendChild(title);
-            topRow.appendChild(topicSpan);
+            topRow = createTopRow(req)
 
             // Requirement content row
-            const content = document.createElement("div");
-            content.className = "requirement_content";
-
-            const asSpan = document.createElement("span");
-            asSpan.textContent = "As a ";
-
-            const roleSpan = document.createElement("span");
-            roleSpan.className = "role";
-            roleSpan.textContent = req.role;
-            roleSpan.setAttribute("is_role_inferred", req.is_role_inferred);
-            if (req.is_role_inferred == true) {
-                roleSpan.setAttribute("title", "Inferred by LLM - click to see reasoning");
-            }
-
-            const reqSpan = document.createElement("span");
-            reqSpan.className = "requirement";
-            reqSpan.textContent = `, ${req.requirement}, `;
-
-            const rationaleSpan = document.createElement("span");
-            rationaleSpan.className = "rationale";
-            rationaleSpan.textContent = `${req.rationale}`;
-            rationaleSpan.setAttribute("is_rationale_inferred", req.is_rationale_inferred);
-            if (req.is_rationale_inferred == true) {
-                rationaleSpan.setAttribute("title", "Inferred by LLM - click to see reasoning");
-            }
-
-            // Assemble content row
-            content.appendChild(asSpan);
-            content.appendChild(roleSpan);
-            content.appendChild(reqSpan);
-            content.appendChild(rationaleSpan);
+            content = loadContent(req)
 
             //Additional information
             additional = loadAdditionalInformation(data, req)
 
             // Requirement footer
-            const footer = document.createElement("div");
-            footer.className = "requirement_footer";
-
-            const hsButton = document.createElement("button");
-            hsButton.className = "openHistory";
-            hsButton.textContent = "HS";
-
-            const expandButton = document.createElement("button");
-            expandButton.className = "expandButton";
-            expandButton.textContent = "↕";
-
-            footer.appendChild(hsButton);
-            footer.appendChild(expandButton);
+            footer = loadFooter(req)
 
             // Add to wrapper
             wrapper.appendChild(topRow);

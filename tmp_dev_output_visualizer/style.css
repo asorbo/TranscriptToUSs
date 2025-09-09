@@ -108,6 +108,7 @@ body {
 .requirement_content {
     margin-top: 8px;
     flex: 1;
+    flex-grow: 0;
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -202,4 +203,14 @@ body {
     font-weight: 400;
     font-size: 0.9rem;
     color: #333;
+}
+
+.requirement_wrapper .additional_information {
+    display: none;
+    margin-top: 10px;
+}
+
+/* When wrapper has "expanded", show it */
+.requirement_wrapper.expanded .additional_information {
+    display: flex;
 }

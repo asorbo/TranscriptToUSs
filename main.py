@@ -215,7 +215,8 @@ class Requirement:
             'inferred_rationale_reason': self.inferred_rationale_reason,
             'inferred_role_reason': self.inferred_role_reason,
             'user_story': self.user_story,
-            'topic_id': self.topic_id
+            'topic_id': self.topic_id,
+            'criteria_violations': self.criteria_violations
         }
 
 async def check_criteria_violations(requirements_set: list[Requirement]):
@@ -388,7 +389,7 @@ async def run_pipeline(transcript, stop_event):
     output['set_level_violations'] = set_level_violations
     log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
     
-    output_dir = "/tmp/output"
+    output_dir = "output"
     os.makedirs(output_dir, exist_ok=True)
     #dump output to a json file in the folder output
     with open(f"{output_dir}/output.json", "w", encoding="utf-8") as f:

@@ -54,8 +54,8 @@ def stream_logs():
 
 @app.route('/download_outputs')
 def download_outputs():
-    output_dir = "/tmp/output"
-    zip_path = "/tmp/output.zip"
+    output_dir = "output"
+    zip_path = "output.zip"
 
     # Ensure the output folder exists
     os.makedirs(output_dir, exist_ok=True)
@@ -66,4 +66,4 @@ def download_outputs():
 def index():
     return open("index.html", encoding="utf-8").read()
 
-#app.run(host="0.0.0.0", port=8080, debug=True)
+app.run(host="0.0.0.0", port=8080, debug=True)
