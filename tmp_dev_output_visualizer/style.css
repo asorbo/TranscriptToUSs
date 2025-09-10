@@ -180,8 +180,8 @@ body {
   gap: 10px;
   border-top: 1px solid #e6e9ee;
   padding-top: 10px;
-  max-height: 100%; /* prevent overshooting parent */
-  flex: 1 1 auto;   /* allow it to grow in the parent if needed */
+  max-height: 100%; /* keeps within the parent wrapper */
+  overflow: hidden; /* prevents children from spilling out */
 }
 
 /* Role and Rationale blocks */
@@ -251,11 +251,6 @@ body {
 
 .individual_criteria_violations h6 {
   margin: 0.3em;
-}
-
-.individual_criteria_violations > div {
-  overflow-y: auto;
-  max-height: 20vh;
 }
 
 /* apply a gentle card look without heavy shadow */
@@ -328,7 +323,7 @@ body {
 }
 
 /* make the scroll area a little cleaner */
-.individual_criteria_violations > div {
+.individual_criteria_violations > div:nth-child(2){
   flex: 1 1 auto;
   flex-direction: column;
   overflow-y: auto;
@@ -342,7 +337,7 @@ body {
 
 .individual_criteria_violations {
   flex: 1 1 auto;      /* take all remaining space */
-  min-height: 100px;   /* optional: ensure it doesn't shrink too small */
+  min-height: 10vh;   /* optional: ensure it doesn't shrink too small */
   overflow-y: auto;    /* scroll internally if too tall */
   display: flex;
   flex-direction: column;
