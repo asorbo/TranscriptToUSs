@@ -18,37 +18,17 @@ The first topic must start at the beginning of the transcript.
 The last topic must end at the end of the transcript.
 return a list of the segments in json format. Do not include the text in the output.
 A segment **must** include all and only this: (start_time, end_time, summary, label) **exactly in the following valid json format**
-{
-    "topic_id": "an incremental integer id(start at 1)"
-    "start_time": "xx:xx",
-    "end_time": "xx:xx"
-    "label": "The topic label",
-}
-'''
-
-GET_TOPIC_TEXTS_PROMPT = '''
-Extract the text of the given topics without modifying it: {batch}
-and return the same dictionary with the additional "text" data containing the full text of the topic (ensure all backslashes are removed so that the returned json is valid).
-Additionally, for each topic, split on the basis of speaker-turn (meaning every time a different speaker talks, it is a new speaker turn).
-Provide the topics in the following format, performing escapes if necessary, ensuring it is *valid JSON*:
+VALID JSON OUTPUT FORMAT (MANDATORY):
 [
-    {
-        "topic_id": 1,
-        "start_time": "xx:xx",
-        "end_time": "xx:xx",
-        "label": "The topic label",
-        "text": "The text of the topic",
-        "speaker_turns": [
-            {
-                "speaker": "speaker name",
-                "text": "speaker text"
-            }
-        ]
-    }
+  {
+    "topic_id": <integer>,
+    "start_time": "mm:ss",
+    "end_time": "mm:ss",
+    "label": "topic label"
+  }
 ]
 '''
 
-# NOTE: If you need to use str.format() on a prompt containing curly braces for JSON, escape them by doubling: {{ and }}
 GET_TOPIC_TEXTS_PROMPT = '''
 Extract the text of the given topics without modifying it: {batch}
 and return the same dictionary with the additional "text" data containing the full text of the topic (ensure all backslashes are removed so that the returned json is valid).
@@ -206,34 +186,6 @@ A segment **must** include all and only this: (start_time, end_time, summary, la
     "end_time": "xx:xx"
     "label": "The topic label",
 }
-'''
-
-IDENTIFY_ROLES_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is your goal is to identify all distinct roles mentioned or implied with respect to the described system.
-You do not care about the roles of speakers within the interview, you care about the abstract roles within the described system.
-For each role, provide:
--The role name.
--A brief and concrete description of the role’s responsibilities or context.
--A first-person general goal description focused on key intents, summarizing what someone in that role fundamentally wants to achieve within the system, phrased from their own point of view.
-
-A role can be a job title or a stakeholder type, avoiding generic terms like "User".
-The general goal should capture the intent or need driving that role’s interaction with the system written as 2–3 cohesive sentences, not a checklist of features or tasks. Avoid listing multiple goals with commas; instead, combine them into a smooth narrative.
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-These are some correct examples of outputs:
-Output:
-[
-{
-    "role": "Staff Member",
-    "description": "An individual who performs various tasks within an organization, such as operational duties or customer service roles.",
-    "general_goal": "I want to know my schedule well in advance so I can manage my personal commitments. It's important that I can update my availability easily if unexpected situations arise. I want to avoid scheduling conflicts and feel confident that my assigned tasks align with what I can handle."
-},
-{
-    "role": "Team Leader",
-    "description": "The person responsible for coordinating team activities, managing availability, and ensuring smooth day-to-day operations.",
-    "general_goal": "I need to ensure that the team is adequately staffed without anyone being overworked. I want to identify and resolve any coverage gaps quickly to prevent disruptions. My goal is to maintain efficient operations while supporting team members’ well-being."
-}
-]
-Given text:
 '''
 
 INFER_MISSING_RATIONALES_PROMPT = '''
@@ -437,59 +389,6 @@ Output schema:
 
 
 Context:
-'''
-
-SEGMENT_TRANSCRIPT_PROMPT = '''
-three experts segment the following interview transcript into distinct topics.
-Each expert is told to ensure consistency by following these rules:
-Each segment should contain sentences discussing the same general topic.
-A new segment should only start if the conversation meaningfully shifts.
-If a topic gradually changes, consider whether it still relates to the previous one before splitting.
-Avoid creating segments that are shorther than 2 minutes (end_time - start_time < 2 minutes) unless it is very clear that a topic shift is happening and *do not* create segments that are longer than 4 minutes(end_time - start_time > 4 minutes).
-For each topic generate 10 possible labels, then select the label that appeared most frequently (the statistical mode).
-Use clear and concise labels, drawing from the content rather than inventing new terms. If the topic could be a functionality or a requirement ensure the label clearly reflects the functionality.
-
-Every time an expert detects a topic shift all three experts must compare their work and reach an agreement. A split cannot be made if all three experts do not agree. If all experts agree the split is made (and included in the output) only once, all the experts then continue from the end time of that split onwards-
-Do NOT start a new topic in the middle of a speaker turn! each returned topic must include only whole speaker turns.
-Do NOT stop until all speaker turns have been processed.
-The first topic must start at the beginning of the transcript.
-The last topic must end at the end of the transcript.
-return a list of the segments in json format. Do not include the text in the output.
-A segment **must** include all and only this: (start_time, end_time, summary, label) **exactly in the following valid json format**
-{
-    "topic_id": "an incremental integer id"
-    "start_time": "xx:xx",
-    "end_time": "xx:xx"
-    "label": "The topic label",
-}
-'''
-
-IDENTIFY_ROLES_PROMPT = '''
-This is an extract of a requirements elicitation session. You are an expert requirements engineer and your goal is your goal is to identify all distinct roles mentioned or implied with respect to the described system.
-You do not care about the roles of speakers within the interview, you care about the abstract roles within the described system.
-For each role, provide:
--The role name.
--A brief and concrete description of the role’s responsibilities or context.
--A first-person general goal description focused on key intents, summarizing what someone in that role fundamentally wants to achieve within the system, phrased from their own point of view.
-
-A role can be a job title or a stakeholder type, avoiding generic terms like "User".
-The general goal should capture the intent or need driving that role’s interaction with the system written as 2–3 cohesive sentences, not a checklist of features or tasks. Avoid listing multiple goals with commas; instead, combine them into a smooth narrative.
-*Ensure the output is in valid json, in particular ensure that properties are always correctly wrapped by double quotes*
-These are some correct examples of outputs:
-Output:
-[
-{
-    "role": "Staff Member",
-    "description": "An individual who performs various tasks within an organization, such as operational duties or customer service roles.",
-    "general_goal": "I want to know my schedule well in advance so I can manage my personal commitments. It's important that I can update my availability easily if unexpected situations arise. I want to avoid scheduling conflicts and feel confident that my assigned tasks align with what I can handle."
-},
-{
-    "role": "Team Leader",
-    "description": "The person responsible for coordinating team activities, managing availability, and ensuring smooth day-to-day operations.",
-    "general_goal": "I need to ensure that the team is adequately staffed without anyone being overworked. I want to identify and resolve any coverage gaps quickly to prevent disruptions. My goal is to maintain efficient operations while supporting team members’ well-being."
-}
-]
-Given text:
 '''
 
 SET_LEVEL_VIOLATIONS_PROMPTS = {

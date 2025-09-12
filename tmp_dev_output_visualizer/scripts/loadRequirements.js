@@ -142,17 +142,19 @@ function countIndividualCriteriaViolations(req) {
                  .length;
 }
 
-function loadFooter(criteriaViolationCounter){
+function loadFooter(criteriaViolationCounter, req){
     const footer = document.createElement("div");
     footer.className = "requirement_footer";
 
     const hsButton = document.createElement("button");
     hsButton.className = "openHistory";
     hsButton.textContent = "HS";
+    hsButton.addEventListener("click", () => {
+        openPipelineModal(req.is_role_inferred, req.is_rationale_inferred);
+    });
 
     const expandButton = document.createElement("button");
     expandButton.className = "expandButton";
-    expandButton.textContent = "↕";
 
     if (criteriaViolationCounter != null){
         footer.append(criteriaViolationCounter);
@@ -295,7 +297,9 @@ async function loadRequirements() {
                 additional.append(individualCriteriaViolations)
             }
             // Requirement footer
-            footer = loadFooter(criteriaViolationCounter)
+            footer = loadFooter(criteriaViolationCounter, req)
+
+            
 
             // Add to wrapper
             wrapper.appendChild(topRow);
@@ -306,8 +310,76 @@ async function loadRequirements() {
             // Add to column
             requirementsColumn.appendChild(wrapper);
         });
+        const pipelineModal = document.getElementById("pipelineModal");
+        const prompts = data.prompts;
+        loadPipelinePrompts(pipelineModal, prompts);
     })
     .catch(err => console.error("Error loading requirements:", err));
+}
+
+function createPromptElement({ title, prompt }) {
+  const promptDiv = document.createElement("div");
+  promptDiv.className = "prompt";
+
+  // Title span
+  const titleSpan = document.createElement("span");
+  titleSpan.className = "prompt-title";
+  titleSpan.textContent = title;
+  promptDiv.appendChild(titleSpan);
+
+  // Text span (hidden by default)
+  const textSpan = document.createElement("span");
+  textSpan.className = "prompt-text";
+  textSpan.textContent = prompt;
+  promptDiv.appendChild(textSpan);
+
+  // Toggle visibility on click
+  titleSpan.addEventListener("click", () => {
+    promptDiv.classList.toggle("expanded");
+  });
+
+  return promptDiv;
+}
+
+
+// Load multiple prompts into the modal and show it
+function loadPipelinePrompts(modalElement, prompts) {
+  if (!modalElement) return null;
+  const body = modalElement.querySelector(".modal-body");
+  const closeBtn = modalElement.querySelector(".modal-close");
+  closeBtn.addEventListener("click", () => {
+        modalElement.style.display = "none";
+    });
+  if (!body) return null;
+  // Remove any previously injected .prompt nodes
+  const oldPrompts = body.querySelectorAll(".prompt");
+  oldPrompts.forEach(n => n.remove());
+
+  // If prompts is not an array but has a single object, normalize to array
+  const list = Array.isArray(prompts) ? prompts : (prompts ? [prompts] : []);
+
+  Object.entries(prompts).forEach(([title, text]) => {
+  if (text == null) return; // skip null/undefined just in case
+    body.appendChild(createPromptElement({ title, prompt: text }));
+    });
+}
+
+function openPipelineModal(isRoleInferred, isRationaleInferred) {
+    const modalElement = document.getElementById("pipelineModal");
+    modalElement.style.display = "flex"; // show the modal, assuming your CSS hides it by default
+
+    const prompts = modalElement.querySelectorAll(".prompt");
+    prompts.forEach(prompt => {
+        const titleEl = prompt.querySelector(".prompt-title");
+        if (!titleEl) return; // skip if no title
+
+        const title = titleEl.textContent.trim();
+        if (title === "INFER_MISSING_ROLES_PROMPT") {
+            prompt.style.display = isRoleInferred ? "block" : "none";
+        } else if (title === "INFER_MISSING_RATIONALES_PROMPT") {
+            prompt.style.display = isRationaleInferred ? "block" : "none";
+        }
+    });
 }
 
 // Load requirements when the page loads

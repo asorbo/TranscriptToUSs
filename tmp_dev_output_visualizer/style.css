@@ -1,58 +1,75 @@
 body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-    }
+  font-family: 'Inter', sans-serif;
 
-    .column {
-        height: 98vh;
-        overflow-y: auto;
-        padding: 10px;
-        border-right: 1px solid #ddd;
-    }
+  display: grid;
+  overflow: hidden;
 
-    .column:last-child {
-      border-right: none;
-    }
-
-    .topic, .requirement_wrapper {
-      background: #fafafa;
-      margin-bottom: 10px;
-      padding: 10px;
-      transition: background 0.2s;
-    }
-
-    .topic:hover, .requirement_wrapper:hover {
-      background: #e0e0e0;
-    }
-
-    .topic h4 {
-  display: inline-block;
+  height: 100vh;
   margin: 0;
+
+  grid-template-columns: 1fr 1fr;
+}
+
+.column {
+  overflow-y: auto;
+
+  height: 98vh;
+  padding: 10px;
+
+  border-right: 1px solid #ddd;
+}
+
+.column:last-child {
+  border-right: none;
+}
+
+.topic,
+.requirement_wrapper {
+  margin-bottom: 10px;
+  padding: 10px;
+
+  transition: background 0.2s;
+
+  background: #fafafa;
+}
+
+.topic:hover,
+.requirement_wrapper:hover {
+  background: #e0e0e0;
+}
+
+.topic h4 {
   font-size: 1.1rem;
   font-weight: bold;
+
+  display: inline-block;
+
+  margin: 0;
 }
 
 .topic > span {
-  display: inline-block;
-  margin-left: 10px;
-  color: #777;
-  font-style: italic;
   font-size: 0.9rem;
+  font-style: italic;
+
+  display: inline-block;
+
+  margin-left: 10px;
+
+  color: #777;
 }
 
 .speaker_turn {
-  margin-top: 8px;
   line-height: 1.4;
+
+  margin-top: 8px;
 }
 
 .speaker_turn span:first-child {
   font-weight: bold;
-  color: #1648d2;
+
   margin-right: 5px;
+
+  color: #1648d2;
 }
 
 .speaker_turn span:last-child {
@@ -64,23 +81,29 @@ body {
 }
 
 .requirement_wrapper {
-    padding: 10px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;  /* stack children vertically */
-    height: auto;   
-    box-sizing: border-box;
-    position: relative;  
-    transition: height 0.4s ease;
+  position: relative;
+
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+
+  box-sizing: border-box;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 10px;
+
+  transition: height 0.4s ease;
 }
 
 /* Top row: Requirement title on left, Topic+Button on right */
+
 .requirement_wrapper h4 {
-    display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  display: inline-block;
+
+  margin: 0 0 6px 0;
 }
 
 .role_information h5,
@@ -88,6 +111,7 @@ body {
 .individual_criteria_violations h5 {
   font-size: 1rem;
   font-weight: 700;
+
   margin: 0 0 8px 0;
 }
 
@@ -99,41 +123,50 @@ body {
 }
 
 .requirement_wrapper > div:first-of-type {
-    float: right;
-    font-size: 0.9rem;
+  font-size: 0.9rem;
+
+  float: right;
 }
 
 .requirement_wrapper > div:first-of-type span {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .requirement_wrapper .openHistory {
-    padding: 2px 6px;
-    font-size: 0.8rem;
-    border: none;
-    background: #1648d2;
-    color: white;
-    cursor: pointer;
+  font-size: 0.8rem;
+
+  padding: 2px 6px;
+
+  cursor: pointer;
+
+  background: #1648d2;
+  color: white;
+  border: none;
 }
 
 .requirement_wrapper .openHistory:hover {
-    background: #0d2a85;
+  background: #0d2a85;
 }
 
 /* Requirement content styling */
+
 .requirement_content {
-    margin-top: 8px;
-    flex: 1;
-    flex-grow: 0;
-    font-size: 1rem;
-    line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  flex: 1;
+  flex-grow: 0;
+
+  margin-top: 8px;
 }
 
 /* Shared inferred style for role & rationale */
+
 .role[is_role_inferred="true"],
 .rationale[is_rationale_inferred="true"] {
-  color: #552000;
   position: relative;
+
+  color: #552000;
 }
 
 .role,
@@ -148,104 +181,126 @@ body {
 }
 
 .requirement_footer {
-    display: flex;
-    margin-top: auto;   /* pushes footer to bottom */
-    justify-content: flex-end;
-    gap: 0.3em;
-    height: 2.5vh
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: auto; /* pushes footer to bottom */
+
+  gap: 0.3em;
+
+  height: 2.5vh
 }
 
 .requirement_footer button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.expanded{
-  height: 96vh;
+.expanded {
   overflow: hidden;
+
+  height: 96vh;
 }
 
 .top_row {
   display: flex;
-  justify-content: space-between; 
-  margin-bottom: 8px;
   align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 8px;
 }
 
-
-
 /* Container for additional info */
+
 .additional_information {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-top: 1px solid #e6e9ee;
-  padding-top: 10px;
-  max-height: 100%; /* keeps within the parent wrapper */
   overflow: hidden; /* prevents children from spilling out */
+  flex-direction: column;
+
+  max-height: 100%; /* keeps within the parent wrapper */
+  padding-top: 10px;
+
+  border-top: 1px solid #e6e9ee;
+
+  gap: 10px;
 }
 
 /* Role and Rationale blocks */
+
 .role_information,
 .rationale_information {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
 }
 
 /* Headers (<h5>) with less margin */
+
 .role_information h5,
 .rationale_information h5 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
+  font-size: 1rem;
+  font-weight: 600;
+
+  margin: 0;
 }
 
 /* Role description div (inline role name + description) */
+
 .role_information > div {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 /* Labels for inference reasoning */
+
 .requirement_label {
-    font-weight: 600;
-    font-size: 0.85rem;
-    margin-right: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  margin-right: 4px;
 }
 
 /* Reasoning text */
+
 .role_information span:last-child,
 .rationale_information span:last-child {
-    font-weight: 400;
-    font-size: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .requirement_wrapper .additional_information {
-    display: none;
-    margin-top: 10px;
+  display: none;
+
+  margin-top: 10px;
 }
 
 /* When wrapper has "expanded", show it */
+
 .requirement_wrapper.expanded .additional_information {
-    display: flex;
+  display: flex;
 }
 
 .console-error {
-  font-weight: 700;
   font-size: 1em;
+  font-weight: 700;
   line-height: 1em;
-  vertical-align: middle;
-  box-sizing: border-box;
-  gap: 2px;
+
   display: inline-flex;
+
+  box-sizing: border-box;
+
+  vertical-align: middle;
+
+  gap: 2px;
 }
 
 .console-error img {
-  width: 1em;              /* size of the SVG */
+  width: 1em; /* size of the SVG */
   height: 1em;
 }
 
-.individual_criteria_violations h5{
+.individual_criteria_violations h5 {
   display: inline-block;
+
   margin: 0 0.5em;
 }
 
@@ -254,95 +309,223 @@ body {
 }
 
 /* apply a gentle card look without heavy shadow */
+
 .role_information,
 .rationale_information,
 .individual_criteria_violations {
-  background: rgba(255,255,255,0.6); /* subtle lift */
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 0.8em;
-  border-radius: 8px;
   margin: 0.2em;
+  padding: 0.8em;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6); /* subtle lift */
 }
 
 /* keep the existing top border on the whole additional_information but keep cards inside */
+
 .additional_information {
-  border-top: 1px solid #e6e9ee;
   padding-top: 10px;
+
+  border-top: 1px solid #e6e9ee;
+
   gap: 10px;
 }
 
-/* --------------------------
-   3) Improve measure & spacing
-   -------------------------- */
-/* comfortable line length inside the additional information section */
-.additional_information {
-  max-width: 70ch;      /* keeps paragraphs readable */
-}
-
 /* small vertical rhythm tweaks */
+
 .rationale_information > div,
 .individual_criteria_violations > div > div {
   margin-top: 6px;
 }
 
 /* keep the existing top border on the whole additional_information but keep cards inside */
+
 .additional_information {
   border-top: 1px solid #e6e9ee;
+
   gap: 0.1vh;
 }
 
 .violation {
-  padding: 10px 12px;
+  font-size: 0.9rem;
   margin: 10px 0;
+  padding: 10px 12px;
+
   border-left: 4px solid #ffa500; /* orange accent */
-  background: rgba(230,126,34,0.04);
   border-radius: 6px;
+  background: rgba(230, 126, 34, 0.04);
 }
 
 /* violation heading and text */
+
 .violation h6 {
-  margin: 0 0 6px 0;
   font-size: 0.95rem;
   font-weight: 600;
+
+  margin: 0 0 6px 0;
 }
 
 .violation .requirement_label {
-  display: inline-block;
-  margin-right: 6px;
-  font-weight: 700;
   font-size: 0.9rem;
+  font-weight: 700;
+
+  display: inline-block;
+
+  margin-right: 6px;
 }
 
-/* suggested improvement styling (slightly smaller, italic) */
 .violation .improvement,
 .violation .suggested_improvement {
-  display: block;
-  margin-top: 8px;
   font-size: 0.92rem;
   font-style: italic;
+
+  display: block;
+
+  margin-top: 8px;
 }
 
 /* make the scroll area a little cleaner */
-.individual_criteria_violations > div:nth-child(2){
+
+.individual_criteria_violations > div:nth-child(2) {
+  overflow-y: auto;
   flex: 1 1 auto;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 /* small accessibility / focus nicety for interactivity (optional) */
+
 .violation:focus-within {
-  outline: 2px solid rgba(230,126,34,0.12);
+  outline: 2px solid rgba(230, 126, 34, 0.12);
   outline-offset: 2px;
 }
 
 .individual_criteria_violations {
-  flex: 1 1 auto;      /* take all remaining space */
-  min-height: 10vh;   /* optional: ensure it doesn't shrink too small */
-  overflow-y: auto;    /* scroll internally if too tall */
   display: flex;
+  overflow-y: auto; /* scroll internally if too tall */
+  flex: 1 1 auto; /* take all remaining space */
   flex-direction: column;
+
+  min-height: 10vh; /* optional: ensure it doesn't shrink too small */
 }
 
 .requirement_wrapper.expanded .additional_information {
   margin-bottom: 1vh;
+}
+
+.expandButton {
+  background: none;       /* transparent background */
+  border: none;           /* no border */
+  cursor: pointer;
+  font-size: 1.2rem;       /* size for arrow */
+  line-height: 1;
+  padding: 2px 6px;
+  display: inline-flex;    /* keep inline with text */
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+/* Default: arrow down */
+.expandButton::before {
+  content: "+";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* When parent container has .expanded, change to arrow up */
+.expanded .expandButton::before {
+  content: "x";
+}
+
+/* Full-screen overlay (hidden by default) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9); /* white with slight transparency */
+  display: none;        /* hide by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;        /* stay above everything */
+}
+
+/* Inner modal box */
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Close button (X) */
+.modal-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background: none;
+  border: none;
+  font-size: 3em;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.prompt {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.prompt:hover {
+  background: #f0f0f0;
+}
+
+.prompt-title {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #1648d2;
+  cursor: pointer;
+}
+
+/* Hide text by default */
+.prompt-text {
+  display: none;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  white-space: pre-wrap; /* keep formatting */
+}
+
+/* Show when expanded */
+.prompt.expanded .prompt-text {
+  display: block;
+}
+
+.modal-body > div:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  color: #222;
+}
+
+
+html {
+  font-size: 90%; 
 }

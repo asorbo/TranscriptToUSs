@@ -97,14 +97,16 @@ class LLM:
     
     async def generate(self, prompt, verbose=False, jsonOnly=True, max_retries=5):
         import logging
+        exception = None
         for attempt in range(max_retries):
             try:
                 if attempt > 0:
-                    prompt = "**You MUST answer in valid JSON format.**\n" + prompt
+                    prompt = prompt + " **\n" + "**Validate the output before submitting, it must be in valid JSON. In particular avoid this error: " + (str(exception) if exception else "")
                 return await self._generate(prompt, verbose=verbose, jsonOnly=jsonOnly)
             except Exception as e:
                 logging.error(f"Error during generate (attempt {attempt+1}): {e}")
                 if attempt < max_retries - 1:
+                    exception = e;
                     logging.info(f"Retrying generate (attempt {attempt+2})...")
                 else:
                     logging.error("Max retries reached. Input prompt:\n " + prompt)

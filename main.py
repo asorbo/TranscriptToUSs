@@ -383,11 +383,24 @@ async def run_pipeline(transcript, stop_event):
 
     output['requirements'] = requirements_map
 
-    # Check set level violations
-    log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
-    set_level_violations = await check_set_level_violations(requirements_set)
-    output['set_level_violations'] = set_level_violations
-    log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
+    log_handler.logger.info("Pipeline status - Part 10/10 skipped: Check set level violations")
+    log_handler.logger.info("This step has been disabled by the developer. You can re-enable it in the main.py file.")
+    if False:
+        # Check set level violations
+        log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
+        set_level_violations = await check_set_level_violations(requirements_set)
+        output['set_level_violations'] = set_level_violations
+        log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
+    output['set_level_violations'] = []
+
+    #add all the prompts in prompts.py into a map
+    prompts_map = {
+        name: value
+        for name, value in globals().items()
+        if "_PROMPT" in name and isinstance(value, str)
+    }
+
+    output["prompts"] = prompts_map
     
     output_dir = "output"
     os.makedirs(output_dir, exist_ok=True)
@@ -439,6 +452,9 @@ def start_execution(transcript, stop_event, log_queue, api_key, runs_per_minute)
     global log_handler
     log_handler = LogHandler(log_queue)
     log_handler.logger.info("Starting execution")
-    asyncio.run(run_pipeline(transcript, stop_event))
-    log_handler.logger.info("Pipeline status: Execution completed")
+    try:
+        asyncio.run(run_pipeline(transcript, stop_event))
+        log_handler.logger.info("Pipeline status: Execution completed")
+    except Exception as e:
+        log_handler.logger.error("Execution failed. Please try again. \n Exception: " + str(e))
 
