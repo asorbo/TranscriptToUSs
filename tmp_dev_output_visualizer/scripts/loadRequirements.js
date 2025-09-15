@@ -196,7 +196,7 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
 
     // Heading
     const heading = document.createElement("h5");
-    heading.textContent = "individual user story QUS criteria violations:";
+    heading.textContent = "Potential issue(s):";
     header_wrapper.appendChild(heading);
     outer.append(header_wrapper);
 
@@ -223,7 +223,7 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
             const reasonDiv = document.createElement("div");
             const reasonLabel = document.createElement("span");
             reasonLabel.className = "requirement_label";
-            reasonLabel.textContent = "Violation reason: ";
+            reasonLabel.textContent = "Issue: ";
             reasonDiv.append(reasonLabel);
 
             const reasonText = document.createElement("span");

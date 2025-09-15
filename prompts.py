@@ -138,6 +138,17 @@ A rationale (the part of a user story that begins with 'so that') may express on
 - Clarification of means: The end explains the reason of the means. Example: "As a User, I want to edit a record, so that I can correct any mistakes."
 - Dependency on another functionality: The end (implicitly) references a functionality which is required for the means to be realized. Although dependency is an indicator of a bad quality criteria, having no dependency at all between requirements is practically impossible. Example: "‘‘As a User, I want to open the interactive map, so that I can see the location of landmarks.’’ The end implies the existence of a landmark database"
 - Quality requirement: The end communicates the intended qualitative effect of the means. Example: "As a User, I want to sort the results, so that I can more easily review the results" indicates that the means contributes maximizing easiness.
+I am a {role_role}, {role_description}
+A {role_role} is {role_description}
+
+As a {role_role}, {requirement_text}, so that ...
+
+Output: {{
+    "topic_id": "{topic_id}" (DO NOT change this number),
+    "requirement_id": "{requirement_id}" (DO NOT change this number),
+    "inferred_rationale": "so that I ..." (the continuation in one concise, grammatically and syntactically correct full sentence i.e. the rationale; if the subject is {role_role} then speak in first person),
+    "inferred_rationale_reason": an explanation for the given rationale
+}}
 '''
 
 CHECK_CRITERIA_VIOLATIONS_PROMPT = '''
@@ -188,13 +199,6 @@ A segment **must** include all and only this: (start_time, end_time, summary, la
 }
 '''
 
-INFER_MISSING_RATIONALES_PROMPT = '''
-A rationale (the part of a user story that begins with 'so that') may express one of three things:
-- Clarification of means: The end explains the reason of the means. Example: "As a User, I want to edit a record, so that I can correct any mistakes."
-- Dependency on another functionality: The end (implicitly) references a functionality which is required for the means to be realized. Although dependency is an indicator of a bad quality criteria, having no dependency at all between requirements is practically impossible. Example: "‘‘As a User, I want to open the interactive map, so that I can see the location of landmarks.’’ The end implies the existence of a landmark database"
-- Quality requirement: The end communicates the intended qualitative effect of the means. Example: "As a User, I want to sort the results, so that I can more easily review the results" indicates that the means contributes maximizing easiness.
-'''
-
 CHECK_CRITERIA_VIOLATIONS_PROMPT = '''
 You are an expert requirements engineer evaluating a user story for compliance with 8 criteria.
 Recall that a user story is structured as such: "AS A [role], I WANT [means], SO THAT [ends]."
@@ -228,75 +232,75 @@ Output (extract):
     "isViolated": true,
     "reason": "The user story does not adhere to the correct syntax, as it has no role.",
     "improvement": None
-}
+  }
 
 Input:
 As a User, I am able to click a particular location from the map and thereby perform a search of landmarks associated with that latitude longitude combination
 Output (extract):
-"Atomic": {
+  "Atomic": {
     "isViolated": true,
     "reason": "The user story consists of two separate requirements: the act of clicking on a location and the display of associated landmarks. This user story should be split into two. ",
     "improvement": [
-    "As a User, I’m able to click a particular location from the map",
-    "As a User, I’m able to see landmarks associated with the latitude and longitude combination of a particular location"
+      "As a User, I’m able to click a particular location from the map",
+      "As a User, I’m able to see landmarks associated with the latitude and longitude combination of a particular location"
     ]
-}
+  }
 
 Input:
 As a care professional, I want to see the registered hours of this week (split into products and activities). See: Mockup from Alice NOTE—first create the overview screen—then add validationsOutput (extract):
-"Minimal": {
+  "Minimal": {
     "isViolated": true,
     "reason": "The user story, aside from a role and means, it includes extra information: a reference to an undefined mockup and a note on how to approach the implementation.",
     "improvement": "As a care professional, I want to see the registered hours of this week."
-}
+  }
 
 Input:
 As a User, I want to open the interactive map, so that I can see the location of landmarks
 Output (extract):
-"Conceptually sound": {
+  "Conceptually sound": {
     "isViolated": true,
     "reason": "The end is actually a dependency on another (hidden) functionality, which is required in order for the means to be realized, implying the existence of a landmark database which is not mentioned in any of the other stories. A significant additional feature that is erroneously represented as an end, but should be a means in a separate user story.",
     "improvement": [
-    "As a User, I want to open the interactive map",
-    "As a User, I want to see the location of landmarks on the interactive map."
-    ]
-}
+      "As a User, I want to open the interactive map",
+      "As a User, I want to see the location of landmarks on the interactive map."
+      ]
+  }
 
 Input:
 As a Coach, I want to ensure players attend training, so that the team performs well.
 Output:
 "Conceptually sound": {
-"isViolated": true,
-"reason": "The means does not describe a concrete system feature but rather an abstract goal. 'Ensuring players attend training' is a desired outcome, not a concrete feature that the system can provide. This lacks conceptual clarity and should be reformulated to describe the actual functionality that supports this goal.",
-"improvement": "As a Coach, I want to track player attendance at training sessions, so that the team performs well."
+  "isViolated": true,
+  "reason": "The means does not describe a concrete system feature but rather an abstract goal. 'Ensuring players attend training' is a desired outcome, not a concrete feature that the system can provide. This lacks conceptual clarity and should be reformulated to describe the actual functionality that supports this goal.",
+  "improvement": "As a Coach, I want to track player attendance at training sessions, so that the team performs well."
 }
 
 Input:
 As a Referee, I want to submit match reports, so that match reports are submitted.
 Output (extract):
 "Conceptually sound": {
-"isViolated": true,
-"reason": "The end merely repeats the means in different words and does not explain the rationale or value behind submitting match reports. A proper end should express the benefit or purpose of this action.",
-"improvement": "As a Referee, I want to submit match reports, so that match outcomes and incidents are documented for review and record-keeping."
+  "isViolated": true,
+  "reason": "The end merely repeats the means in different words and does not explain the rationale or value behind submitting match reports. A proper end should express the benefit or purpose of this action.",
+  "improvement": "As a Referee, I want to submit match reports, so that match outcomes and incidents are documented for review and record-keeping."
 }
 
 Input:
 As a care professional I want to save a reimbursement—add save button on top right (never grayed out)
 Output (extract):
-"Problem-oriented": {
+  "Problem-oriented": {
     "isViolated": true,
     "reason": "The user story includes implementation details (a solution) within the user story text. A user story should specify only the problem. If absolutely necessary, implementation hints can be included as comments or descriptions. Aside from breaking the minimal quality criteria,",
     "improvement": "As a care professional, I want to save a reimbursement."
-}
+  }
 Input:
 As a User, I am able to edit the content that I added to a person’s profile page.
 Output (extract):
-"Unambiguous": {
+  "Unambiguous": {
     "isViolated": true,
     "ambiguity_types": ["lexical"],
     "reason": "'Content' is a polysemous term: it can refer to various types of media such as audio, video, or text. This lexical ambiguity makes the user story unclear, as it does not specify which type(s) of content are meant. The user story should explicitly mention which media are editable.",
     "improvement": "As a User, I am able to edit video, photo, and audio content that I added to a person’s profile page."
-}
+  }
 Input:
 As a manager, I want the dashboard to quickly show how sales figures act in real time, so that I can decide on promotions.
 Output (extract):
@@ -305,86 +309,86 @@ Output (extract):
     "types": ["Lexical", "Syntactical"],
     "reason": "The term 'quickly' could refer to UI response time or frequency of data refresh(lexical ambiguity due to ploysemy). The clause 'in real time' can attach to ‘shows’ or ‘act’ (syntactical).",
     "improvement": "As a manager, I want the dashboard to update sales figures every minute so that I can decide on promotions within five minutes."
-}
+  }
 
 Input:
 Server configuration
 Output (extract):
-"Full sentence": {
+  "Full sentence": {
     "isViolated": true,
     "reason": "The user story is not expressed as a full sentence (in addition to not complying with syntactic quality). A user story should read like a full sentence, without typos or grammatical errors. By reformulating the feature as a full sentence user story, it will automatically specify what exactly needs to be configured.",
     "improvement": "As an Administrator, I want to configure the server’s sudo-ers."
-}
+  }
 
 Input:
 As a care professional I want to see my route list for next/future days, so that I can prepare myself (for example I can see at what time I should start traveling)
 Output (extract):
-"Estimatable": {
+  "Estimatable": {
     "isViolated": true,
     "reason": "A user story should not be so large that estimating and planning it with reasonable certainty becomes impossible. requests a route list so that care professionals can prepare themselves. While this might be just an unordered list of places to go to during a workday, it is just as likely that the feature includes ordering the routes algorithmically to minimize distance travelled and/or showing the route on a map. These many functionalities inhibit accurate estimation and call for splitting the user story into multiple user stories.",
     "improvement": [
-    "As a Care Professional, I want to see my route list for next/future days, so that I can prepare myself",
-    "As a Manager, I want to upload a route list for care professionals."
+      "As a Care Professional, I want to see my route list for next/future days, so that I can prepare myself",
+      "As a Manager, I want to upload a route list for care professionals."
     ]
-}
+  }
 
 Only use the given context to provide an improvement when a constraint is violated. Attain to the facts presented in the input user story or the context.
 The output must be exactly in the provided output schema.
 Output schema:
 {
-"Well-formed": {
+  "Well-formed": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": None #Do not suggest an improvement for the well-formed criterion
-},
+  },
 
-"Atomic": {
+  "Atomic": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": [a list of atomic requirements as strings]
-},
+  },
 
-"Minimal": {
+  "Minimal": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": "The improved version of the requirement"
-},
+  },
 
-"Conceptually sound": {
+  "Conceptually sound": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": "The improved version of the requirement"
-},
+  },
 
-"Problem-oriented": {
+  "Problem-oriented": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": "The improved version of the requirement"
-},
+  },
 
-"Unambiguous": {
+  "Unambiguous": {
     "isViolated": "a boolean value",
     "ambiguity_types": [one or more types from the set (lexical, syntactical, semantic, pragmatic)],
     "reason": "If isViolated is set to true, how each ambiguity type specified in ambiguity_types is present",
     "improvement": "The improved version of the requirement"
-},
+  },
 
-"Full sentence": {
+  "Full sentence": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": "The improved version of the requirement"
-},
+  },
 
-"Estimatable": {
+  "Estimatable": {
     "isViolated": "a boolean value",
     "reason": "If isViolated is set to true, the reason why the criterion is violated",
     "improvement": "The improved version of the requirement"
-}
+  }
 
-"overall_improvement": {
+  "overall_improvement": {
     "reason": "If isViolated is set to true for any of the previous criteria, summarize the reasons for the violations",
     "improvement": "The improved version of the requirement taking into consideration all the proposed improvements" | null (if improvements conflict with eachother)
-}
+  }
 }
 
 

@@ -198,7 +198,7 @@ body {
 .expanded {
   overflow: hidden;
 
-  height: 96vh;
+  height: auto;
 }
 
 .top_row {

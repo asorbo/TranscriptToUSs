@@ -154,8 +154,14 @@ async def infer_missing_rationales(topic_texts, roles):
         for requirement in topic['requirements']:
             if requirement and 'role' in requirement and requirement['role'] != "unidentified-role" and requirement.get('rationale') == "unidentified-rationale":
                 role = role_map[requirement['role'].lower()]
-                role_prompt = INFER_MISSING_RATIONALES_PROMPT + f"\nI am a {role['role']}, {role['description']}\nA {role['role']} is {role['description']}\n\nAs a {role['role']}, {requirement['requirement']}, so that ...\n\nOutput: {{\n    \"topic_id\": \"{topic['topic_id']}\" (DO NOT change this number),\n    \"requirement_id\": \"{requirement['requirement_id']}\" (DO NOT change this number),\n    \"inferred_rationale\": \"so that I ...\" (the continuation in one concise, grammatically and syntactically correct full sentence i.e. the rationale; if the subject is {role['role']} then speak in first person),\n    \"inferred_rationale_reason\": an explanation for the given rationale\n}}"
-                prompts.append(role_prompt)
+                rationale_prompt = INFER_MISSING_RATIONALES_PROMPT.format(
+                    role_role=role['role'],
+                    role_description=role['description'],
+                    requirement_text=requirement['requirement'],
+                    topic_id=topic['topic_id'],
+                    requirement_id=requirement['requirement_id']
+                )
+                prompts.append(rationale_prompt)
 
     inferred_rationales = []
 
@@ -393,6 +399,9 @@ async def run_pipeline(transcript, stop_event):
         log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
     output['set_level_violations'] = []
 
+    makeOutputArchive(output)
+
+def saveJsonOutput(output):
     #add all the prompts in prompts.py into a map
     prompts_map = {
         name: value
@@ -407,6 +416,35 @@ async def run_pipeline(transcript, stop_event):
     #dump output to a json file in the folder output
     with open(f"{output_dir}/output.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=4)
+
+def makeBinaries():
+    def compile_go_binaries():
+    go_file = "tmp_dev_output_visualizer/compiler.go"
+    dist_dir = "dist_go"
+    os.makedirs(dist_dir, exist_ok=True)
+
+    targets = [
+        ("windows", "amd64", "webviewer.exe"),
+        ("darwin", "amd64", "webviewer-mac"),
+        ("linux", "amd64", "webviewer-linux")
+    ]
+
+    for goos, goarch, output_name in targets:
+        print(f"Compiling Go binary for {goos}...")
+        env = os.environ.copy()
+        env["GOOS"] = goos
+        env["GOARCH"] = goarch
+        subprocess.run(
+            ["go", "build", "-o", os.path.join(dist_dir, output_name), go_file],
+            check=True,
+            env=env
+        )
+
+    print("All Go binaries compiled successfully.")
+
+def makeOutputArchive(output):
+    saveJsonOutput(output)
+    makeBinaries()
 
 class LogHandler(logging.Handler):
     def __init__(self, log_queue):
