@@ -399,7 +399,7 @@ async def run_pipeline(transcript, stop_event):
         log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
     output['set_level_violations'] = []
 
-    makeOutputArchive(output)
+    saveJsonOutput(output)
 
 def saveJsonOutput(output):
     #add all the prompts in prompts.py into a map
@@ -411,40 +411,11 @@ def saveJsonOutput(output):
 
     output["prompts"] = prompts_map
     
-    output_dir = "output"
+    output_dir = "output_visualizer"
     os.makedirs(output_dir, exist_ok=True)
     #dump output to a json file in the folder output
     with open(f"{output_dir}/output.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=4)
-
-def makeBinaries():
-    def compile_go_binaries():
-    go_file = "tmp_dev_output_visualizer/compiler.go"
-    dist_dir = "dist_go"
-    os.makedirs(dist_dir, exist_ok=True)
-
-    targets = [
-        ("windows", "amd64", "webviewer.exe"),
-        ("darwin", "amd64", "webviewer-mac"),
-        ("linux", "amd64", "webviewer-linux")
-    ]
-
-    for goos, goarch, output_name in targets:
-        print(f"Compiling Go binary for {goos}...")
-        env = os.environ.copy()
-        env["GOOS"] = goos
-        env["GOARCH"] = goarch
-        subprocess.run(
-            ["go", "build", "-o", os.path.join(dist_dir, output_name), go_file],
-            check=True,
-            env=env
-        )
-
-    print("All Go binaries compiled successfully.")
-
-def makeOutputArchive(output):
-    saveJsonOutput(output)
-    makeBinaries()
 
 class LogHandler(logging.Handler):
     def __init__(self, log_queue):

@@ -54,12 +54,15 @@ def stream_logs():
 
 @app.route('/download_outputs')
 def download_outputs():
-    output_dir = "output"
+    folder_to_zip = "output_visualizer"
     zip_path = "output.zip"
 
-    # Ensure the output folder exists
-    os.makedirs(output_dir, exist_ok=True)
-    shutil.make_archive(zip_path.replace(".zip", ""), 'zip', output_dir)
+    # Ensure folder exists
+    os.makedirs(folder_to_zip, exist_ok=True)
+
+    # shutil.make_archive zips the contents of a folder when you set root_dir properly
+    shutil.make_archive(zip_path.replace(".zip", ""), 'zip', root_dir=folder_to_zip)
+
     return send_file(zip_path, as_attachment=True)
 
 @app.route('/')

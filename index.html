@@ -167,9 +167,10 @@
                 The process involves several steps and may last several minutes depending on the transcript length and its complexity.
             </span>
             <span>
-                Note: The processing is done using google gemini API. 
-                The environment running this prototype will be deleted within 15 minutes from your last interaction.
-                This includes the transcript uploaded to the prototype and all the intermediate and final outputs.
+                Note: The processing is done using google gemini API. Refer to their conditions to know about their data handling practices.
+                Any input provided to this tool will be permanently deleted when the instance is terminated.
+                This includes the transcript uploaded to the prototype, as well as all intermediate and final outputs.
+                The final outputs are retained only in the ZIP archive downloaded to your device at the end of the process.
             </span>
         </div>
         <form id="uploadForm" onsubmit="return false;">
@@ -205,7 +206,12 @@
 
         function handleSubmit(e) {
             e.preventDefault();
-            const text = document.getElementById("transcript").value;
+            const text = document.getElementById("transcript").value.trim();
+
+            if (!text) {
+                alert("Please enter a transcript before submitting.");
+                return; 
+            }
 
             // Disable submit to prevent double submission
             document.getElementById("submitButton").disabled = true;
