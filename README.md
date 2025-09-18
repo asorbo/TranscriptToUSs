@@ -21,7 +21,7 @@ The process can take several minutes depending on the transcript’s length and 
 
 ### Transcript Upload & Processing  
 
-<img width="1916" height="861" alt="uploadTranscript" src="https://github.com/user-attachments/assets/e1f11770-8040-43dd-af7f-aec03ba5b159" />  
+<img width="1919" height="854" alt="Screenshot 2025-09-18 195010" src="https://github.com/user-attachments/assets/0a78c566-7e5f-4b48-9265-5e480c9cd535" />
 
 - The user pastes the **elicitation interview transcript**  
 - The system processes it step-by-step, showing progress in real time  
@@ -51,9 +51,88 @@ The process can take several minutes depending on the transcript’s length and 
 
 ---
 
-## How to run the prototype
-Everything is containerized with Docker.
-A brief guide on how to run this is coming soon.
+## How to Run the Prototype
+
+Everything is containerized with Docker.  
+Below is a step-by-step guide on how to set up and run the prototype.
+
+---
+
+### 1. Run the LLM Pipeline
+
+1. **Install Docker**  
+   Follow the official guide: [Install Docker](https://www.docker.com/get-started/)
+
+2. **Clone the repository (or download it using this [link](https://github.com/asorbo/TranscriptToUSs.git))**  
+   ```bash
+   git clone git@github.com:asorbo/TranscriptToUSs.git
+   cd TranscriptToUSs
+   ```
+
+3. **Build and run the Docker image**  
+   ```bash
+   docker build -t elicitation-to-us:latest .
+   docker run -p 3000:3000 elicitation-to-us:latest
+   ```
+
+4. **Open the user interface**  
+   Go to [http://localhost:3000](http://localhost:3000) in your browser.  
+   - Paste the elicitation interview transcript.
+   - Press **Enter** to start processing.
+   - When finished, a `.zip` file containing all outputs will be downloaded automatically.
+
+---
+
+### 2. View the Outputs
+
+#### **Windows**
+1. Extract the downloaded `.zip` folder.
+2. Double-click `start-viewer-windows.exe`.  
+   - If blocked by Windows, click **More info** → **Run anyway**.
+
+---
+
+#### **Linux**
+1. Extract the `.zip` folder.
+2. In the terminal, run:
+   ```bash
+   ./webviewer-linux
+   ```
+   If not executable:
+   ```bash
+   chmod +x ./webviewer-linux
+   ./webviewer-linux
+   ```
+
+---
+
+#### **macOS**
+1. Extract the `.zip` folder.
+2. In the terminal, run:
+   ```bash
+   ./webviewer-mac
+   ```
+   If not executable:
+   ```bash
+   chmod +x ./webviewer-mac
+   ./webviewer-mac
+   ```
+3. If macOS blocks the script:
+   - Go to **System Settings → Privacy & Security**.
+   - Locate the blocked item under **Full Disk Access**, **Accessibility**, or **General → Allow Anyway/Open Anyway**.
+   - Grant permission for the program to run.
+
+---
+
+#### **Any System with Python Installed**
+1. Extract the `.zip` folder.
+2. Install dependencies and start the viewer:
+   ```bash
+   pip install -r requirements.txt
+   python start-viewer-python.py
+   ```
+
+---
 
 ---
 
