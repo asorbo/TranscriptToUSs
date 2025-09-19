@@ -39,7 +39,7 @@ def get_runs_with_same_amount_topics(runs):
 
 
 async def get_topic_texts(topic_list, transcript):
-    batch_size = 5
+    batch_size = 2
 
     async def getAllTopicTexts_batch(batch):
         prompt = GET_TOPIC_TEXTS_PROMPT.format(batch=str(batch), transcript=transcript)
@@ -298,7 +298,7 @@ async def run_pipeline(transcript, stop_event):
 
     # Segment transcript
     log_handler.logger.info("Pipeline status - Part 1/10 started: segment transcript")
-    runs = await segment_transcript(transcript, n_runs=5)
+    runs = await segment_transcript(transcript, n_runs=10)
     if not runs:
         log_handler.logger.error("Failed to segment transcript.")
         return

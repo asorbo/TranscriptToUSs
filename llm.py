@@ -101,7 +101,7 @@ class LLM:
         for attempt in range(max_retries):
             try:
                 if attempt > 0:
-                    prompt = prompt + " **\n" + "**Validate the output before submitting, it must be in valid JSON. In particular avoid this error: " + (str(exception) if exception else "")
+                    prompt = "**Validate the output before submitting, it must be in valid JSON. In particular avoid this error: " + (str(exception) if exception else "") + " **\n" + prompt
                 return await self._generate(prompt, verbose=verbose, jsonOnly=jsonOnly)
             except Exception as e:
                 logging.error(f"Error during generate (attempt {attempt+1}): {e}")

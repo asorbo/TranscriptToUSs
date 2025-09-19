@@ -4,10 +4,10 @@ import webview
 
 # Determine the current directory whether running as script or bundled exe
 if getattr(sys, 'frozen', False):
-    # If bundled by PyInstaller, sys._MEIPASS is a temp folder where files are extracted
-    base_path = sys._MEIPASS
+    # Running as PyInstaller executable
+    base_path = os.path.dirname(sys.executable)
 else:
-    # If running as plain script, use the script's directory
+    # Running as normal script
     base_path = os.path.dirname(os.path.abspath(__file__))
 
 # Path to the frontend folder relative to this file/executable
@@ -26,4 +26,8 @@ window = webview.create_window(
 def maximize(window):
     window.maximize()
 
-webview.start(maximize, window)
+# Force backend on Linux and disable debug mode
+if sys.platform.startswith("linux"):
+    webview.start(maximize, window, gui='gtk', debug=False)
+else:
+    webview.start(maximize, window)

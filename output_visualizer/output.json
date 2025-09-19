@@ -10,19 +10,19 @@
             "topic_id": 2,
             "start_time": "01:12",
             "end_time": "03:26",
-            "label": "Functionality Overview of the Comparator"
+            "label": "Functionalities of the Current Comparator System"
         },
         {
             "topic_id": 3,
             "start_time": "03:27",
             "end_time": "04:18",
-            "label": "Search Functionality and Sorting Options"
+            "label": "Searching and Sorting by City and License Type"
         },
         {
             "topic_id": 4,
             "start_time": "04:20",
             "end_time": "05:08",
-            "label": "Default Sorting Preferences"
+            "label": "Default Sorting Options: Percentage vs. Location"
         },
         {
             "topic_id": 5,
@@ -34,19 +34,25 @@
             "topic_id": 6,
             "start_time": "05:26",
             "end_time": "06:56",
-            "label": "Distance Filter Granularity and Sorting"
+            "label": "Distance Filter Granularity and Sorting by Proximity"
         },
         {
             "topic_id": 7,
             "start_time": "06:56",
             "end_time": "09:36",
-            "label": "Customer Search Process Summary"
+            "label": "Summary of Customer Process and Data Displayed"
         },
         {
             "topic_id": 8,
             "start_time": "09:40",
             "end_time": "10:13",
-            "label": "Map Functionality Importance"
+            "label": "Importance of Interactive Map Functionality"
+        },
+        {
+            "topic_id": 9,
+            "start_time": "10:18",
+            "end_time": "10:46",
+            "label": "Default Sorting Preference: Distance or Passing Percentage"
         }
     ],
     "topic_texts": {
@@ -55,11 +61,11 @@
             "start_time": "00:03",
             "end_time": "01:12",
             "label": "Introductions and Roles at CBR",
-            "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\\\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR.\\\nYou can go first.\\\nOh, okay, I didn't really think about this.\\\nSo, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\\\nSo yeah, that's mostly mine.\\\nOkay, and could you say your name for the recording?\\\nAlso.\\\nOkay, so I'm mostly focusing on the databases of CBR. My name is Daniel.",
+            "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR.\nYou can go first.\nOh, okay, I didn't really think about this.\nSo, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\nSo yeah, that's mostly mine.\nOkay, and could you say your name for the recording?\nAlso.\nOkay, so I'm mostly focusing on the databases of CBR. My name is Daniel.",
             "speaker_turns": [
                 {
                     "speaker": "Agostino",
-                    "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\\\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR."
+                    "text": "Okay, so we're recording. Yeah, thank you for having this interview with us. So we would like to start by getting to know each other.\nSo we would like to ask you what are your titles and what are your responsibilities in a CPR? CBR, yeah, CBR."
                 },
                 {
                     "speaker": "Gosse",
@@ -71,7 +77,7 @@
                 },
                 {
                     "speaker": "Gosse",
-                    "text": "So, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\\\nSo yeah, that's mostly mine."
+                    "text": "So, I'll go first. Okay, so I'm mainly responsible for all of the website pages for CPR itself. So that also includes the one that we're talking about now, the comparator.\nSo yeah, that's mostly mine."
                 },
                 {
                     "speaker": "Agostino",
@@ -88,21 +94,32 @@
             ],
             "requirements": [
                 {
-                    "requirement_id": "044801b2",
-                    "requirement": "I want to maintain and update the website pages for CBR, including the comparator tool",
-                    "role": "Website Manager",
-                    "rationale": "so that the website remains current, accurate, and functional for users.",
+                    "requirement_id": "ee068f28",
+                    "requirement": "I want the website pages to be maintained",
+                    "role": "CPR Website Administrator",
+                    "rationale": "so that I can ensure the website remains functional and up-to-date for users.",
                     "topic_id": 1,
-                    "inferred_rationale_reason": "This expresses a quality requirement, ensuring the website's usability and reliability, which are crucial for user satisfaction and achieving the website's goals.",
+                    "inferred_rationale_reason": "Maintaining website pages ensures that users have access to current information and a working website, which is a quality requirement for user experience.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "583d259e",
-                    "requirement": "I want to focus on the databases of CBR",
-                    "role": "Database Manager",
-                    "rationale": "so that I can ensure data integrity and availability for all CBR operations.",
+                    "requirement_id": "d1fe87fb",
+                    "requirement": "I want the comparator to be maintained",
+                    "role": "CPR Website Administrator",
+                    "rationale": "so that I can ensure its accuracy and functionality for users.",
                     "topic_id": 1,
-                    "inferred_rationale_reason": "Focusing on the databases allows the Database Manager to maintain their health, security, and performance, which is crucial for the CBR's ability to function effectively. This ensures that all data is accurate, accessible, and protected from loss or corruption.",
+                    "inferred_rationale_reason": "Maintaining the comparator ensures it remains accurate and functional, providing value to users who rely on it for comparing products or services. This aligns with the CPR Website Administrator's responsibility to keep the website updated and reliable.",
+                    "is_rationale_inferred": true
+                },
+                {
+                    "requirement_id": "9893b32b",
+                    "requirement": "I want the databases of CBR to be maintained",
+                    "role": "CPR Website Administrator",
+                    "rationale": "so that I can ensure the comparator tool provides accurate and up-to-date information to users.",
+                    "topic_id": 1,
+                    "inferred_role_reason": "The CPR Website Administrator is responsible for maintaining the CPR website, which includes maintaining the databases.",
+                    "is_role_inferred": true,
+                    "inferred_rationale_reason": "Maintaining the CBR databases ensures the data used by the comparator tool is current and reliable, which is crucial for its functionality and user trust. This reflects a quality requirement, ensuring the tool's accuracy.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -111,47 +128,55 @@
             "topic_id": 2,
             "start_time": "01:12",
             "end_time": "03:26",
-            "label": "Functionality Overview of the Comparator",
-            "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\\\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\\\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\\\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\\\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\\\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?",
+            "label": "Functionalities of the Current Comparator System",
+            "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?",
             "speaker_turns": [
                 {
                     "speaker": "Agostino",
-                    "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\\\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\\\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\\\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\\\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\\\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?"
+                    "text": "Okay, perfect, great. So now we would like to continue and try to understand, like to share actually with you our understanding of the domain. So we looked at the document you shared with us and we try also to look at the comparator that you already provide to your customers.\nSo yeah, we'll just try to give you a description of the functionalities we identified. So yeah, so we see that in the ASIS system, we can compare the costs. We are missing the comparing of costs and packages.\nYeah, yeah. We see that you can search by location in the Amsterdam region and you can filter based on a driving license type. That's actually a required thing we know, because we need to specify if we're looking for a car license or scooter or so on.\nAnd then also we saw there's some sorting options. So looking at the success percentage on the exams and the number of exams that each location has registered. And there are also some sorting options.\nYeah, just sort the results. Yeah, yeah. Then we also looked at how you display the results and we understand how the current system works.\nBut we would like you to still walk us through it and through the process that a user goes through in using your system. So if it's possible for you, could you just describe the steps that a user takes on your platform?"
                 }
             ],
             "requirements": [
                 {
-                    "requirement_id": "012465be",
+                    "requirement_id": "60a448a1",
                     "requirement": "I want to compare the costs and packages",
-                    "role": "customer",
-                    "rationale": "so that I can make an informed decision about which driving school to choose.",
+                    "role": "Website User",
+                    "rationale": "so that I can make an informed decision about which driving school best suits my needs and budget.",
                     "topic_id": 2,
-                    "inferred_rationale_reason": "The rationale expresses a quality requirement. Comparing costs and packages helps the customer to make a better decision, thus maximizing informedness.",
+                    "inferred_role_reason": "The 'Website User' role is inferred because the user wants to compare driving schools, and comparing costs and packages directly aligns with their goal of finding a suitable driving school based on their needs and preferences.",
+                    "is_role_inferred": true,
+                    "inferred_rationale_reason": "The user wants to compare costs and packages to make a well-informed decision. This implies a quality requirement related to making the decision-making process easier and more effective.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "b1684c12",
+                    "requirement_id": "11b542d2",
                     "requirement": "I want to search by location in the Amsterdam region",
-                    "role": "customer",
-                    "rationale": "so that I can find driving schools that are conveniently located for me.",
+                    "role": "Website User",
+                    "rationale": "so that I can find driving schools that are convenient for me to attend.",
                     "topic_id": 2,
-                    "inferred_rationale_reason": "The rationale expresses a clarification of means. The end explains the reason for searching by location, which is to find driving schools that are convenient for the customer.",
+                    "inferred_role_reason": "The 'Website User' role is inferred because the user wants to search for driving schools based on location, which aligns with their goal of finding a suitable driving school in their area.",
+                    "is_role_inferred": true,
+                    "inferred_rationale_reason": "Searching by location allows the user to narrow down the driving school options to those that are geographically accessible, increasing convenience.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "e0188aba",
+                    "requirement_id": "c16bc946",
                     "requirement": "I want to filter based on a driving license type",
-                    "role": "customer",
-                    "rationale": "because I need to specify if I'm looking for a car license or scooter or so on",
-                    "topic_id": 2
+                    "role": "Website User",
+                    "rationale": "because I need to specify if I'm looking for a car license or scooter",
+                    "topic_id": 2,
+                    "inferred_role_reason": "The 'Website User' role aligns with the requirement to filter driving schools based on license type. The user's goal is to find a suitable driving school, and filtering by license type (car, scooter, etc.) directly supports this goal by narrowing down the options to those that offer the specific license the user needs.",
+                    "is_role_inferred": true
                 },
                 {
-                    "requirement_id": "ce0b0e3f",
+                    "requirement_id": "ed6525ac",
                     "requirement": "I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered",
-                    "role": "customer",
-                    "rationale": "so that I can quickly identify the driving schools with the best performance and reliability.",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly identify the driving schools with the best performance and most experience.",
                     "topic_id": 2,
-                    "inferred_rationale_reason": "The rationale expresses a quality requirement. Sorting by success percentage and number of exams helps the customer easily find the best driving schools based on performance (success percentage) and reliability (number of exams).",
+                    "inferred_role_reason": "The 'Website User' role was inferred because the user wants to sort the results, which aligns with their goal of easily finding and comparing driving schools based on criteria like success rate. Sorting functionality directly supports their ability to make an informed decision.",
+                    "is_role_inferred": true,
+                    "inferred_rationale_reason": "This rationale expresses a quality requirement. Sorting by success percentage and number of exams helps the user more easily and efficiently identify the best driving schools, thus maximizing efficiency and effectiveness of the search.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -160,53 +185,53 @@
             "topic_id": 3,
             "start_time": "03:27",
             "end_time": "04:18",
-            "label": "Search Functionality and Sorting Options",
-            "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\\\nSo yeah.\\\nSo yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\\\nThere's no default currently.",
+            "label": "Searching and Sorting by City and License Type",
+            "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\nSo yeah.\nSo yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\nThere's no default currently.",
             "speaker_turns": [
                 {
                     "speaker": "Daniël",
-                    "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\\\nSo yeah."
+                    "text": "Yeah, I think so. First of all, you said you can sort on places and you only mentioned Amsterdam, but if I'm correct, you can search for every city in the Netherlands. Okay.\nSo yeah."
                 },
                 {
                     "speaker": "Gosse",
-                    "text": "So yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\\\nThere's no default currently."
+                    "text": "So yeah, it's first you search by the city where you and not per se where you're driving, but where the school is located. Then, of course, the type of license. And lastly, indeed, you can sort it and you are obligated to sort it in some way.\nThere's no default currently."
                 }
             ],
             "requirements": [
                 {
-                    "requirement_id": "ad8c8818",
+                    "requirement_id": "795a8512",
                     "requirement": "I want to be able to search for driving schools in every city in the Netherlands",
-                    "role": "customer",
-                    "rationale": "so that I can find a driving school that is conveniently located for me.",
+                    "role": "Website User",
+                    "rationale": "so that I can find a driving school that is convenient for me.",
                     "topic_id": 3,
-                    "inferred_rationale_reason": "The user wants to find driving schools in their area. This is a clarification of means, as the ability to search by city enables the user to find a suitable driving school.",
+                    "inferred_rationale_reason": "The user wants to find a driving school that is easily accessible, and searching by city allows them to find schools in their local area.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "8cab43b4",
-                    "requirement": "I want to be able to search by the city where the school is located",
-                    "role": "customer",
-                    "rationale": "so that I can find driving schools that are convenient for me.",
+                    "requirement_id": "1f96db03",
+                    "requirement": "I want to search by the city where I am and not necessarily where I'm driving, but where the school is located",
+                    "role": "Website User",
+                    "rationale": "so that I can find driving schools that are convenient for me to attend, regardless of my current location.",
                     "topic_id": 3,
-                    "inferred_rationale_reason": "This expresses a quality requirement. The user wants to easily find driving schools, and searching by city contributes to maximizing convenience.",
+                    "inferred_rationale_reason": "The user wants to find driving schools based on the school's location, not necessarily their current location. This suggests the user wants convenience in terms of attending the school, implying a focus on the school's proximity to their home, work, or other frequently visited places.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "bab5e512",
-                    "requirement": "I want to be able to search by the type of license",
-                    "role": "customer",
+                    "requirement_id": "42d39430",
+                    "requirement": "I want to search by the type of license",
+                    "role": "Website User",
                     "rationale": "so that I can find driving schools that offer the specific license I need.",
                     "topic_id": 3,
-                    "inferred_rationale_reason": "This expresses a clarification of means. The ability to search by license type allows the customer to filter and find driving schools that offer the specific license they are looking for. This directly supports the customer's goal of finding the best driving school option.",
+                    "inferred_rationale_reason": "This rationale expresses a clarification of means. The user wants to search by license type (the means) so that they can achieve the goal of finding schools that offer that license (the end).",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "ffe6c931",
-                    "requirement": "I want the results to be sorted in some way",
-                    "role": "customer",
-                    "rationale": "so that I can quickly find the driving school that best meets my needs.",
+                    "requirement_id": "eacb7095",
+                    "requirement": "I want to sort the search results in some way",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the driving schools that best meet my needs.",
                     "topic_id": 3,
-                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency and satisfaction. Sorting helps the customer quickly identify the most suitable driving school, improving their overall experience.",
+                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency, as the user wants to quickly find the best driving schools. Sorting helps to achieve this.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -215,8 +240,8 @@
             "topic_id": 4,
             "start_time": "04:20",
             "end_time": "05:08",
-            "label": "Default Sorting Preferences",
-            "text": "Is that something that you wish to keep? So as a mandatory interaction, you need to specify the sorting or would you like to have it?\\\nNot per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\\\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away.",
+            "label": "Default Sorting Options: Percentage vs. Location",
+            "text": "Is that something that you wish to keep? So as a mandatory interaction, you need to specify the sorting or would you like to have it?\nNot per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away.",
             "speaker_turns": [
                 {
                     "speaker": "Agostino",
@@ -224,30 +249,19 @@
                 },
                 {
                     "speaker": "Gosse",
-                    "text": "Not per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\\\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away."
+                    "text": "Not per se. I think we can also have a default. And I would say that either the default should be the percentage or it should be how close they are to the location.\nBecause the thing is that like if you search up a smaller town, not Amsterdam, but a smaller town, you will also get schools that are in near towns. Yeah. But like some of them are actually like half an hour drive away."
                 }
             ],
             "requirements": [
                 {
-                    "requirement_id": "0512d194",
-                    "requirement": "I want a default sorting option for driving schools",
-                    "role": "Customer",
-                    "rationale": "so that I can quickly find the most relevant driving schools based on a pre-defined criteria.",
+                    "requirement_id": "8bf21ff6",
+                    "requirement": "I want the default sorting to be by percentage or proximity to the location",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the most relevant driving schools based on my needs.",
                     "topic_id": 4,
-                    "inferred_role_reason": "The Customer role was inferred because the customer wants to easily find a driving school that meets their needs. A default sorting option would help the customer to find the best option.",
+                    "inferred_role_reason": "The 'Website User' role was inferred because the user wants to find and compare driving schools, and the default sorting directly impacts their ability to easily find a suitable school based on their preferences (percentage or proximity).",
                     "is_role_inferred": true,
-                    "inferred_rationale_reason": "A default sorting option provides immediate value to the user by presenting a pre-organized list, saving them the effort of manually sorting and allowing them to quickly identify the most relevant options according to a common or important criteria (e.g., price, rating, distance).",
-                    "is_rationale_inferred": true
-                },
-                {
-                    "requirement_id": "e148edbc",
-                    "requirement": "I want the default sorting to be based on either the percentage of successful students or the proximity to the user's location",
-                    "role": "Customer",
-                    "rationale": "so that I can quickly find a driving school that meets my needs and preferences.",
-                    "topic_id": 4,
-                    "inferred_role_reason": "The customer role was inferred because the customer wants to easily find a driving school that meets their needs. Sorting by success rate or proximity directly benefits the customer in finding a suitable driving school.",
-                    "is_role_inferred": true,
-                    "inferred_rationale_reason": "The rationale expresses a quality requirement. By sorting based on success rate or proximity, the customer can more easily and efficiently find a suitable driving school, maximizing convenience and relevance.",
+                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency and relevance. The user wants to quickly find the best options, which implies a desire to minimize effort and maximize the usefulness of the results.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -257,7 +271,7 @@
             "start_time": "05:08",
             "end_time": "05:26",
             "label": "Filtering Schools by Distance",
-            "text": "That is something that you mentioned in your document as well. So you mentioned that it's harder to filter to only get the schools that are close by.\\\nYeah. Because you can also not sort in that way. Yeah.",
+            "text": "That is something that you mentioned in your document as well. So you mentioned that it's harder to filter to only get the schools that are close by.\nYeah. Because you can also not sort in that way. Yeah.",
             "speaker_turns": [
                 {
                     "speaker": "Agostino",
@@ -268,13 +282,32 @@
                     "text": "Yeah. Because you can also not sort in that way. Yeah."
                 }
             ],
-            "requirements": []
+            "requirements": [
+                {
+                    "requirement_id": "8e811d70",
+                    "requirement": "I want to be able to filter to only get the schools that are close by",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find driving schools that are convenient for me to attend.",
+                    "topic_id": 5,
+                    "inferred_rationale_reason": "The user wants to filter by proximity to save time and effort by only considering schools that are easily accessible.",
+                    "is_rationale_inferred": true
+                },
+                {
+                    "requirement_id": "c8033f92",
+                    "requirement": "I want to be able to sort in that way",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the driving schools that best meet my needs.",
+                    "topic_id": 5,
+                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to sort to quickly find the best options, implying a desire to minimize the time and effort spent searching.",
+                    "is_rationale_inferred": true
+                }
+            ]
         },
         "6": {
             "topic_id": 6,
             "start_time": "05:26",
             "end_time": "06:56",
-            "label": "Distance Filter Granularity and Sorting",
+            "label": "Distance Filter Granularity and Sorting by Proximity",
             "text": "We notice in the, I can show you in the system, we have this filter. Yeah. And we noticed that it only has steps of five kilometers and it starts from five kilometers.\nSo is the issue maybe that this is too largely too coarsely grained? So would you like maybe to have filters on single kilometers or why does this solution?\nI think one is, I mean, one kilometer doesn't do a whole lot, but I think currently like no one is going to look for a driving school 50 kilometers away from the city that they're searching. Like then you will search a different city. So I think everyone is in like the left 10 to 15 kilometers.\nSo it's a really weird scale in that sense. So I think that you can fix that by, yeah. Or increments of one or two.\nOkay. And well, like you can change the search range, but you can't sort them on closest. So say you would have a search range of 50%.\nYou can still not say like, I want the ones that are closer to me on top. You can only sort it by like the percentage and their name, et cetera.",
             "speaker_turns": [
                 {
@@ -288,19 +321,21 @@
             ],
             "requirements": [
                 {
-                    "requirement_id": "2211eb27",
+                    "requirement_id": "9ce57179",
                     "requirement": "I want the filter to have increments of one or two kilometers",
-                    "role": "customer",
-                    "rationale": "because the current filter increments of five kilometers are too coarse-grained, especially within the 10-15 kilometer range where most users search",
-                    "topic_id": 6
+                    "role": "Website User",
+                    "rationale": "so that I can find driving schools within a specific and manageable distance from my location.",
+                    "topic_id": 6,
+                    "inferred_rationale_reason": "The rationale expresses a quality requirement. The user wants to easily find driving schools within a specific distance. Increments of one or two kilometers allow for fine-grained control over the search radius, improving the user's ability to find schools that are conveniently located.",
+                    "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "3fa15640",
-                    "requirement": "I want to be able to sort the search results by proximity",
-                    "role": "customer",
-                    "rationale": "so that I can easily find driving schools that are closest to my location.",
+                    "requirement_id": "01e47881",
+                    "requirement": "I want to be able to sort the driving schools by distance",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the closest driving schools to my location.",
                     "topic_id": 6,
-                    "inferred_rationale_reason": "The rationale expresses a quality requirement, specifically easiness of finding nearby driving schools. Sorting by proximity helps the customer quickly identify the most convenient options.",
+                    "inferred_rationale_reason": "Sorting by distance allows the user to prioritize driving schools that are geographically convenient, saving time and effort in their search.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -309,60 +344,85 @@
             "topic_id": 7,
             "start_time": "06:56",
             "end_time": "09:36",
-            "label": "Customer Search Process Summary",
+            "label": "Summary of Customer Process and Data Displayed",
             "text": "Okay. So basically the missing functionality, it's not really on the filtering side. What we have is ready.\nMaybe also with a smaller, like finer grain. Yeah. But what you actually need is the ability to sort.\nOkay. Great. So just to summarize, so that we're sure that we got the process right, what the customer does when he enters your comparator, the first thing they do is they enter the place, then they select the type of license they're looking for, then the sorting, but we can skip this step and just have the sorting by default being something like percentage or range.\nYeah. So we can maybe sort by distance. Yeah.\nHaving the closest first and the furthest away later. And they can, but it's optional, select some filters as well. Yeah.\nAfter that, the customer gets a list of schools and in this list, they see the name of the school, the place where it's located and the amount of exams that are registered for that school and their percentage of success. Yeah. Correct.\nThen the customer can also extend this, like expand this items in the list and there they have more details. So the details we noticed are the address of the school, the drive-in school number. Yeah.\nThen your chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones? So for auto, scooters or lorries, all of those. And then if they offer theoretical classes and again, same list.\nSo if they offer them for auto, scooters and so on. And then we see also there is an interactive map on top of the search results. So this one, this is a necessary functionality to maintain.",
             "speaker_turns": [
                 {
                     "speaker": "Agostino",
-                    "text": "Okay. So basically the missing functionality, it's not really on the filtering side. What we have is ready.\nMaybe also with a smaller, like finer grain. Yeah. But what you actually need is the ability to sort.\nOkay. Great. So just to summarize, so that we're sure that we got the process right, what the customer does when he enters your comparator, the first thing they do is they enter the place, then they select the type of license they're looking for, then the sorting, but we can skip this step and just have the sorting by default being something like percentage or range.\nYeah. So we can maybe sort by distance. Yeah.\nHaving the closest first and the furthest away later. And they can, but it's optional, select some filters as well. Yeah.\nAfter that, the customer gets a list of schools and in this list, they see the name of the school, the place where it's located and the amount of exams that are registered for that school and their percentage of success. Yeah. Correct.\nThen the customer can also extend this, like expand this items in the list and there they have more details. So the details we noticed are the address of the school, the drive-in school number. Yeah.\nThen your chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones? So for auto, scooters or lorries, all of those. And then if they offer theoretical classes and again, same list.\nSo if they offer them for auto, scooters and so on. And then we see also there is an interactive map on top of the search results. So this one, this is a necessary functionality to maintain."
+                    "text": "Okay. So basically the missing functionality, it's not really on the filtering side. What we have is ready.\nMaybe also with a smaller, like finer grain. Yeah. But what you actually need is the ability to sort."
+                },
+                {
+                    "speaker": "Agostino",
+                    "text": "Okay. Great. So just to summarize, so that we're sure that we got the process right, what the customer does when he enters your comparator, the first thing they do is they enter the place, then they select the type of license they're looking for, then the sorting, but we can skip this step and just have the sorting by default being something like percentage or range."
+                },
+                {
+                    "speaker": "Agostino",
+                    "text": "Yeah. So we can maybe sort by distance. Yeah.\nHaving the closest first and the furthest away later. And they can, but it's optional, select some filters as well. Yeah."
+                },
+                {
+                    "speaker": "Agostino",
+                    "text": "After that, the customer gets a list of schools and in this list, they see the name of the school, the place where it's located and the amount of exams that are registered for that school and their percentage of success. Yeah. Correct."
+                },
+                {
+                    "speaker": "Agostino",
+                    "text": "Then the customer can also extend this, like expand this items in the list and there they have more details. So the details we noticed are the address of the school, the drive-in school number. Yeah.\nThen your chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones? So for auto, scooters or lorries, all of those. And then if they offer theoretical classes and again, same list.\nSo if they offer them for auto, scooters and so on. And then we see also there is an interactive map on top of the search results. So this one, this is a necessary functionality to maintain."
                 }
             ],
             "requirements": [
                 {
-                    "requirement_id": "b6edb162",
-                    "requirement": "I want the ability to sort the list of driving schools",
-                    "role": "customer",
+                    "requirement_id": "60cf2fae",
+                    "requirement": "I want the ability to sort driving schools",
+                    "role": "Website User",
                     "rationale": "so that I can quickly find the driving schools that best meet my needs.",
                     "topic_id": 7,
-                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. Sorting allows the customer to quickly narrow down the options based on their preferences.",
+                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to quickly find the best driving schools, implying a desire to minimize the time and effort spent searching.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "efdf9254",
-                    "requirement": "I want the option to sort by distance, with the closest schools appearing first",
-                    "role": "customer",
-                    "rationale": "so that I can quickly find driving schools that are conveniently located near me.",
+                    "requirement_id": "b00698cc",
+                    "requirement": "I want to be able to sort by distance",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the driving schools closest to me.",
                     "topic_id": 7,
-                    "inferred_rationale_reason": "This expresses a quality requirement, specifically convenience and speed in finding nearby options. The user wants to minimize travel time and effort by prioritizing schools based on proximity.",
+                    "inferred_rationale_reason": "Sorting by distance allows the user to prioritize driving schools based on their proximity, making it easier and faster to find the most convenient options.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "4849106d",
-                    "requirement": "I want to see the name of the school, its location, the number of registered exams, and the success percentage in the list of schools",
-                    "role": "customer",
-                    "rationale": "so that I can easily compare different driving schools based on key criteria.",
+                    "requirement_id": "3c8168e0",
+                    "requirement": "I want the list of schools to be sorted by closest first and the furthest away later",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the driving schools that are most convenient for me.",
                     "topic_id": 7,
-                    "inferred_rationale_reason": "The rationale expresses a quality requirement. Seeing the name, location, number of exams, and success rate allows the customer to easily compare schools, maximizing ease of comparison and informed decision-making.",
+                    "inferred_rationale_reason": "The rationale expresses a quality requirement. Sorting by proximity contributes to maximizing convenience for the user.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "17861adf",
-                    "requirement": "I want to see the address of the school, the driving school number, the Chamber of Commerce number, the phone number, the website, the availability of practical classes (auto, scooters, lorries), and the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details",
-                    "role": "customer",
+                    "requirement_id": "87724295",
+                    "requirement": "I want to see the name of the school, the place where it's located, the amount of exams that are registered for that school and their percentage of success in the list of schools",
+                    "role": "Website User",
+                    "rationale": "so that I can make an informed decision about which driving school to choose.",
+                    "topic_id": 7,
+                    "inferred_rationale_reason": "The rationale expresses a clarification of means. Seeing the school's name, location, exam data, and success rate allows the user to compare schools and choose the one that best fits their needs.",
+                    "is_rationale_inferred": true
+                },
+                {
+                    "requirement_id": "09c3b512",
+                    "requirement": "I want to see the address of the school, the drive-in school number, the chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones (auto, scooters or lorries), if they offer theoretical classes and again, same list (auto, scooters and so on) when I expand the items in the list",
+                    "role": "Website User",
                     "rationale": "so that I can make an informed decision about which driving school best suits my needs.",
                     "topic_id": 7,
-                    "inferred_rationale_reason": "The user story describes the need to see various details of a driving school. The rationale is that by seeing these details, the customer can make a better decision. This is a clarification of means, where the means (seeing the details) helps the customer to make an informed decision.",
+                    "inferred_rationale_reason": "The user story describes the desire to see detailed information about driving schools. The rationale explains that the purpose of seeing this information is to enable the user to make a well-informed decision. This is a quality requirement, as it contributes to maximizing the user's ability to choose the best option.",
                     "is_rationale_inferred": true
                 },
                 {
-                    "requirement_id": "0e97e5bf",
-                    "requirement": "I want an interactive map to be displayed on top of the search results",
-                    "role": "Customer",
+                    "requirement_id": "1a3663e0",
+                    "requirement": "I want an interactive map on top of the search results",
+                    "role": "Website User",
                     "rationale": "so that I can easily find driving schools near me.",
                     "topic_id": 7,
-                    "inferred_role_reason": "The Customer role was inferred because the customer wants to easily find a driving school. An interactive map on top of the search results would help the customer to find a driving school that meets their needs in terms of location.",
+                    "inferred_role_reason": "The 'Website User' role was inferred because the user wants an interactive map on top of the search results. This directly benefits the website user by enhancing their ability to find and compare driving schools based on location, which aligns with their goal of easily finding a suitable driving school in their area.",
                     "is_role_inferred": true,
-                    "inferred_rationale_reason": "The interactive map helps the customer visualize the location of driving schools in relation to their own location or a specific area of interest, making it easier to choose a convenient option. This expresses a dependency on location data.",
+                    "inferred_rationale_reason": "The interactive map helps the user visually identify and locate driving schools in their vicinity, making the search process more efficient and user-friendly. This expresses a quality requirement, maximizing easiness.",
                     "is_rationale_inferred": true
                 }
             ]
@@ -371,8 +431,8 @@
             "topic_id": 8,
             "start_time": "09:40",
             "end_time": "10:13",
-            "label": "Map Functionality Importance",
-            "text": "Well, kind of, because like you can only search on city and like if you live in a big city, then there will be a lot of schools close or in that city, but it doesn't mean that they're close to your house. So if you value that, then you can use the map to see if they're close to your house or not.\nOkay. So we should keep the map. Yeah.",
+            "label": "Importance of Interactive Map Functionality",
+            "text": "Well, kind of, because like you can only search on city and like if you live in a big city, then there will be a lot of schools close or in that city, but it doesn't mean that they're close to your house. So if you value that, then you can use the map to see if they're close to your house or not.\nOkay. So we should keep the map. Yeah.\nOkay.",
             "speaker_turns": [
                 {
                     "speaker": "Gosse",
@@ -380,45 +440,74 @@
                 },
                 {
                     "speaker": "Agostino",
-                    "text": "Okay. So we should keep the map. Yeah."
+                    "text": "Okay. So we should keep the map. Yeah.\nOkay."
                 }
             ],
-            "requirements": []
+            "requirements": [
+                {
+                    "requirement_id": "e66e7340",
+                    "requirement": "I want to be able to see the location of driving schools on a map",
+                    "role": "Website User",
+                    "rationale": "so that I can see if they are close to my house",
+                    "topic_id": 8
+                }
+            ]
+        },
+        "9": {
+            "topic_id": 9,
+            "start_time": "10:18",
+            "end_time": "10:46",
+            "label": "Default Sorting Preference: Distance or Passing Percentage",
+            "text": "So can I ask a follow-up question? So you said that the users are obliged to sort and for them to see results, right? And we said that we might have something that would be a default.\nAnd we said, either it's going to be the distance or the percentage of passing. So do you want us to decide which one is more important or do you prefer something to be the default?",
+            "speaker_turns": [
+                {
+                    "speaker": "Kostas",
+                    "text": "So can I ask a follow-up question? So you said that the users are obliged to sort and for them to see results, right? And we said that we might have something that would be a default.\nAnd we said, either it's going to be the distance or the percentage of passing. So do you want us to decide which one is more important or do you prefer something to be the default?"
+                }
+            ],
+            "requirements": [
+                {
+                    "requirement_id": "aa3161e3",
+                    "requirement": "I want a default sorting option for the results",
+                    "role": "Website User",
+                    "rationale": "so that I can quickly find the most relevant driving schools based on my preferences.",
+                    "topic_id": 9,
+                    "inferred_role_reason": "The 'Website User' role was inferred because the requirement directly relates to improving the user experience when comparing driving schools. A default sorting option would help users more easily find the information they need.",
+                    "is_role_inferred": true,
+                    "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to quickly find relevant results, indicating a desire for a more efficient search experience.",
+                    "is_rationale_inferred": true
+                }
+            ]
         }
     },
     "roles": {
-        "website manager": {
-            "role": "Website Manager",
-            "description": "Individual responsible for maintaining and updating the website pages, including the comparator tool.",
-            "general_goal": "I want to ensure the website is up-to-date and functioning correctly, especially the comparator tool. It's important that users can easily access and use the tool to find the information they need. I aim to provide a seamless and informative experience for all website visitors."
+        "website user": {
+            "role": "Website User",
+            "description": "An individual seeking to compare driving schools based on location, license type, and other criteria.",
+            "general_goal": "I want to easily find a suitable driving school in my area that offers the specific license type I need. I want to be able to compare schools based on factors like success rate, distance, and available courses to make an informed decision that fits my needs and preferences."
         },
-        "database manager": {
-            "role": "Database Manager",
-            "description": "Individual responsible for managing and maintaining the databases associated with the CBR (presumably driving license organization).",
-            "general_goal": "I need to ensure the databases are accurate, reliable, and up-to-date. It's crucial that the data is readily available for the comparator tool and other website functionalities. I strive to maintain data integrity and accessibility for all relevant applications."
-        },
-        "customer": {
-            "role": "Customer",
-            "description": "A person looking for a driving school and using the comparator tool to find the best option.",
-            "general_goal": "I want to quickly and easily find a driving school that meets my needs in terms of location, license type, and success rate. It's important that I can compare different schools and see all the relevant details, such as address, contact information, and available classes, so I can make an informed decision."
+        "cpr website administrator": {
+            "role": "CPR Website Administrator",
+            "description": "The person responsible for maintaining and updating the CPR website, including the comparator tool.",
+            "general_goal": "I want to ensure that the website provides accurate and up-to-date information to users, enabling them to easily find and compare driving schools. I want to improve the user experience by offering relevant sorting and filtering options, and by addressing any issues or limitations in the current system."
         },
         "driving school": {
             "role": "Driving School",
-            "description": "A business that provides driving lessons and registers exam results.",
-            "general_goal": "I want to ensure that potential customers can easily find my driving school through the comparator tool. It's important that my school's information, including location, contact details, and success rates, is accurately displayed and that I appear prominently in relevant search results. I aim to attract more students and grow my business."
+            "description": "A business that provides driving lessons and prepares students for driving tests.",
+            "general_goal": "I want to be accurately represented on the comparator website so that potential students can find my school. I want to ensure that my school's information, such as location, courses offered, and success rates, are displayed correctly and attractively to increase enrollment."
         }
     },
     "requirements": {
-        "044801b2": {
-            "requirement_id": "044801b2",
-            "requirement": "I want to maintain and update the website pages for CBR, including the comparator tool",
-            "role": "Website Manager",
-            "rationale": "so that the website remains current, accurate, and functional for users.",
+        "ee068f28": {
+            "requirement_id": "ee068f28",
+            "requirement": "I want the website pages to be maintained",
+            "role": "CPR Website Administrator",
+            "rationale": "so that I can ensure the website remains functional and up-to-date for users.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a quality requirement, ensuring the website's usability and reliability, which are crucial for user satisfaction and achieving the website's goals.",
+            "inferred_rationale_reason": "Maintaining website pages ensures that users have access to current information and a working website, which is a quality requirement for user experience.",
             "inferred_role_reason": "",
-            "user_story": "As a Website Manager, I want to maintain and update the website pages for CBR, including the comparator tool, so that the website remains current, accurate, and functional for users..",
+            "user_story": "As a CPR Website Administrator, I want the website pages to be maintained, so that I can ensure the website remains functional and up-to-date for users..",
             "topic_id": 1,
             "criteria_violations": {
                 "Well-formed": {
@@ -428,10 +517,10 @@
                 },
                 "Atomic": {
                     "isViolated": true,
-                    "reason": "The user story includes two separate requirements: maintaining website pages and updating the comparator tool. This user story should be split into two.",
+                    "reason": "The user story includes two requirements: maintaining the website pages and ensuring the website remains functional and up-to-date. This user story should be split into two.",
                     "improvement": [
-                        "As a Website Manager, I want to maintain and update the website pages for CBR, so that the website remains current, accurate, and functional for users.",
-                        "As a Website Manager, I want to maintain and update the comparator tool, so that the website remains current, accurate, and functional for users."
+                        "As a CPR Website Administrator, I want the website pages to be maintained.",
+                        "As a CPR Website Administrator, I want to ensure the website remains functional and up-to-date for users."
                     ]
                 },
                 "Minimal": {
@@ -466,24 +555,83 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": "The user story violates the atomic criterion because it includes two separate requirements: maintaining website pages and updating the comparator tool.",
+                    "reason": "The user story is not atomic, as it includes two requirements: maintaining the website pages and ensuring the website remains functional and up-to-date.",
                     "improvement": [
-                        "As a Website Manager, I want to maintain and update the website pages for CBR, so that the website remains current, accurate, and functional for users.",
-                        "As a Website Manager, I want to maintain and update the comparator tool, so that the website remains current, accurate, and functional for users."
+                        "As a CPR Website Administrator, I want the website pages to be maintained.",
+                        "As a CPR Website Administrator, I want to ensure the website remains functional and up-to-date for users."
                     ]
                 }
             }
         },
-        "583d259e": {
-            "requirement_id": "583d259e",
-            "requirement": "I want to focus on the databases of CBR",
-            "role": "Database Manager",
-            "rationale": "so that I can ensure data integrity and availability for all CBR operations.",
+        "d1fe87fb": {
+            "requirement_id": "d1fe87fb",
+            "requirement": "I want the comparator to be maintained",
+            "role": "CPR Website Administrator",
+            "rationale": "so that I can ensure its accuracy and functionality for users.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "Focusing on the databases allows the Database Manager to maintain their health, security, and performance, which is crucial for the CBR's ability to function effectively. This ensures that all data is accurate, accessible, and protected from loss or corruption.",
+            "inferred_rationale_reason": "Maintaining the comparator ensures it remains accurate and functional, providing value to users who rely on it for comparing products or services. This aligns with the CPR Website Administrator's responsibility to keep the website updated and reliable.",
             "inferred_role_reason": "",
-            "user_story": "As a Database Manager, I want to focus on the databases of CBR, so that I can ensure data integrity and availability for all CBR operations..",
+            "user_story": "As a CPR Website Administrator, I want the comparator to be maintained, so that I can ensure its accuracy and functionality for users..",
+            "topic_id": 1,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": true,
+                    "reason": "The user story does not adhere to the correct syntax, as it has no means.",
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": true,
+                    "reason": "The means does not describe a concrete system feature but rather an abstract goal. 'Comparator to be maintained' is a desired outcome, not a concrete feature that the system can provide. This lacks conceptual clarity and should be reformulated to describe the actual functionality that supports this goal.",
+                    "improvement": "As a CPR Website Administrator, I want to update the comparator, so that I can ensure its accuracy and functionality for users."
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": false,
+                    "ambiguity_types": [],
+                    "reason": null,
+                    "improvement": null
+                },
+                "Full sentence": {
+                    "isViolated": true,
+                    "reason": "The user story is not expressed as a full sentence (in addition to not complying with syntactic quality). A user story should read like a full sentence, without typos or grammatical errors. By reformulating the feature as a full sentence user story, it will automatically specify what exactly needs to be configured.",
+                    "improvement": "As a CPR Website Administrator, I want to maintain the comparator, so that I can ensure its accuracy and functionality for users."
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story violates the well-formed, conceptually sound, and full sentence criteria. It lacks a means, describes an abstract goal instead of a concrete feature, and is not a full sentence.",
+                    "improvement": "As a CPR Website Administrator, I want to update the comparator, so that I can ensure its accuracy and functionality for users."
+                }
+            }
+        },
+        "9893b32b": {
+            "requirement_id": "9893b32b",
+            "requirement": "I want the databases of CBR to be maintained",
+            "role": "CPR Website Administrator",
+            "rationale": "so that I can ensure the comparator tool provides accurate and up-to-date information to users.",
+            "is_role_inferred": true,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "Maintaining the CBR databases ensures the data used by the comparator tool is current and reliable, which is crucial for its functionality and user trust. This reflects a quality requirement, ensuring the tool's accuracy.",
+            "inferred_role_reason": "The CPR Website Administrator is responsible for maintaining the CPR website, which includes maintaining the databases.",
+            "user_story": "As a CPR Website Administrator, I want the databases of CBR to be maintained, so that I can ensure the comparator tool provides accurate and up-to-date information to users..",
             "topic_id": 1,
             "criteria_violations": {
                 "Well-formed": {
@@ -493,10 +641,10 @@
                 },
                 "Atomic": {
                     "isViolated": true,
-                    "reason": "The user story expresses two distinct requirements: ensuring data integrity and ensuring data availability. These should be separated into two distinct user stories.",
+                    "reason": "The user story includes two requirements: maintaining the databases and ensuring the comparator tool provides accurate and up-to-date information. These should be separate user stories.",
                     "improvement": [
-                        "As a Database Manager, I want to focus on the databases of CBR, so that I can ensure data integrity for all CBR operations.",
-                        "As a Database Manager, I want to focus on the databases of CBR, so that I can ensure data availability for all CBR operations."
+                        "As a CPR Website Administrator, I want the databases of CBR to be maintained.",
+                        "As a CPR Website Administrator, I want to ensure the comparator tool provides accurate and up-to-date information to users."
                     ]
                 },
                 "Minimal": {
@@ -531,24 +679,24 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": "The user story violates the atomic criterion because it combines two distinct requirements: ensuring data integrity and ensuring data availability. These should be separated into two distinct user stories.",
+                    "reason": "The user story violates the atomic criterion because it contains two separate requirements.",
                     "improvement": [
-                        "As a Database Manager, I want to focus on the databases of CBR, so that I can ensure data integrity for all CBR operations.",
-                        "As a Database Manager, I want to focus on the databases of CBR, so that I can ensure data availability for all CBR operations."
+                        "As a CPR Website Administrator, I want the databases of CBR to be maintained.",
+                        "As a CPR Website Administrator, I want to ensure the comparator tool provides accurate and up-to-date information to users."
                     ]
                 }
             }
         },
-        "012465be": {
-            "requirement_id": "012465be",
+        "60a448a1": {
+            "requirement_id": "60a448a1",
             "requirement": "I want to compare the costs and packages",
-            "role": "customer",
-            "rationale": "so that I can make an informed decision about which driving school to choose.",
-            "is_role_inferred": false,
+            "role": "Website User",
+            "rationale": "so that I can make an informed decision about which driving school best suits my needs and budget.",
+            "is_role_inferred": true,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a quality requirement. Comparing costs and packages helps the customer to make a better decision, thus maximizing informedness.",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to compare the costs and packages, so that I can make an informed decision about which driving school to choose..",
+            "inferred_rationale_reason": "The user wants to compare costs and packages to make a well-informed decision. This implies a quality requirement related to making the decision-making process easier and more effective.",
+            "inferred_role_reason": "The 'Website User' role is inferred because the user wants to compare driving schools, and comparing costs and packages directly aligns with their goal of finding a suitable driving school based on their needs and preferences.",
+            "user_story": "As a Website User, I want to compare the costs and packages, so that I can make an informed decision about which driving school best suits my needs and budget..",
             "topic_id": 2,
             "criteria_violations": {
                 "Well-formed": {
@@ -560,8 +708,258 @@
                     "isViolated": true,
                     "reason": "The user story includes two requirements: comparing costs and comparing packages. This user story should be split into two.",
                     "improvement": [
-                        "As a customer, I want to compare the costs, so that I can make an informed decision about which driving school to choose.",
-                        "As a customer, I want to compare the packages, so that I can make an informed decision about which driving school to choose."
+                        "As a Website User, I want to compare the costs, so that I can make an informed decision about which driving school best suits my needs and budget.",
+                        "As a Website User, I want to compare the packages, so that I can make an informed decision about which driving school best suits my needs and budget."
+                    ]
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": false,
+                    "ambiguity_types": [],
+                    "reason": null,
+                    "improvement": null
+                },
+                "Full sentence": {
+                    "isViolated": true,
+                    "reason": "The user story ends with a period followed by two periods. A user story should read like a full sentence, without typos or grammatical errors.",
+                    "improvement": "As a Website User, I want to compare the costs and packages, so that I can make an informed decision about which driving school best suits my needs and budget."
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story includes two requirements: comparing costs and comparing packages. The user story also ends with a period followed by two periods.",
+                    "improvement": [
+                        "As a Website User, I want to compare the costs, so that I can make an informed decision about which driving school best suits my needs and budget.",
+                        "As a Website User, I want to compare the packages, so that I can make an informed decision about which driving school best suits my needs and budget."
+                    ]
+                }
+            }
+        },
+        "11b542d2": {
+            "requirement_id": "11b542d2",
+            "requirement": "I want to search by location in the Amsterdam region",
+            "role": "Website User",
+            "rationale": "so that I can find driving schools that are convenient for me to attend.",
+            "is_role_inferred": true,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "Searching by location allows the user to narrow down the driving school options to those that are geographically accessible, increasing convenience.",
+            "inferred_role_reason": "The 'Website User' role is inferred because the user wants to search for driving schools based on location, which aligns with their goal of finding a suitable driving school in their area.",
+            "user_story": "As a Website User, I want to search by location in the Amsterdam region, so that I can find driving schools that are convenient for me to attend..",
+            "topic_id": 2,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'location' is lexically ambiguous because it could refer to a specific address, a neighborhood, or a broader area. The phrase 'Amsterdam region' is also ambiguous, as it is not clear what geographical boundaries it encompasses. This ambiguity makes it difficult to understand the precise scope of the search.",
+                    "improvement": "As a Website User, I want to search by postal code in Amsterdam, so that I can find driving schools that are convenient for me to attend."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story is ambiguous because the term 'location' and the phrase 'Amsterdam region' are not clearly defined.",
+                    "improvement": "As a Website User, I want to search by postal code in Amsterdam, so that I can find driving schools that are convenient for me to attend."
+                }
+            }
+        },
+        "c16bc946": {
+            "requirement_id": "c16bc946",
+            "requirement": "I want to filter based on a driving license type",
+            "role": "Website User",
+            "rationale": "because I need to specify if I'm looking for a car license or scooter",
+            "is_role_inferred": true,
+            "is_rationale_inferred": false,
+            "inferred_rationale_reason": "",
+            "inferred_role_reason": "The 'Website User' role aligns with the requirement to filter driving schools based on license type. The user's goal is to find a suitable driving school, and filtering by license type (car, scooter, etc.) directly supports this goal by narrowing down the options to those that offer the specific license the user needs.",
+            "user_story": "As a Website User, I want to filter based on a driving license type, because I need to specify if I'm looking for a car license or scooter.",
+            "topic_id": 2,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": false,
+                    "ambiguity_types": [],
+                    "reason": null,
+                    "improvement": null
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": null,
+                    "improvement": null
+                }
+            }
+        },
+        "ed6525ac": {
+            "requirement_id": "ed6525ac",
+            "requirement": "I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered",
+            "role": "Website User",
+            "rationale": "so that I can quickly identify the driving schools with the best performance and most experience.",
+            "is_role_inferred": true,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "This rationale expresses a quality requirement. Sorting by success percentage and number of exams helps the user more easily and efficiently identify the best driving schools, thus maximizing efficiency and effectiveness of the search.",
+            "inferred_role_reason": "The 'Website User' role was inferred because the user wants to sort the results, which aligns with their goal of easily finding and comparing driving schools based on criteria like success rate. Sorting functionality directly supports their ability to make an informed decision.",
+            "user_story": "As a Website User, I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered, so that I can quickly identify the driving schools with the best performance and most experience..",
+            "topic_id": 2,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": true,
+                    "reason": "The user story includes two requirements: sorting by success percentage and sorting by the number of exams. This user story should be split into two.",
+                    "improvement": [
+                        "As a Website User, I want to sort the results based on the success percentage on the exams, so that I can quickly identify the driving schools with the best performance.",
+                        "As a Website User, I want to sort the results based on the number of exams that each location has registered, so that I can quickly identify the driving schools with the most experience."
+                    ]
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": false,
+                    "ambiguity_types": [],
+                    "reason": null,
+                    "improvement": null
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story violates the atomic criterion because it contains two separate requirements: sorting by success percentage and sorting by the number of exams.",
+                    "improvement": [
+                        "As a Website User, I want to sort the results based on the success percentage on the exams, so that I can quickly identify the driving schools with the best performance.",
+                        "As a Website User, I want to sort the results based on the number of exams that each location has registered, so that I can quickly identify the driving schools with the most experience."
+                    ]
+                }
+            }
+        },
+        "795a8512": {
+            "requirement_id": "795a8512",
+            "requirement": "I want to be able to search for driving schools in every city in the Netherlands",
+            "role": "Website User",
+            "rationale": "so that I can find a driving school that is convenient for me.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "The user wants to find a driving school that is easily accessible, and searching by city allows them to find schools in their local area.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want to be able to search for driving schools in every city in the Netherlands, so that I can find a driving school that is convenient for me..",
+            "topic_id": 3,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": true,
+                    "reason": "The user story contains two requirements: searching for driving schools and finding a convenient one. These should be separate user stories.",
+                    "improvement": [
+                        "As a Website User, I want to be able to search for driving schools in every city in the Netherlands",
+                        "As a Website User, I want to find a driving school that is convenient for me."
                     ]
                 },
                 "Minimal": {
@@ -598,211 +996,22 @@
                 "overall_improvement": {
                     "reason": "The user story violates the atomic criterion because it contains two requirements.",
                     "improvement": [
-                        "As a customer, I want to compare the costs, so that I can make an informed decision about which driving school to choose.",
-                        "As a customer, I want to compare the packages, so that I can make an informed decision about which driving school to choose."
+                        "As a Website User, I want to be able to search for driving schools in every city in the Netherlands",
+                        "As a Website User, I want to find a driving school that is convenient for me."
                     ]
                 }
             }
         },
-        "b1684c12": {
-            "requirement_id": "b1684c12",
-            "requirement": "I want to search by location in the Amsterdam region",
-            "role": "customer",
-            "rationale": "so that I can find driving schools that are conveniently located for me.",
+        "1f96db03": {
+            "requirement_id": "1f96db03",
+            "requirement": "I want to search by the city where I am and not necessarily where I'm driving, but where the school is located",
+            "role": "Website User",
+            "rationale": "so that I can find driving schools that are convenient for me to attend, regardless of my current location.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a clarification of means. The end explains the reason for searching by location, which is to find driving schools that are convenient for the customer.",
+            "inferred_rationale_reason": "The user wants to find driving schools based on the school's location, not necessarily their current location. This suggests the user wants convenience in terms of attending the school, implying a focus on the school's proximity to their home, work, or other frequently visited places.",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want to search by location in the Amsterdam region, so that I can find driving schools that are conveniently located for me..",
-            "topic_id": 2,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": true,
-                    "ambiguity_types": [
-                        "lexical",
-                        "semantic"
-                    ],
-                    "reason": "The term 'Amsterdam region' is ambiguous (lexical ambiguity) because it is not clear what area it covers. The meaning of 'conveniently located' is context-dependent (semantic ambiguity).",
-                    "improvement": "As a customer, I want to search by location within a 10-kilometer radius of Amsterdam, so that I can find driving schools that are close to my home."
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": "The user story is ambiguous because the term 'Amsterdam region' is not clearly defined, and the meaning of 'conveniently located' is context-dependent.",
-                    "improvement": "As a customer, I want to search by location within a 10-kilometer radius of Amsterdam, so that I can find driving schools that are close to my home."
-                }
-            }
-        },
-        "e0188aba": {
-            "requirement_id": "e0188aba",
-            "requirement": "I want to filter based on a driving license type",
-            "role": "customer",
-            "rationale": "because I need to specify if I'm looking for a car license or scooter or so on",
-            "is_role_inferred": false,
-            "is_rationale_inferred": false,
-            "inferred_rationale_reason": "",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to filter based on a driving license type, because I need to specify if I'm looking for a car license or scooter or so on.",
-            "topic_id": 2,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": false,
-                    "ambiguity_types": [],
-                    "reason": null,
-                    "improvement": null
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": null,
-                    "improvement": null
-                }
-            }
-        },
-        "ce0b0e3f": {
-            "requirement_id": "ce0b0e3f",
-            "requirement": "I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered",
-            "role": "customer",
-            "rationale": "so that I can quickly identify the driving schools with the best performance and reliability.",
-            "is_role_inferred": false,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a quality requirement. Sorting by success percentage and number of exams helps the customer easily find the best driving schools based on performance (success percentage) and reliability (number of exams).",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered, so that I can quickly identify the driving schools with the best performance and reliability..",
-            "topic_id": 2,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": true,
-                    "reason": "The user story describes two distinct sorting criteria: sorting by success percentage and sorting by the number of exams registered. These should be separate user stories.",
-                    "improvement": [
-                        "As a customer, I want to sort the results based on the success percentage on the exams, so that I can quickly identify the driving schools with the best performance.",
-                        "As a customer, I want to sort the results based on the number of exams that each location has registered, so that I can quickly identify the driving schools with the most reliability."
-                    ]
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": false,
-                    "ambiguity_types": [],
-                    "reason": null,
-                    "improvement": null
-                },
-                "Full sentence": {
-                    "isViolated": true,
-                    "reason": "The user story is too long and complex, making it difficult to read and understand at a glance. It should be broken down into smaller, more manageable sentences.",
-                    "improvement": "As a customer, I want to sort the results based on the success percentage on the exams and the number of exams that each location has registered, so that I can quickly identify the driving schools with the best performance and reliability."
-                },
-                "Estimatable": {
-                    "isViolated": true,
-                    "reason": "The user story is too broad. Sorting by 'success percentage' and 'number of exams' are two different features that should be estimated separately. Combining them makes the story too coarse-grained for accurate estimation.",
-                    "improvement": [
-                        "As a customer, I want to sort the results based on the success percentage on the exams, so that I can quickly identify the driving schools with the best performance.",
-                        "As a customer, I want to sort the results based on the number of exams that each location has registered, so that I can quickly identify the driving schools with the most reliability."
-                    ]
-                },
-                "overall_improvement": {
-                    "reason": "The user story violates the atomic, full sentence, and estimatable criteria. It combines two distinct sorting features into a single story, making it too complex and difficult to estimate.",
-                    "improvement": [
-                        "As a customer, I want to sort the results based on the success percentage on the exams, so that I can quickly identify the driving schools with the best performance.",
-                        "As a customer, I want to sort the results based on the number of exams that each location has registered, so that I can quickly identify the driving schools with the most reliability."
-                    ]
-                }
-            }
-        },
-        "ad8c8818": {
-            "requirement_id": "ad8c8818",
-            "requirement": "I want to be able to search for driving schools in every city in the Netherlands",
-            "role": "customer",
-            "rationale": "so that I can find a driving school that is conveniently located for me.",
-            "is_role_inferred": false,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The user wants to find driving schools in their area. This is a clarification of means, as the ability to search by city enables the user to find a suitable driving school.",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to be able to search for driving schools in every city in the Netherlands, so that I can find a driving school that is conveniently located for me..",
+            "user_story": "As a Website User, I want to search by the city where I am and not necessarily where I'm driving, but where the school is located, so that I can find driving schools that are convenient for me to attend, regardless of my current location..",
             "topic_id": 3,
             "criteria_violations": {
                 "Well-formed": {
@@ -811,70 +1020,12 @@
                     "improvement": null
                 },
                 "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
                     "isViolated": true,
-                    "ambiguity_types": [
-                        "semantic"
-                    ],
-                    "reason": "The phrase 'every city in the Netherlands' is semantically ambiguous because it depends on the context of what constitutes a 'city'. The definition of 'city' can vary (e.g., by population, administrative status).",
-                    "improvement": "As a customer, I want to be able to search for driving schools in every municipality in the Netherlands, so that I can find a driving school that is conveniently located for me."
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": "The user story is semantically ambiguous because the definition of 'city' is not clear.",
-                    "improvement": "As a customer, I want to be able to search for driving schools in every municipality in the Netherlands, so that I can find a driving school that is conveniently located for me."
-                }
-            }
-        },
-        "8cab43b4": {
-            "requirement_id": "8cab43b4",
-            "requirement": "I want to be able to search by the city where the school is located",
-            "role": "customer",
-            "rationale": "so that I can find driving schools that are convenient for me.",
-            "is_role_inferred": false,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a quality requirement. The user wants to easily find driving schools, and searching by city contributes to maximizing convenience.",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to be able to search by the city where the school is located, so that I can find driving schools that are convenient for me..",
-            "topic_id": 3,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
+                    "reason": "The user story includes two requirements: searching by city and finding convenient driving schools. These should be separate user stories.",
+                    "improvement": [
+                        "As a Website User, I want to search by the city where the school is located.",
+                        "As a Website User, I want to find driving schools that are convenient for me to attend, regardless of my current location."
+                    ]
                 },
                 "Minimal": {
                     "isViolated": false,
@@ -908,21 +1059,24 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": null,
-                    "improvement": null
+                    "reason": "The user story violates the atomic criterion because it combines two distinct requirements: searching by city and finding convenient driving schools. These should be separated into two user stories for clarity and better estimation.",
+                    "improvement": [
+                        "As a Website User, I want to search by the city where the school is located, so that I can find driving schools in a specific area.",
+                        "As a Website User, I want to find driving schools that are convenient for me to attend, regardless of my current location, so that I can choose a school that fits my needs."
+                    ]
                 }
             }
         },
-        "bab5e512": {
-            "requirement_id": "bab5e512",
-            "requirement": "I want to be able to search by the type of license",
-            "role": "customer",
+        "42d39430": {
+            "requirement_id": "42d39430",
+            "requirement": "I want to search by the type of license",
+            "role": "Website User",
             "rationale": "so that I can find driving schools that offer the specific license I need.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a clarification of means. The ability to search by license type allows the customer to filter and find driving schools that offer the specific license they are looking for. This directly supports the customer's goal of finding the best driving school option.",
+            "inferred_rationale_reason": "This rationale expresses a clarification of means. The user wants to search by license type (the means) so that they can achieve the goal of finding schools that offer that license (the end).",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want to be able to search by the type of license, so that I can find driving schools that offer the specific license I need..",
+            "user_story": "As a Website User, I want to search by the type of license, so that I can find driving schools that offer the specific license I need..",
             "topic_id": 3,
             "criteria_violations": {
                 "Well-formed": {
@@ -972,330 +1126,394 @@
                 }
             }
         },
-        "ffe6c931": {
-            "requirement_id": "ffe6c931",
-            "requirement": "I want the results to be sorted in some way",
-            "role": "customer",
-            "rationale": "so that I can quickly find the driving school that best meets my needs.",
-            "is_role_inferred": false,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency and satisfaction. Sorting helps the customer quickly identify the most suitable driving school, improving their overall experience.",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want the results to be sorted in some way, so that I can quickly find the driving school that best meets my needs..",
-            "topic_id": 3,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": true,
-                    "reason": "The user story contains two requirements: sorting the results and quickly finding the driving school. This user story should be split into two.",
-                    "improvement": [
-                        "As a customer, I want the results to be sorted in some way",
-                        "As a customer, I want to quickly find the driving school that best meets my needs."
-                    ]
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": true,
-                    "ambiguity_types": [
-                        "lexical"
-                    ],
-                    "reason": "The phrase 'in some way' is lexically ambiguous because it does not specify the criteria by which the results should be sorted. This lack of specificity can lead to multiple interpretations of how the results are sorted.",
-                    "improvement": "As a customer, I want the results to be sorted by price, distance, and rating, so that I can quickly find the driving school that best meets my needs."
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": true,
-                    "reason": "The user story is too coarse-grained to be easily estimatable. The sorting functionality could range from a simple alphabetical sort to a complex algorithm considering multiple factors. Similarly, 'quickly find' is vague and could involve various search and filtering mechanisms. These many functionalities inhibit accurate estimation and call for splitting the user story into multiple user stories.",
-                    "improvement": [
-                        "As a customer, I want the results to be sorted by price, distance, and rating",
-                        "As a customer, I want to filter the results by price, distance, and rating, so that I can quickly find the driving school that best meets my needs."
-                    ]
-                },
-                "overall_improvement": {
-                    "reason": "The user story violates the atomic, unambiguous, and estimatable criteria. It contains two requirements, uses the ambiguous phrase 'in some way', and is too coarse-grained to be easily estimatable.",
-                    "improvement": [
-                        "As a customer, I want the results to be sorted by price, distance, and rating",
-                        "As a customer, I want to filter the results by price, distance, and rating, so that I can quickly find the driving school that best meets my needs."
-                    ]
-                }
-            }
-        },
-        "0512d194": {
-            "requirement_id": "0512d194",
-            "requirement": "I want a default sorting option for driving schools",
-            "role": "Customer",
-            "rationale": "so that I can quickly find the most relevant driving schools based on a pre-defined criteria.",
-            "is_role_inferred": true,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "A default sorting option provides immediate value to the user by presenting a pre-organized list, saving them the effort of manually sorting and allowing them to quickly identify the most relevant options according to a common or important criteria (e.g., price, rating, distance).",
-            "inferred_role_reason": "The Customer role was inferred because the customer wants to easily find a driving school that meets their needs. A default sorting option would help the customer to find the best option.",
-            "user_story": "As a Customer, I want a default sorting option for driving schools, so that I can quickly find the most relevant driving schools based on a pre-defined criteria..",
-            "topic_id": 4,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": true,
-                    "ambiguity_types": [
-                        "lexical"
-                    ],
-                    "reason": "The term 'relevant' is ambiguous because it is subjective and lacks a clear, measurable definition. What one customer considers relevant may differ significantly from another's perspective. This lexical ambiguity makes the user story unclear, as it does not specify what criteria are used to determine relevance.",
-                    "improvement": "As a Customer, I want a default sorting option for driving schools based on average rating and distance, so that I can quickly find the highest-rated driving schools nearest to me."
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": "The user story is ambiguous because the term 'relevant' is subjective and lacks a clear, measurable definition.",
-                    "improvement": "As a Customer, I want a default sorting option for driving schools based on average rating and distance, so that I can quickly find the highest-rated driving schools nearest to me."
-                }
-            }
-        },
-        "e148edbc": {
-            "requirement_id": "e148edbc",
-            "requirement": "I want the default sorting to be based on either the percentage of successful students or the proximity to the user's location",
-            "role": "Customer",
-            "rationale": "so that I can quickly find a driving school that meets my needs and preferences.",
-            "is_role_inferred": true,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a quality requirement. By sorting based on success rate or proximity, the customer can more easily and efficiently find a suitable driving school, maximizing convenience and relevance.",
-            "inferred_role_reason": "The customer role was inferred because the customer wants to easily find a driving school that meets their needs. Sorting by success rate or proximity directly benefits the customer in finding a suitable driving school.",
-            "user_story": "As a Customer, I want the default sorting to be based on either the percentage of successful students or the proximity to the user's location, so that I can quickly find a driving school that meets my needs and preferences..",
-            "topic_id": 4,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": true,
-                    "reason": "The user story describes two alternative sorting criteria: percentage of successful students and proximity to the user's location. These should be separate user stories.",
-                    "improvement": [
-                        "As a Customer, I want the default sorting to be based on the percentage of successful students, so that I can quickly find a driving school that meets my needs and preferences.",
-                        "As a Customer, I want the default sorting to be based on the proximity to the user's location, so that I can quickly find a driving school that meets my needs and preferences."
-                    ]
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": false,
-                    "ambiguity_types": [],
-                    "reason": null,
-                    "improvement": null
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": "The user story violates the atomic criterion because it describes two alternative sorting criteria.",
-                    "improvement": [
-                        "As a Customer, I want the default sorting to be based on the percentage of successful students, so that I can quickly find a driving school that meets my needs and preferences.",
-                        "As a Customer, I want the default sorting to be based on the proximity to the user's location, so that I can quickly find a driving school that meets my needs and preferences."
-                    ]
-                }
-            }
-        },
-        "2211eb27": {
-            "requirement_id": "2211eb27",
-            "requirement": "I want the filter to have increments of one or two kilometers",
-            "role": "customer",
-            "rationale": "because the current filter increments of five kilometers are too coarse-grained, especially within the 10-15 kilometer range where most users search",
-            "is_role_inferred": false,
-            "is_rationale_inferred": false,
-            "inferred_rationale_reason": "",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want the filter to have increments of one or two kilometers, because the current filter increments of five kilometers are too coarse-grained, especially within the 10-15 kilometer range where most users search.",
-            "topic_id": 6,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": false,
-                    "ambiguity_types": [],
-                    "reason": null,
-                    "improvement": null
-                },
-                "Full sentence": {
-                    "isViolated": true,
-                    "reason": "The user story is not expressed as a full sentence. It is missing a verb.",
-                    "improvement": "As a customer, I want to configure the filter to have increments of one or two kilometers, because the current filter increments of five kilometers are too coarse-grained, especially within the 10-15 kilometer range where most users search."
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": "The user story is not a full sentence.",
-                    "improvement": "As a customer, I want to configure the filter to have increments of one or two kilometers, because the current filter increments of five kilometers are too coarse-grained, especially within the 10-15 kilometer range where most users search."
-                }
-            }
-        },
-        "3fa15640": {
-            "requirement_id": "3fa15640",
-            "requirement": "I want to be able to sort the search results by proximity",
-            "role": "customer",
-            "rationale": "so that I can easily find driving schools that are closest to my location.",
-            "is_role_inferred": false,
-            "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a quality requirement, specifically easiness of finding nearby driving schools. Sorting by proximity helps the customer quickly identify the most convenient options.",
-            "inferred_role_reason": "",
-            "user_story": "As a customer, I want to be able to sort the search results by proximity, so that I can easily find driving schools that are closest to my location..",
-            "topic_id": 6,
-            "criteria_violations": {
-                "Well-formed": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Atomic": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Minimal": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Conceptually sound": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Problem-oriented": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Unambiguous": {
-                    "isViolated": false,
-                    "ambiguity_types": [],
-                    "reason": null,
-                    "improvement": null
-                },
-                "Full sentence": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "Estimatable": {
-                    "isViolated": false,
-                    "reason": null,
-                    "improvement": null
-                },
-                "overall_improvement": {
-                    "reason": null,
-                    "improvement": "As a customer, I want to be able to sort the search results by proximity, so that I can easily find driving schools that are closest to my location."
-                }
-            }
-        },
-        "b6edb162": {
-            "requirement_id": "b6edb162",
-            "requirement": "I want the ability to sort the list of driving schools",
-            "role": "customer",
+        "eacb7095": {
+            "requirement_id": "eacb7095",
+            "requirement": "I want to sort the search results in some way",
+            "role": "Website User",
             "rationale": "so that I can quickly find the driving schools that best meet my needs.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. Sorting allows the customer to quickly narrow down the options based on their preferences.",
+            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency, as the user wants to quickly find the best driving schools. Sorting helps to achieve this.",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want the ability to sort the list of driving schools, so that I can quickly find the driving schools that best meet my needs..",
+            "user_story": "As a Website User, I want to sort the search results in some way, so that I can quickly find the driving schools that best meet my needs..",
+            "topic_id": 3,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The phrase 'in some way' is lexically ambiguous because it does not specify the criteria by which the search results should be sorted. This lack of specificity can lead to multiple interpretations of the user's intent.",
+                    "improvement": "As a Website User, I want to sort the search results by price, rating, or distance, so that I can quickly find the driving schools that best meet my needs."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story is ambiguous because the sorting criteria are not specified.",
+                    "improvement": "As a Website User, I want to sort the search results by price, rating, or distance, so that I can quickly find the driving schools that best meet my needs."
+                }
+            }
+        },
+        "8bf21ff6": {
+            "requirement_id": "8bf21ff6",
+            "requirement": "I want the default sorting to be by percentage or proximity to the location",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the most relevant driving schools based on my needs.",
+            "is_role_inferred": true,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency and relevance. The user wants to quickly find the best options, which implies a desire to minimize effort and maximize the usefulness of the results.",
+            "inferred_role_reason": "The 'Website User' role was inferred because the user wants to find and compare driving schools, and the default sorting directly impacts their ability to easily find a suitable school based on their preferences (percentage or proximity).",
+            "user_story": "As a Website User, I want the default sorting to be by percentage or proximity to the location, so that I can quickly find the most relevant driving schools based on my needs..",
+            "topic_id": 4,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": true,
+                    "reason": "The user story includes two sorting options: by percentage and by proximity. This user story should be split into two.",
+                    "improvement": [
+                        "As a Website User, I want the default sorting to be by percentage to the location",
+                        "As a Website User, I want the default sorting to be by proximity to the location"
+                    ]
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'percentage' is ambiguous (lexical ambiguity due to polysemy). It is unclear what percentage refers to (e.g., success rate, discount, rating).",
+                    "improvement": "As a Website User, I want the default sorting to be by rating or proximity to the location, so that I can quickly find the most relevant driving schools based on my needs."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story violates the atomic criterion because it specifies two sorting options (percentage and proximity). It also violates the unambiguous criterion because the term 'percentage' is ambiguous. ",
+                    "improvement": [
+                        "As a Website User, I want the default sorting to be by rating to the location, so that I can quickly find the most relevant driving schools based on my needs.",
+                        "As a Website User, I want the default sorting to be by proximity to the location, so that I can quickly find the most relevant driving schools based on my needs."
+                    ]
+                }
+            }
+        },
+        "8e811d70": {
+            "requirement_id": "8e811d70",
+            "requirement": "I want to be able to filter to only get the schools that are close by",
+            "role": "Website User",
+            "rationale": "so that I can quickly find driving schools that are convenient for me to attend.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "The user wants to filter by proximity to save time and effort by only considering schools that are easily accessible.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want to be able to filter to only get the schools that are close by, so that I can quickly find driving schools that are convenient for me to attend..",
+            "topic_id": 5,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'close by' is ambiguous because it does not specify a distance. What one user considers close, another may not. This is a lexical ambiguity because 'close by' has multiple interpretations regarding distance.",
+                    "improvement": "As a Website User, I want to be able to filter to only get the schools that are within 5 miles of my location, so that I can quickly find driving schools that are convenient for me to attend."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story is ambiguous because the term 'close by' does not specify a distance.",
+                    "improvement": "As a Website User, I want to be able to filter to only get the schools that are within 5 miles of my location, so that I can quickly find driving schools that are convenient for me to attend."
+                }
+            }
+        },
+        "c8033f92": {
+            "requirement_id": "c8033f92",
+            "requirement": "I want to be able to sort in that way",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the driving schools that best meet my needs.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to sort to quickly find the best options, implying a desire to minimize the time and effort spent searching.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want to be able to sort in that way, so that I can quickly find the driving schools that best meet my needs..",
+            "topic_id": 5,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": true,
+                    "reason": "The user story contains two requirements: the ability to sort and the ability to quickly find driving schools. This user story should be split into two.",
+                    "improvement": [
+                        "As a Website User, I want to be able to sort driving schools",
+                        "As a Website User, I want to quickly find the driving schools that best meet my needs."
+                    ]
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "semantic"
+                    ],
+                    "reason": "The phrase 'in that way' is semantically ambiguous because it lacks a clear reference. The user story does not specify what sorting criteria are available or how the user wants to sort the driving schools. The meaning of 'in that way' depends on external context or prior knowledge.",
+                    "improvement": "As a Website User, I want to be able to sort driving schools by price, rating, and distance, so that I can quickly find the driving schools that best meet my needs."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story violates the atomic criterion because it contains two requirements. It also violates the unambiguous criterion because the phrase 'in that way' is semantically ambiguous.",
+                    "improvement": [
+                        "As a Website User, I want to be able to sort driving schools by price, rating, and distance",
+                        "As a Website User, I want to quickly find the driving schools that best meet my needs."
+                    ]
+                }
+            }
+        },
+        "9ce57179": {
+            "requirement_id": "9ce57179",
+            "requirement": "I want the filter to have increments of one or two kilometers",
+            "role": "Website User",
+            "rationale": "so that I can find driving schools within a specific and manageable distance from my location.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "The rationale expresses a quality requirement. The user wants to easily find driving schools within a specific distance. Increments of one or two kilometers allow for fine-grained control over the search radius, improving the user's ability to find schools that are conveniently located.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want the filter to have increments of one or two kilometers, so that I can find driving schools within a specific and manageable distance from my location..",
+            "topic_id": 6,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'increments' is ambiguous (lexical ambiguity due to polysemy). It is unclear whether the filter increments are fixed at one or two kilometers, or if the user can choose between increments of one or two kilometers. This ambiguity can lead to different interpretations of the user story.",
+                    "improvement": "As a Website User, I want the filter to have selectable increments of one or two kilometers, so that I can find driving schools within a specific and manageable distance from my location."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story is ambiguous because the term 'increments' is unclear. It is not specified whether the increments are fixed or selectable.",
+                    "improvement": "As a Website User, I want the filter to have selectable increments of one or two kilometers, so that I can find driving schools within a specific and manageable distance from my location."
+                }
+            }
+        },
+        "01e47881": {
+            "requirement_id": "01e47881",
+            "requirement": "I want to be able to sort the driving schools by distance",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the closest driving schools to my location.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "Sorting by distance allows the user to prioritize driving schools that are geographically convenient, saving time and effort in their search.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want to be able to sort the driving schools by distance, so that I can quickly find the closest driving schools to my location..",
+            "topic_id": 6,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'distance' is ambiguous (lexical ambiguity due to polysemy). It could refer to driving distance or straight-line distance. The user story should specify which type of distance is meant.",
+                    "improvement": "As a Website User, I want to be able to sort the driving schools by driving distance, so that I can quickly find the closest driving schools to my location."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story is ambiguous because the term 'distance' is ambiguous. It could refer to driving distance or straight-line distance.",
+                    "improvement": "As a Website User, I want to be able to sort the driving schools by driving distance, so that I can quickly find the closest driving schools to my location."
+                }
+            }
+        },
+        "60cf2fae": {
+            "requirement_id": "60cf2fae",
+            "requirement": "I want the ability to sort driving schools",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the driving schools that best meet my needs.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to quickly find the best driving schools, implying a desire to minimize the time and effort spent searching.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want the ability to sort driving schools, so that I can quickly find the driving schools that best meet my needs..",
             "topic_id": 7,
             "criteria_violations": {
                 "Well-formed": {
@@ -1328,8 +1546,8 @@
                     "ambiguity_types": [
                         "lexical"
                     ],
-                    "reason": "The phrase 'best meet my needs' is ambiguous because 'needs' is a polysemous term. It is unclear what specific criteria the customer is using to evaluate driving schools (e.g., price, location, ratings, languages spoken).",
-                    "improvement": "As a customer, I want the ability to sort the list of driving schools by price, location, and ratings, so that I can quickly find the driving schools that best meet my needs."
+                    "reason": "The phrase 'best meet my needs' is ambiguous because 'needs' is a polysemous term. It is unclear what specific criteria the user is using to evaluate driving schools (e.g., price, location, ratings, languages spoken).",
+                    "improvement": "As a Website User, I want the ability to sort driving schools by price, location, and ratings, so that I can quickly find the driving schools that best meet my needs."
                 },
                 "Full sentence": {
                     "isViolated": false,
@@ -1342,21 +1560,21 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": "The user story is ambiguous because the term 'needs' is polysemous. It is unclear what specific criteria the customer is using to evaluate driving schools.",
-                    "improvement": "As a customer, I want the ability to sort the list of driving schools by price, location, and ratings, so that I can quickly find the driving schools that best meet my needs."
+                    "reason": "The user story is ambiguous because the phrase 'best meet my needs' is unclear. It is unclear what specific criteria the user is using to evaluate driving schools.",
+                    "improvement": "As a Website User, I want the ability to sort driving schools by price, location, and ratings, so that I can quickly find the driving schools that best meet my needs."
                 }
             }
         },
-        "efdf9254": {
-            "requirement_id": "efdf9254",
-            "requirement": "I want the option to sort by distance, with the closest schools appearing first",
-            "role": "customer",
-            "rationale": "so that I can quickly find driving schools that are conveniently located near me.",
+        "b00698cc": {
+            "requirement_id": "b00698cc",
+            "requirement": "I want to be able to sort by distance",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the driving schools closest to me.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "This expresses a quality requirement, specifically convenience and speed in finding nearby options. The user wants to minimize travel time and effort by prioritizing schools based on proximity.",
+            "inferred_rationale_reason": "Sorting by distance allows the user to prioritize driving schools based on their proximity, making it easier and faster to find the most convenient options.",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want the option to sort by distance, with the closest schools appearing first, so that I can quickly find driving schools that are conveniently located near me..",
+            "user_story": "As a Website User, I want to be able to sort by distance, so that I can quickly find the driving schools closest to me..",
             "topic_id": 7,
             "criteria_violations": {
                 "Well-formed": {
@@ -1365,12 +1583,9 @@
                     "improvement": null
                 },
                 "Atomic": {
-                    "isViolated": true,
-                    "reason": "The user story includes two requirements: the option to sort by distance and the closest schools appearing first. This user story should be split into two.",
-                    "improvement": [
-                        "As a customer, I want the option to sort by distance",
-                        "As a customer, I want the closest schools appearing first"
-                    ]
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
                 },
                 "Minimal": {
                     "isViolated": false,
@@ -1404,24 +1619,88 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": "The user story includes two requirements: the option to sort by distance and the closest schools appearing first.",
+                    "reason": null,
+                    "improvement": "As a Website User, I want to be able to sort by distance, so that I can quickly find the driving schools closest to me."
+                }
+            }
+        },
+        "3c8168e0": {
+            "requirement_id": "3c8168e0",
+            "requirement": "I want the list of schools to be sorted by closest first and the furthest away later",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the driving schools that are most convenient for me.",
+            "is_role_inferred": false,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "The rationale expresses a quality requirement. Sorting by proximity contributes to maximizing convenience for the user.",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want the list of schools to be sorted by closest first and the furthest away later, so that I can quickly find the driving schools that are most convenient for me..",
+            "topic_id": 7,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": true,
+                    "reason": "The user story contains two requirements: sorting the list of schools by closest first and sorting the list of schools by furthest away later. These should be separate user stories.",
                     "improvement": [
-                        "As a customer, I want the option to sort by distance, so that I can quickly find driving schools that are conveniently located near me.",
-                        "As a customer, I want the closest schools appearing first, so that I can quickly find driving schools that are conveniently located near me."
+                        "As a Website User, I want the list of schools to be sorted by closest first.",
+                        "As a Website User, I want the list of schools to be sorted by furthest away later."
+                    ]
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'convenient' is ambiguous because it is subjective and can mean different things to different users. It is a case of lexical ambiguity due to polysemy.",
+                    "improvement": "As a Website User, I want the list of schools to be sorted by closest first and the furthest away later, so that I can minimize my travel time."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The user story contains two requirements and the term 'convenient' is ambiguous.",
+                    "improvement": [
+                        "As a Website User, I want the list of schools to be sorted by closest first, so that I can minimize my travel time.",
+                        "As a Website User, I want the list of schools to be sorted by furthest away later, so that I can minimize my travel time."
                     ]
                 }
             }
         },
-        "4849106d": {
-            "requirement_id": "4849106d",
-            "requirement": "I want to see the name of the school, its location, the number of registered exams, and the success percentage in the list of schools",
-            "role": "customer",
-            "rationale": "so that I can easily compare different driving schools based on key criteria.",
+        "87724295": {
+            "requirement_id": "87724295",
+            "requirement": "I want to see the name of the school, the place where it's located, the amount of exams that are registered for that school and their percentage of success in the list of schools",
+            "role": "Website User",
+            "rationale": "so that I can make an informed decision about which driving school to choose.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The rationale expresses a quality requirement. Seeing the name, location, number of exams, and success rate allows the customer to easily compare schools, maximizing ease of comparison and informed decision-making.",
+            "inferred_rationale_reason": "The rationale expresses a clarification of means. Seeing the school's name, location, exam data, and success rate allows the user to compare schools and choose the one that best fits their needs.",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want to see the name of the school, its location, the number of registered exams, and the success percentage in the list of schools, so that I can easily compare different driving schools based on key criteria..",
+            "user_story": "As a Website User, I want to see the name of the school, the place where it's located, the amount of exams that are registered for that school and their percentage of success in the list of schools, so that I can make an informed decision about which driving school to choose..",
             "topic_id": 7,
             "criteria_violations": {
                 "Well-formed": {
@@ -1433,10 +1712,10 @@
                     "isViolated": true,
                     "reason": "The user story includes multiple requirements: seeing the school name, its location, the number of registered exams, and the success percentage. Each of these could be considered a separate feature or piece of information.",
                     "improvement": [
-                        "As a customer, I want to see the name of the school in the list of schools.",
-                        "As a customer, I want to see the location of the school in the list of schools.",
-                        "As a customer, I want to see the number of registered exams for each school in the list of schools.",
-                        "As a customer, I want to see the success percentage for each school in the list of schools, so that I can easily compare different driving schools based on key criteria."
+                        "As a Website User, I want to see the name of the school in the list of schools.",
+                        "As a Website User, I want to see the location of the school in the list of schools.",
+                        "As a Website User, I want to see the amount of exams that are registered for that school in the list of schools.",
+                        "As a Website User, I want to see the percentage of success for that school in the list of schools, so that I can make an informed decision about which driving school to choose."
                     ]
                 },
                 "Minimal": {
@@ -1471,26 +1750,26 @@
                     "improvement": null
                 },
                 "overall_improvement": {
-                    "reason": "The user story violates the atomic criterion because it includes multiple requirements within a single story. It should be split into multiple user stories, each focusing on a single feature.",
+                    "reason": "The user story violates the atomic criterion because it contains multiple requirements within a single story. It should be split into multiple user stories, each focusing on a single feature.",
                     "improvement": [
-                        "As a customer, I want to see the name of the school in the list of schools, so that I can easily compare different driving schools based on key criteria.",
-                        "As a customer, I want to see the location of the school in the list of schools, so that I can easily compare different driving schools based on key criteria.",
-                        "As a customer, I want to see the number of registered exams for each school in the list of schools, so that I can easily compare different driving schools based on key criteria.",
-                        "As a customer, I want to see the success percentage for each school in the list of schools, so that I can easily compare different driving schools based on key criteria."
+                        "As a Website User, I want to see the name of the school in the list of schools, so that I can make an informed decision about which driving school to choose.",
+                        "As a Website User, I want to see the location of the school in the list of schools, so that I can make an informed decision about which driving school to choose.",
+                        "As a Website User, I want to see the amount of exams that are registered for that school in the list of schools, so that I can make an informed decision about which driving school to choose.",
+                        "As a Website User, I want to see the percentage of success for that school in the list of schools, so that I can make an informed decision about which driving school to choose."
                     ]
                 }
             }
         },
-        "17861adf": {
-            "requirement_id": "17861adf",
-            "requirement": "I want to see the address of the school, the driving school number, the Chamber of Commerce number, the phone number, the website, the availability of practical classes (auto, scooters, lorries), and the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details",
-            "role": "customer",
+        "09c3b512": {
+            "requirement_id": "09c3b512",
+            "requirement": "I want to see the address of the school, the drive-in school number, the chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones (auto, scooters or lorries), if they offer theoretical classes and again, same list (auto, scooters and so on) when I expand the items in the list",
+            "role": "Website User",
             "rationale": "so that I can make an informed decision about which driving school best suits my needs.",
             "is_role_inferred": false,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The user story describes the need to see various details of a driving school. The rationale is that by seeing these details, the customer can make a better decision. This is a clarification of means, where the means (seeing the details) helps the customer to make an informed decision.",
+            "inferred_rationale_reason": "The user story describes the desire to see detailed information about driving schools. The rationale explains that the purpose of seeing this information is to enable the user to make a well-informed decision. This is a quality requirement, as it contributes to maximizing the user's ability to choose the best option.",
             "inferred_role_reason": "",
-            "user_story": "As a customer, I want to see the address of the school, the driving school number, the Chamber of Commerce number, the phone number, the website, the availability of practical classes (auto, scooters, lorries), and the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs..",
+            "user_story": "As a Website User, I want to see the address of the school, the drive-in school number, the chamber of commerce number, the phone number of the drive-in school, their website, if they offer practical classes and if so, which ones (auto, scooters or lorries), if they offer theoretical classes and again, same list (auto, scooters and so on) when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs..",
             "topic_id": 7,
             "criteria_violations": {
                 "Well-formed": {
@@ -1500,15 +1779,15 @@
                 },
                 "Atomic": {
                     "isViolated": true,
-                    "reason": "The user story includes multiple requirements related to displaying different details of a school. It should be split into multiple user stories, each focusing on one specific detail.",
+                    "reason": "The user story includes multiple requirements: seeing the school's address, drive-in school number, chamber of commerce number, phone number, website, practical classes offered, and theoretical classes offered. This should be split into multiple user stories.",
                     "improvement": [
-                        "As a customer, I want to see the address of the school when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the driving school number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the Chamber of Commerce number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the phone number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the website when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of practical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs."
+                        "As a Website User, I want to see the address of the school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the drive-in school number when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the chamber of commerce number when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the phone number of the drive-in school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see their website when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see if they offer practical classes and if so, which ones (auto, scooters or lorries) when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see if they offer theoretical classes and again, same list (auto, scooters and so on) when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs."
                     ]
                 },
                 "Minimal": {
@@ -1539,41 +1818,36 @@
                 },
                 "Estimatable": {
                     "isViolated": true,
-                    "reason": "The user story is too large and encompasses multiple features, making it difficult to estimate accurately. Displaying all the school details at once is a coarse-grained requirement that should be broken down into smaller, more manageable stories.",
+                    "reason": "The user story is too large and encompasses too many different pieces of information to be easily estimated. Displaying all the requested information might require significant effort, especially if the data is not readily available or requires complex formatting. Splitting the story into smaller, more focused stories would make estimation more manageable.",
                     "improvement": [
-                        "As a customer, I want to see the address of the school when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the driving school number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the Chamber of Commerce number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the phone number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the website when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of practical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs."
+                        "As a Website User, I want to see the basic contact information of the school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the types of practical and theoretical classes offered by the school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs."
                     ]
                 },
                 "overall_improvement": {
-                    "reason": "The user story violates the Atomic and Estimatable criteria because it includes multiple requirements related to displaying different details of a school. It should be split into multiple user stories, each focusing on one specific detail.",
+                    "reason": "The user story violates the atomic and estimatable criteria because it includes multiple requirements and is too large to be easily estimated. It should be split into smaller, more focused user stories.",
                     "improvement": [
-                        "As a customer, I want to see the address of the school when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the driving school number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the Chamber of Commerce number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the phone number when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the website when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of practical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs.",
-                        "As a customer, I want to see the availability of theoretical classes (auto, scooters, lorries) when expanding a school's details, so that I can make an informed decision about which driving school best suits my needs."
+                        "As a Website User, I want to see the address of the school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the drive-in school number when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the chamber of commerce number when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see the phone number of the drive-in school when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see their website when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see if they offer practical classes and if so, which ones (auto, scooters or lorries) when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs.",
+                        "As a Website User, I want to see if they offer theoretical classes and again, same list (auto, scooters and so on) when I expand the items in the list, so that I can make an informed decision about which driving school best suits my needs."
                     ]
                 }
             }
         },
-        "0e97e5bf": {
-            "requirement_id": "0e97e5bf",
-            "requirement": "I want an interactive map to be displayed on top of the search results",
-            "role": "Customer",
+        "1a3663e0": {
+            "requirement_id": "1a3663e0",
+            "requirement": "I want an interactive map on top of the search results",
+            "role": "Website User",
             "rationale": "so that I can easily find driving schools near me.",
             "is_role_inferred": true,
             "is_rationale_inferred": true,
-            "inferred_rationale_reason": "The interactive map helps the customer visualize the location of driving schools in relation to their own location or a specific area of interest, making it easier to choose a convenient option. This expresses a dependency on location data.",
-            "inferred_role_reason": "The Customer role was inferred because the customer wants to easily find a driving school. An interactive map on top of the search results would help the customer to find a driving school that meets their needs in terms of location.",
-            "user_story": "As a Customer, I want an interactive map to be displayed on top of the search results, so that I can easily find driving schools near me..",
+            "inferred_rationale_reason": "The interactive map helps the user visually identify and locate driving schools in their vicinity, making the search process more efficient and user-friendly. This expresses a quality requirement, maximizing easiness.",
+            "inferred_role_reason": "The 'Website User' role was inferred because the user wants an interactive map on top of the search results. This directly benefits the website user by enhancing their ability to find and compare driving schools based on location, which aligns with their goal of easily finding a suitable driving school in their area.",
+            "user_story": "As a Website User, I want an interactive map on top of the search results, so that I can easily find driving schools near me..",
             "topic_id": 7,
             "criteria_violations": {
                 "Well-formed": {
@@ -1620,6 +1894,126 @@
                 "overall_improvement": {
                     "reason": null,
                     "improvement": null
+                }
+            }
+        },
+        "e66e7340": {
+            "requirement_id": "e66e7340",
+            "requirement": "I want to be able to see the location of driving schools on a map",
+            "role": "Website User",
+            "rationale": "so that I can see if they are close to my house",
+            "is_role_inferred": false,
+            "is_rationale_inferred": false,
+            "inferred_rationale_reason": "",
+            "inferred_role_reason": "",
+            "user_story": "As a Website User, I want to be able to see the location of driving schools on a map, so that I can see if they are close to my house.",
+            "topic_id": 8,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": false,
+                    "ambiguity_types": [],
+                    "reason": null,
+                    "improvement": null
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": null,
+                    "improvement": null
+                }
+            }
+        },
+        "aa3161e3": {
+            "requirement_id": "aa3161e3",
+            "requirement": "I want a default sorting option for the results",
+            "role": "Website User",
+            "rationale": "so that I can quickly find the most relevant driving schools based on my preferences.",
+            "is_role_inferred": true,
+            "is_rationale_inferred": true,
+            "inferred_rationale_reason": "This expresses a quality requirement, specifically efficiency. The user wants to quickly find relevant results, indicating a desire for a more efficient search experience.",
+            "inferred_role_reason": "The 'Website User' role was inferred because the requirement directly relates to improving the user experience when comparing driving schools. A default sorting option would help users more easily find the information they need.",
+            "user_story": "As a Website User, I want a default sorting option for the results, so that I can quickly find the most relevant driving schools based on my preferences..",
+            "topic_id": 9,
+            "criteria_violations": {
+                "Well-formed": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Atomic": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Minimal": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Conceptually sound": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Problem-oriented": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Unambiguous": {
+                    "isViolated": true,
+                    "ambiguity_types": [
+                        "lexical"
+                    ],
+                    "reason": "The term 'relevant' is ambiguous (lexical ambiguity due to polysemy). What constitutes 'relevant' driving schools is subjective and open to interpretation. It is unclear what criteria the user has in mind when they say 'relevant'.",
+                    "improvement": "As a Website User, I want a default sorting option for the results based on user ratings, so that I can quickly find the highest-rated driving schools."
+                },
+                "Full sentence": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "Estimatable": {
+                    "isViolated": false,
+                    "reason": null,
+                    "improvement": null
+                },
+                "overall_improvement": {
+                    "reason": "The term 'relevant' is ambiguous (lexical ambiguity due to polysemy).",
+                    "improvement": "As a Website User, I want a default sorting option for the results based on user ratings, so that I can quickly find the highest-rated driving schools."
                 }
             }
         }
