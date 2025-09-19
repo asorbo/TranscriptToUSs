@@ -70,9 +70,17 @@ Below is a step-by-step guide on how to set up and run the prototype.
    ```
 
 3. **Build and run the Docker image**  
+   Set the required environment variables when running the container:
+   - `API_KEY`: A Google API key with the Gemini API service enabled.  
+   - `RUNS_PER_MINUTE`: API calls per minute (used to throttle requests to avoid unexpected costs).  
+
+   Example:
    ```bash
    docker build -t elicitation-to-us:latest .
-   docker run -p 3000:3000 elicitation-to-us:latest
+   docker run -p 3000:3000 \
+     -e API_KEY="your-google-api-key" \
+     -e RUNS_PER_MINUTE="15" \
+     elicitation-to-us:latest
    ```
 
 4. **Open the user interface**  
