@@ -196,7 +196,7 @@ async def infer_missing_rationales(topic_texts, roles):
     return topic_texts
 
 class Requirement:
-    def __init__(self, requirement_id, topic_id, requirement, role, rationale,
+    def __init__(self, requirement_id, topic_id, requirement, role, rationale, origin_sentences,
                  is_role_inferred=False, is_rationale_inferred=False,
                  inferred_rationale_reason='', inferred_role_reason=''):
         self.requirement_id = requirement_id
@@ -204,6 +204,7 @@ class Requirement:
         self.requirement = requirement
         self.role = role
         self.rationale = rationale
+        self.origin_sentences = origin_sentences
         self.is_role_inferred = is_role_inferred
         self.is_rationale_inferred = is_rationale_inferred
         self.inferred_rationale_reason = inferred_rationale_reason
@@ -223,7 +224,8 @@ class Requirement:
             'inferred_role_reason': self.inferred_role_reason,
             'user_story': self.user_story,
             'topic_id': self.topic_id,
-            'criteria_violations': self.criteria_violations
+            'criteria_violations': self.criteria_violations,
+            'origin_sentences': self.origin_sentences
         }
 
 async def check_criteria_violations(requirements_set: list[Requirement]):
@@ -254,7 +256,8 @@ def build_requirements_set(topic_texts_with_inferred_rationales) -> list[Require
                         is_role_inferred=req.get('is_role_inferred', False),
                         is_rationale_inferred=req.get('is_rationale_inferred', False),
                         inferred_rationale_reason=req.get('inferred_rationale_reason', ''),
-                        inferred_role_reason=req.get('inferred_role_reason', '')
+                        inferred_role_reason=req.get('inferred_role_reason', ''),
+                        origin_sentences=req.get('origin_sentences', ["no origin found"])
                     )
                     requirements_set.append(requirement_obj)
     return requirements_set
@@ -282,13 +285,12 @@ async def check_set_level_violations(requirements_set):
                 try:
                     violation_dict = {
                         "isViolated": True,
-                        "reason": violation['reason'] + "IDs of conflicting requirements: " + str(user_stories_subset),
+                        "reason": violation['reason'] + " IDs of conflicting requirements: " + str(user_stories_subset),
                         "improvement": "null"
                     }
                     for requirement_in_set in requirements_set:
                         if requirement_in_set.requirement_id == requirement['requirement_id'] or requirement_in_set.requirement_id in user_stories_subset:
                             requirement_in_set.criteria_violations[violation['set_level_violation']] = violation_dict
-                            break
                 except Exception as e:
                     print(f"Error: {e}")
                     traceback.print_exc()

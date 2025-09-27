@@ -86,6 +86,7 @@ This is an extract of a requirements elicitation session. You are an expert requ
 You must not omit any requirement-relevant information that is mentioned in the text. You must only refer to information mentioned in the given text.
 If the information is given in the text clearly state who wants a given functionality (or for whom it is made for) assign a role from the set of provided roles. Otherwise, do not guess who wants it and simply write 'unidentified-role'.
 If the information is given in the text clearly state why the user wants a given functionality (what the purpose of the functionality is) otherwise do not guess the reason it and simply write 'unidentified-rationale'.
+Report textually(no modifications) the sentence or sentences in the input that you are extracting this information from.
 You may return an empty list [] if there are no requirements mentioned in the text.
 If requirements are present format them in the format given in the examples. Nothe that they must always begin with "I want".
 Example: "There must be an overview functionality to allow chefs to see all active orders so they can plan ahead..."
@@ -94,14 +95,16 @@ Output: {
     "requirement_id": none,
     "requirement": "I want an overview functionality that shows all active orders",
     "role": "chef",
-    "rationale": "so that I can plan ahead"
+    "rationale": "so that I can plan ahead",
+    "origin_sentences": ["yeah, and there should be a section where we see an overview of all active orders"]
 }
 Example": To make sure we don't miss an incoming order there should be a a notification sound every time a new order is placed.
 Output: {
     "requirement_id": none,
     "requirement": "I want a notification sound to be produced every time a new order is placed",
     "role": "unidentified-role",
-    "rationale": "so that I don't miss any incoming orders"
+    "rationale": "so that I don't miss any incoming orders",
+    "origin sentences": ["we need to be notified when a new order is placed", "notifications for new orders should make a sound"]
 }
 Roles: '''
 

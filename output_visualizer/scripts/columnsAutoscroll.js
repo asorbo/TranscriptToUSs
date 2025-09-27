@@ -20,6 +20,7 @@
       const req = e.target.closest(".requirement_wrapper");
       if (!req) return;
       const id = req.dataset.id;
+      console.log(req.dataset)
       const targetTopic = document.querySelector(`.topic[data-id='${id}']`);
       if (targetTopic) scrollToElement(topicsColumn, targetTopic);
       highlightPair(id);

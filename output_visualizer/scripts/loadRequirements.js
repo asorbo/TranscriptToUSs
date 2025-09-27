@@ -281,6 +281,7 @@ async function loadRequirements() {
             const wrapper = document.createElement("div");
             wrapper.className = "requirement_wrapper";
             wrapper.setAttribute("data-id", req.topic_id);
+            wrapper.dataset.origin_sentences = JSON.stringify(req.origin_sentences);
 
             // Top row: Requirement title on left, topic+button on right
             topRow = createTopRow(req)

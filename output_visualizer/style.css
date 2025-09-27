@@ -529,6 +529,9 @@ body {
   color: #222;
 }
 
+span.highlight{
+  background-color: #beccfeb0;
+}
 
 html {
   font-size: 90%; 
