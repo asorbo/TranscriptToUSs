@@ -8,6 +8,7 @@ function expandRequirement(e) {
         e.target.classList.contains("role") ||
         (e.target.getAttribute("is_rationale_inferred") == "true")
     ) {
+        collapseAllRequirements();
         req.classList.toggle("expanded");
     }
 
@@ -29,7 +30,6 @@ function collapseAllRequirements(){
 // Attach event listeners after the requirements are loaded
 function attachExpandEvents() {
     requirementsColumn.addEventListener("click", expandRequirement)
-    requirementsColumn.addEventListener("scroll", collapseAllRequirements)
 }
 
 let userIsScrolling = false;

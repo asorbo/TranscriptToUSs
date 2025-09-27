@@ -7,6 +7,7 @@ import logging
 import statistics
 import uuid
 import queue
+import traceback
 
 
 async def segment_transcript(transcript, n_runs=10):
@@ -259,27 +260,49 @@ def build_requirements_set(topic_texts_with_inferred_rationales) -> list[Require
     return requirements_set
 
 async def check_set_level_violations(requirements_set):
-    set_level_violations = []
-    set_level_violations_prompts = SET_LEVEL_VIOLATIONS_PROMPTS
-
-    requirements_dicts = [r.to_dict() for r in requirements_set]
 
     async def check_violations_async(criteria, prompt):
         try:
             result = await gemini.generate(prompt, jsonOnly=True)
-            set_level_violations.extend(result)
-            #TO-DO: convert the set in a map. generate an id for each violation and use it as key
-            #TO-DO: for each us in the map, access the user story and include the id of the violation in a list of set-level violations
+            return result if isinstance(result, list) else [result]
         except Exception as e:
             log_handler.logger.error(f"Error checking {criteria}: {e}")
+            return []
 
     async def process_criteria():
-        await asyncio.gather(*[
+        results = await asyncio.gather(*[
             check_violations_async(criteria, set_level_violations_prompts[criteria] + str(requirements_dicts))
             for criteria in set_level_violations_prompts
         ])
+        for sublist in results:
+            for violation in sublist:
+                user_stories_subset = []
+                for requirement in violation['user_stories_subset']:
+                    user_stories_subset.append(requirement["requirement_id"])
+                try:
+                    violation_dict = {
+                        "isViolated": True,
+                        "reason": violation['reason'] + "IDs of conflicting requirements: " + str(user_stories_subset),
+                        "improvement": "null"
+                    }
+                    for requirement_in_set in requirements_set:
+                        if requirement_in_set.requirement_id == requirement['requirement_id'] or requirement_in_set.requirement_id in user_stories_subset:
+                            requirement_in_set.criteria_violations[violation['set_level_violation']] = violation_dict
+                            break
+                except Exception as e:
+                    print(f"Error: {e}")
+                    traceback.print_exc()
+                    log_handler.logger.error("could not find set criteria violating requirement with id " + str(requirement["requirement_id"]))
+                violation['user_stories_subset'] = user_stories_subset
 
-    await process_criteria()
+        return requirements_set
+
+    set_level_violations = []
+    set_level_violations_prompts = SET_LEVEL_VIOLATIONS_PROMPTS
+
+    requirements_dicts = [r.to_dict() for r in requirements_set]
+    set_level_violations = await process_criteria()
+
     if set_level_violations:
         log_handler.logger.info(f"{len(set_level_violations)} set level violations found.")
     else:
@@ -385,19 +408,15 @@ async def run_pipeline(transcript, stop_event):
     if log_handler.is_stop_requested(stop_event):
         return
 
-    requirements_map = convert_requirements_set_to_map(requirements_set)
-
-    output['requirements'] = requirements_map
-
     log_handler.logger.info("Pipeline status - Part 10/10 skipped: Check set level violations")
     log_handler.logger.info("This step has been disabled by the developer. You can re-enable it in the main.py file.")
-    if False:
-        # Check set level violations
-        log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
-        set_level_violations = await check_set_level_violations(requirements_set)
-        output['set_level_violations'] = set_level_violations
-        log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
-    output['set_level_violations'] = []
+    # Check set level violations
+    log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
+    requirements_set = await check_set_level_violations(requirements_set)
+    log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
+
+    requirements_map = convert_requirements_set_to_map(requirements_set)
+    output['requirements'] = requirements_map
 
     saveJsonOutput(output)
 
