@@ -410,7 +410,6 @@ async def run_pipeline(transcript, stop_event):
     if log_handler.is_stop_requested(stop_event):
         return
 
-    log_handler.logger.info("Pipeline status - Part 10/10 skipped: Check set level violations")
     log_handler.logger.info("This step has been disabled by the developer. You can re-enable it in the main.py file.")
     # Check set level violations
     log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")

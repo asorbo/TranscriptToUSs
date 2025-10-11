@@ -68,7 +68,7 @@ body {
   margin-top: 8px;
 }
 
-.speaker_turn span:first-child {
+.speaker_turn span:first-child:not(.highlighted){
   font-weight: bold;
 
   margin-right: 5px;

@@ -227,7 +227,16 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
             reasonDiv.append(reasonLabel);
 
             const reasonText = document.createElement("span");
+            if (crit.reason == "null"){
+                crit.reason = null;
+            }
             reasonText.textContent = crit.reason || "No reason provided.";
+            if (
+                name.includes("conflict-free") ||
+                name.includes("uniqueness")
+            ) {
+                addLinksToConflictingRequirements(reasonText);
+            }
             reasonDiv.appendChild(reasonText);
             violationDiv.append(reasonDiv);
 
@@ -265,6 +274,44 @@ function loadCriteriaViolations(req, criteriaViolationCounter) {
     return outer;
 }
 
+function addLinksToConflictingRequirements(reasonText) {
+    const text = reasonText.textContent;
+
+    // Regex to match: IDs of conflicting requirements: ['id1', 'id2', ...]
+    const regex = /IDs of conflicting requirements:\s*\[([^\]]+)\]/;
+    const match = text.match(regex);
+
+    if (!match) return; // no conflict list found
+
+    // Extract the part inside the brackets and split by comma
+    const ids = match[1]
+        .split(",")
+        .map(s => s.replace(/['"\s]/g, "")) // remove quotes & spaces
+        .filter(Boolean);
+
+    // Create clickable links
+    const links = ids.map(id => {
+        return `<a href="#" class="conflict-link" data-req-id="${id}">#${id}</a>`;
+    }).join(", ");
+
+    // Replace the original text with the new content
+    const newHTML = text.replace(regex, `IDs of conflicting requirements: ${links}`);
+    reasonText.innerHTML = newHTML;
+
+    // Add click listeners for each link
+    reasonText.querySelectorAll(".conflict-link").forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const id = link.dataset.reqId;
+            const req = document.querySelector(`.requirement_wrapper[requirement-id="${id}"]`);
+            if (req) {
+                req.click(); // Trigger the click
+            }
+        });
+    });
+}
+
+
 async function loadRequirements() {
     fetch("output.json")
     .then(response => response.json())
@@ -281,6 +328,7 @@ async function loadRequirements() {
             const wrapper = document.createElement("div");
             wrapper.className = "requirement_wrapper";
             wrapper.setAttribute("data-id", req.topic_id);
+            wrapper.setAttribute("requirement-id", req.requirement_id);
             wrapper.dataset.origin_sentences = JSON.stringify(req.origin_sentences);
 
             // Top row: Requirement title on left, topic+button on right

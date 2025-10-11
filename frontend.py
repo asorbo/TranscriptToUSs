@@ -69,4 +69,3 @@ def download_outputs():
 def index():
     return open("index.html", encoding="utf-8").read()
 
-app.run(host="0.0.0.0", port=8080, debug=True)

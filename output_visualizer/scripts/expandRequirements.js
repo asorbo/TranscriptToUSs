@@ -1,14 +1,19 @@
 // Function to expand a requirement wrapper
 function expandRequirement(e) {
+    console.log(e);
     const req = e.target.closest(".requirement_wrapper");
     if (!req) return;
-
+    const isAlreadyExpanded = req.classList.contains("expanded");
+    if (isAlreadyExpanded) {
+        return;
+    }
     if (
         e.target.classList.contains("expandButton") ||
         e.target.classList.contains("role") ||
         (e.target.getAttribute("is_rationale_inferred") == "true")
     ) {
         collapseAllRequirements();
+        console.log("expanding " + req.getAttribute("requirement-id"));
         req.classList.toggle("expanded");
     }
 
