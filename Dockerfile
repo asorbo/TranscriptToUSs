@@ -22,4 +22,5 @@ COPY . .
 EXPOSE 8123
 
 # Run the Flask app with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8123", "frontend:app", "--workers", "1", "--threads", "1"]
+CMD ["gunicorn", "-k", "gevent", "-w", "1", "--worker-connections", "1000", "-b", "0.0.0.0:8123", "frontend:app"]
+
