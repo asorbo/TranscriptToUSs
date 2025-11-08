@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY . .
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 8123
 
 # Run the Flask app with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "frontend:app", "--workers", "1", "--threads", "1"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8123", "frontend:app", "--workers", "1", "--threads", "1"]

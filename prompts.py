@@ -181,54 +181,6 @@ Check the input user story against each criterion:
 Only if the suggested fixes for each criteria do not conflict with eachother, provide a final revised version as either a string or list of strings taking into consideration all the criteria violations previously identified.
 
 Examples of correct outputs for each criteria:
-Each segment should contain sentences discussing the same general topic.
-A new segment should only start if the conversation meaningfully shifts.
-If a topic gradually changes, consider whether it still relates to the previous one before splitting.
-Avoid creating segments that are shorther than 2 minutes (end_time - start_time < 2 minutes) unless it is very clear that a topic shift is happening and *do not* create segments that are longer than 4 minutes(end_time - start_time > 4 minutes).
-For each topic generate 10 possible labels, then select the label that appeared most frequently (the statistical mode).
-Use clear and concise labels, drawing from the content rather than inventing new terms. If the topic could be a functionality or a requirement ensure the label clearly reflects the functionality.
-
-Every time an expert detects a topic shift all three experts must compare their work and reach an agreement. A split cannot be made if all three experts do not agree. If all experts agree the split is made (and included in the output) only once, all the experts then continue from the end time of that split onwards-
-Do NOT start a new topic in the middle of a speaker turn! each returned topic must include only whole speaker turns.
-Do NOT stop until all speaker turns have been processed.
-The first topic must start at the beginning of the transcript.
-The last topic must end at the end of the transcript.
-return a list of the segments in json format. Do not include the text in the output.
-A segment **must** include all and only this: (start_time, end_time, summary, label) **exactly in the following valid json format**
-{
-    "topic_id": "an incremental integer id"
-    "start_time": "xx:xx",
-    "end_time": "xx:xx"
-    "label": "The topic label",
-}
-'''
-
-CHECK_CRITERIA_VIOLATIONS_PROMPT = '''
-You are an expert requirements engineer evaluating a user story for compliance with 8 criteria.
-Recall that a user story is structured as such: "AS A [role], I WANT [means], SO THAT [ends]."
-
-Here are the 8 criteria:
-1. Well-formed: A user story includes at least a role and a means.
-2. Atomic: A user story expresses a requirement for exactly one feature. *For the atomic criterion only look at the means and ignore the ends.*
-3. Minimal: A user story contains nothing more than role, means, and (optionally) ends. Any additional information such as comments, descriptions of the expected behavior, or testing hints should be left out.
-4. Conceptually sound: The means expresses a feature and the ends should describe its purpose.
-5. Problem-oriented: A user story only specifies the problem, not the solution to it. Shall avoid implementation details.
-6. Unambiguous: A user story avoids terms or abstractions that lead to multiple interpretations. If any of the four ambiguity types are detected include them in the ambiguity_types list and give a reason for each of them.
-Ambiguity can be of four types:
-- Lexical: a word/phrase has >= 2 dictionary meanings. It arises when a word can have multiple meanings. Lexical ambiguity can occur when there is homonymy or polysemy. Homonymy: the ambiguity stems from words with different meanings that have the same phonetic and written representation. Polysemy: when the same word can take several different meanings.
-- Syntactical: It arises when the words within a sentence can be given different structures, yielding multimple interpretations.
-- Semantic: sentence meaning depends external context. It arises when the meaning of a sentence can vary when put in different contexts.
-- Pragmatic: meaning can shift within the same context. It arises when the meaning of a sentence can vary within one context.
-7. Full sentence: A user story is a well-formed full sentence.
-8. Estimatable: A story does not denote a coarse-grained requirement that is difficult to plan and prioritize. It should be small enough to estimate.
-
-Please:
-Check the input user story against each criterion:
-- If a criterion is violated, set isViolated to true and provide a reason why.
-- Suggest a revised version that fixes the issue making as little changes as possible, maintaining correct grammar and syntax, and if possible avoiding violating any of the other criteria. The improvement field should contain a string or a slist of strings in case the improvement splits the original user story into two or more.
-Only if the suggested fixes for each criteria do not conflict with eachother, provide a final revised version as either a string or list of strings taking into consideration all the criteria violations previously identified.
-
-Examples of correct outputs for each criteria:
 Input:
 I want to see an error when I cannot see recommendations after I upload an article
 Output (extract):
