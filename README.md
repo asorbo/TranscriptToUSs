@@ -77,8 +77,7 @@ Below is a step-by-step guide on how to set up and run the prototype.
    Example:
    ```bash
    docker build --no-cache -t elicitation-to-us:latest .
-   docker run -p 8123:8123 -e API_KEY="your-google-api-key" -e RUNS_PER_MINUTE="15" elicitation-to-us:latest
-   ```
+   docker run -p 8123:8123 -e API_KEY="your-google-api-key" -e RUNS_PER_MINUTE="15" -e CHECK_VIOLATIONS="False" elicitation-to-us:latest   ```
 
 4. **Open the user interface**  
    Go to [http://localhost:8123](http://localhost:8123) in your browser.  
