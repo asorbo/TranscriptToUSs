@@ -318,7 +318,7 @@ def convert_requirements_set_to_map(requirements_set):
     return requirements_map
 
 # Main pipeline logic as async function
-async def run_pipeline(transcript, stop_event):
+async def run_pipeline(transcript, stop_event, check_violations):
     output = {}
 
     # Segment transcript
@@ -402,19 +402,22 @@ async def run_pipeline(transcript, stop_event):
     if log_handler.is_stop_requested(stop_event):
         return
     
-    # Check criteria violations for each requirement (optional, call if needed)
-    log_handler.logger.info("Pipeline status - Part 9/10 started: Check criteria violations for each requirement")
-    requirements_set = await check_criteria_violations(requirements_set)
-    log_handler.logger.info("Pipeline status - Part 9/10 completed: Check criteria violations for each requirement")
+    if check_violations:
+        # Check criteria violations for each requirement (optional, call if needed)
+        log_handler.logger.info("Pipeline status - Part 9/10 started: Check criteria violations for each requirement")
+        requirements_set = await check_criteria_violations(requirements_set)
+        log_handler.logger.info("Pipeline status - Part 9/10 completed: Check criteria violations for each requirement")
 
-    if log_handler.is_stop_requested(stop_event):
-        return
+        if log_handler.is_stop_requested(stop_event):
+            return
 
-    log_handler.logger.info("This step has been disabled by the developer. You can re-enable it in the main.py file.")
-    # Check set level violations
-    log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
-    requirements_set = await check_set_level_violations(requirements_set)
-    log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
+        log_handler.logger.info("This step has been disabled by the developer. You can re-enable it in the main.py file.")
+        # Check set level violations
+        log_handler.logger.info("Pipeline status - Part 10/10 started: Check set level violations")
+        requirements_set = await check_set_level_violations(requirements_set)
+        log_handler.logger.info("Pipeline status - Part 10/10 completed: Check set level violations")
+    else:
+        log_handler.logger.info("Skipping criteria violation checks as per configuration.")
 
     requirements_map = convert_requirements_set_to_map(requirements_set)
     output['requirements'] = requirements_map
@@ -472,7 +475,7 @@ class LogHandler(logging.Handler):
             return True
         return False  
 
-def start_execution(transcript, stop_event, log_queue, api_key, runs_per_minute):
+def start_execution(transcript, stop_event, log_queue, api_key, runs_per_minute, check_violations):
     global gemini
     gemini = llm.LLM(api_key, runs_per_minute)
 
@@ -482,7 +485,7 @@ def start_execution(transcript, stop_event, log_queue, api_key, runs_per_minute)
     log_handler = LogHandler(log_queue)
     log_handler.logger.info("Starting execution")
     try:
-        asyncio.run(run_pipeline(transcript, stop_event))
+        asyncio.run(run_pipeline(transcript, stop_event, check_violations))
         log_handler.logger.info("Pipeline status: Execution completed")
     except Exception as e:
         log_handler.logger.error("Execution failed. Please try again. \n Exception: " + str(e))
