@@ -8,6 +8,7 @@ import statistics
 import uuid
 import queue
 import traceback
+import csv
 
 
 async def segment_transcript(transcript, n_runs=10):
@@ -423,6 +424,7 @@ async def run_pipeline(transcript, stop_event, check_violations):
     output['requirements'] = requirements_map
 
     saveJsonOutput(output)
+    saveCsvOutput(output)
 
 def saveJsonOutput(output):
     #add all the prompts in prompts.py into a map
@@ -439,6 +441,22 @@ def saveJsonOutput(output):
     #dump output to a json file in the folder output
     with open(f"{output_dir}/output.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=4)
+
+def saveCsvOutput(output):
+    requirements = output['requirements']
+    output_dir = "output_visualizer"
+    os.makedirs(output_dir, exist_ok=True)
+    csv_path = os.path.join(output_dir, "requirements.csv")
+    with open(csv_path, "w", newline='', encoding="utf-8") as csvfile:
+        fieldnames = ["requirement_id", "topic_id", "user_story"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for req in requirements.values():
+            writer.writerow({
+                "requirement_id": req.get("requirement_id", ""),
+                "topic_id": req.get("topic_id", ""),
+                "user_story": req.get("user_story", "")
+            })
 
 class LogHandler(logging.Handler):
     def __init__(self, log_queue):
